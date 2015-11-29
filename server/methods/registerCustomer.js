@@ -2,19 +2,17 @@ Meteor.methods({
     'registerCustomer': function (email, password) {
         check(email, String);
         check(password, String);
-
         var response = Async.runSync(function (done) {
             liveDb.db
                 .query(
-                    'INSERT INTO Customers (login, password) VALUES ( ? , ?)', [email, password])
-                .on('error', function (err) {
-                    console.log('Error while inserting: ', err);
-                    done(null,false)
-                });
+                    'INSERT INTO Customers (login, password) VALUES ( ? , ?)', [email, password], function (error, results, fields) {
+                        if (error) {
+                            console.log('Error while inserting: ', error);
+                            done(null, false);
+                        }
 
-            setTimeout(function () {
-                done(null, true)
-            }, 1000);
+                        done(null, true)
+                    })
         });
 
         return response.result ? email : null;

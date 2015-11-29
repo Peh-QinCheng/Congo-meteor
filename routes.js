@@ -10,6 +10,9 @@ Router.route('/home', function () {
     this.render('home');
 });
 
+Router.route('/cart', function () {
+    this.render('cart');
+});
 
 Router.route('/book/:isbn', {
     data: function () {

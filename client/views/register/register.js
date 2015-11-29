@@ -1,13 +1,20 @@
 Template.register.events({
     'submit form': function (events) {
+        events.preventDefault();
         var email = events.target.email.value;
         var password = events.target.password.value;
         Meteor.call('registerCustomer', email, password, function (err, res) {
+            console.log('yo: ', res)
             if (err) {
-                console.log("Error during insert: ", err);
+                console.log('OH DAMN SOMETHING REALLY BAD HAPPENED');
                 return
             }
-            localStorage.setItem(KEY_CURRENT_CUSTOMER, res)
+            if (res === null) {
+                alert("Username is already taken!");
+                return
+            }
+            localStorage.setItem(KEY_CURRENT_CUSTOMER, res);
+            Router.go('/home')
         });
     }
 });

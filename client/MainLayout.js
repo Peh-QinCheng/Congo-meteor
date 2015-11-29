@@ -4,10 +4,10 @@ Template.MainLayout.helpers({
             console.log('local storage not supported, not gonna care for this project')
             return false
         }
-
-        return Boolean(localStorage.getItem(KEY_CURRENT_USER));
+        console.log(Boolean(localStorage.getItem(KEY_CURRENT_CUSTOMER)))
+        return Boolean(localStorage.getItem(KEY_CURRENT_CUSTOMER));
     },
     currentUser: function () {
-        return localStorage.getItem(KEY_CURRENT_USER)
+        return localStorage.getItem(KEY_CURRENT_CUSTOMER)
     }
 });

@@ -6,10 +6,10 @@
 <template name="MainLayout">
     <article>
         {{#unless loggedIn}}
-            Welcome {{currentUser}}
-            {{> yield}}
-        {{else}}
             {{> register}}
+        {{else}}
+            Welcome {{currentUser}} !
+            {{> yield}}
         {{/unless}}
 
     </article>

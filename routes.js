@@ -11,9 +11,12 @@ Router.route('/home', function () {
 });
 
 
-Router.route('/book/:relUrl', {
+Router.route('/book/:isbn', {
+  //subscription: function () {
+  //  return new MysqlSubscription('bookByISBN', this.params.isbn)
+  //},
   data: function () {
-    var ISBN = this.params.relUrl;
+    var ISBN = this.params.isbn;
     return {ISBN: ISBN};
   },
   action: function () {

@@ -64,10 +64,10 @@ CREATE TABLE `Feedbacks` (
 DROP TABLE IF EXISTS `Invoices`;
 
 CREATE TABLE `Invoices` (
-  `invoiceid`    INT(11) NOT NULL,
-  `login`        CHAR(30) DEFAULT NULL,
-  `order_date`   DATE     DEFAULT NULL,
-  `order_status` CHAR(20) DEFAULT NULL,
+  `invoiceid`    INT(11) NOT NULL AUTO_INCREMENT,
+  `login`        CHAR(30)         DEFAULT NULL,
+  `order_date`   TIMESTAMP        DEFAULT CURRENT_TIMESTAMP,
+  `order_status` CHAR(20)         DEFAULT NULL,
   PRIMARY KEY (`invoiceid`),
   KEY `login` (`login`),
   CONSTRAINT `invoices_ibfk_1` FOREIGN KEY (`login`) REFERENCES `Customers` (`login`)
@@ -115,6 +115,6 @@ CREATE TABLE `Ratings` (
   ENGINE = InnoDB
   DEFAULT CHARSET = latin1;
 
-INSERT INTO Books (ISBN, title) VALUES ('9780804139297','Book 2');
-INSERT INTO Books (ISBN, title) VALUES ('9780804139298','Book 3');
-INSERT INTO Books (ISBN, title) VALUES ('9780804139299','Book 4');
+INSERT INTO Books (ISBN, title) VALUES ('9780804139297', 'Book 2');
+INSERT INTO Books (ISBN, title) VALUES ('9780804139298', 'Book 3');
+INSERT INTO Books (ISBN, title) VALUES ('9780804139299', 'Book 4');

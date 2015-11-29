@@ -114,3 +114,5 @@ CREATE TABLE `Ratings` (
 )
   ENGINE = InnoDB
   DEFAULT CHARSET = latin1;
+
+INSERT INTO Books (ISBN, title) VALUES ('9780804139297','Book 2')

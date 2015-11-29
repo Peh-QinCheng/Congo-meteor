@@ -1,3 +1,17 @@
 <template name="home">
     Welcome {{currentCustomer}} !
+  <ol class="books">
+    {{#each books}}
+      {{> book}}
+    {{/each}}
+  </ol>
+</template>
+
+
+<template name="book">
+  <li class="book">
+    <span class="ISBN">{{ISBN}}</span>
+    <span class="title">{{title}}</span>
+    <a href="/book/{{ISBN}}">See More</a>
+  </li>
 </template>

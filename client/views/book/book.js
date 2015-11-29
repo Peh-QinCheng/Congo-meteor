@@ -14,10 +14,19 @@ Template.bookDetails.helpers({
 });
 
 Template.bookDetails.events({
-   'click button.cart': function (e) {
-       var cart = Session.get(KEY_CURRENT_CART);
-       var book = Template.instance().books[0];
-       cart.push(book);
-       Session.set(KEY_CURRENT_CART, cart)
-   }
+    'click button.cart': function (e) {
+        var cart = Session.get(KEY_CURRENT_CART);
+        var book = Template.instance().books[0];
+        var item = cart[book.ISBN];
+        if (item) {
+            item.copies += 1;
+        } else {
+            cart[book.ISBN] = {
+                ISBN: book.ISBN,
+                title: book.title,
+                copies: 1
+            }
+        }
+        Session.set(KEY_CURRENT_CART, cart)
+    }
 });

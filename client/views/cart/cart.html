@@ -1,5 +1,11 @@
 <template name="cart">
-    {{#each cartItems}}
-            {{ISBN}} - {{title}}
-    {{/each}}
+    <ul>
+        {{#each cartItems}}
+            {{> cartItem}}
+        {{/each}}
+    </ul>
+</template>
+
+<template name="cartItem">
+    <li> {{ISBN}} - {{title}} Copies: <button intent="copies" data="{{ISBN}}" delta="-1">-</button> {{copies}} <button intent="copies" data="{{ISBN}}" delta="1">+</button> </li>
 </template>

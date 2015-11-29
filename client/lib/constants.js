@@ -1,1 +1,1 @@
-KEY_CURRENT_USER = 'currentUserKey';
+KEY_CURRENT_CUSTOMER = 'currentUserKey';

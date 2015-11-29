@@ -4,7 +4,6 @@ Template.register.events({
         var email = events.target.email.value;
         var password = events.target.password.value;
         Meteor.call('registerCustomer', email, password, function (err, res) {
-            console.log('yo: ', res)
             if (err) {
                 console.log('OH DAMN SOMETHING REALLY BAD HAPPENED');
                 return

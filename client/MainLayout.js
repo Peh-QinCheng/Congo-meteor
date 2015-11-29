@@ -14,8 +14,6 @@ Template.MainLayout.onRendered(function () {
         var cart = Session.get(KEY_CURRENT_CART);
         // Wait for startup
         localStorage.setItem(KEY_CURRENT_CART, JSON.stringify(cart));
-        //console.log(cart);
-        //console.log(localStorage.getItem(KEY_CURRENT_CART))
     })
 });
 

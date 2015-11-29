@@ -16,7 +16,7 @@ Template.bookDetails.helpers({
 Template.bookDetails.events({
    'click button.cart': function (e) {
        var cart = Session.get(KEY_CURRENT_CART);
-       var book = books[0];
+       var book = Template.instance().books[0];
        cart.push(book);
        Session.set(KEY_CURRENT_CART, cart)
    }

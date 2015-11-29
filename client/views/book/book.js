@@ -24,6 +24,7 @@ Template.bookDetails.events({
             cart[book.ISBN] = {
                 ISBN: book.ISBN,
                 title: book.title,
+                price: book.price,
                 copies: 1
             }
         }

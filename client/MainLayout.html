@@ -8,8 +8,7 @@
         {{#unless loggedIn}}
             {{> register}}
         {{else}}
-            {{> home}}
+            {{> yield}}
         {{/unless}}
-
     </article>
 </template>

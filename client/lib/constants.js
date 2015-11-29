@@ -1,0 +1,1 @@
+KEY_CURRENT_USER = 'currentUserKey';

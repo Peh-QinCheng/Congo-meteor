@@ -1,22 +1,27 @@
 Meteor.methods({
-    "checkout": function (book) {
-        check(email, String);
-        check(password, String);
+    "checkout": function (login, items) {
 
-        var response = Async.runSync(function (done) {
-            liveDb.db
-                .query(
-                    'INSERT INTO Customers (login, password) VALUES ( ? , ?)', [email, password])
-                .on('error', function (err) {
-                    console.log('Error while inserting: ', err);
-                    done(null,false)
-                });
+        liveDb.db
+            .query(
+                'INSERT INTO Invoices (login) VALUES (?)', [login], function (err, res) {
+                    if (err) {
+                        console.log('Error while inserting into Invoives: ', err);
+                        return;
+                    }
 
-            setTimeout(function () {
-                done(null, true)
-            }, 1000);
-        });
-
-        return response.result ? email : null;
+                    var id = res.insertId;
+                    _.each(items, function (item) {
+                        console.log('Inserting into Invoice %s: %s', id, JSON.stringify(item));
+                        liveDb.db.query(
+                            'INSERT INTO Orders (invoiceid, ISBN, price, copies) VALUES (?, ?, ?, ?)',
+                            [id, item.ISBN, item.price, item.copies],
+                            function (err, res) {
+                                if (err) {
+                                    console.log('Error while inserting into Orders: ', err)
+                                }
+                            }
+                        )
+                    })
+                })
     }
 });

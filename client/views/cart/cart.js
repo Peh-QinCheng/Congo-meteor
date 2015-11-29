@@ -4,6 +4,19 @@ Template.cart.helpers({
     }
 });
 
+Template.cart.events({
+    'click button.checkoutBtn': function () {
+        var customer = Session.get(KEY_CURRENT_CUSTOMER);
+        if (!customer) {
+            alert('Please login!')
+            return;
+        }
+
+        var items = Session.get(KEY_CURRENT_CART);
+        Meteor.call('checkout', customer, items)
+    }
+});
+
 Template.cartItem.events({
     'click button[intent="copies"]': function (e) {
         var ISBN = e.currentTarget.attributes['data'].value;

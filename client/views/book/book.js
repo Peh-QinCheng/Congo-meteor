@@ -78,7 +78,7 @@ Template.bookFeedback.helpers({
         Template.instance().currentFeedbackRating.depend();
         var queryResult = Template.instance().currentFeedbackRating.reactive()[0];
         if (queryResult) {
-            return queryResult['SUM(rating)'] || '-'
+            return queryResult['AVG(rating)'] || '-'
         }
         return '-'
     }

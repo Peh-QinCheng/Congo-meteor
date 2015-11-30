@@ -21,7 +21,7 @@ Meteor.publish('feedbackRating', function (feedbackOp, isbn) {
     var table = 'Ratings';
     var ratingAttribute = 'rating';
     return liveDb.select(function (esc, escId) {
-        return `SELECT SUM(${ratingAttribute}) FROM ${escId(table)} WHERE login=${esc(feedbackOp)} and ISBN=${esc(isbn)}`;
+        return `SELECT AVG(${ratingAttribute}) FROM ${escId(table)} WHERE login=${esc(feedbackOp)} and ISBN=${esc(isbn)}`;
     }, [{
         table: table,
         condition: function (row, newRow) {

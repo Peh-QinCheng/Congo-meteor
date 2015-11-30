@@ -66,7 +66,7 @@ DROP TABLE IF EXISTS `Invoices`;
 CREATE TABLE `Invoices` (
   `invoiceid`    INT(11) NOT NULL AUTO_INCREMENT,
   `login`        CHAR(30)         DEFAULT NULL,
-  `order_date`   DATE        DEFAULT CURRENT_DATE,
+  `order_date`   TIMESTAMP        DEFAULT CURRENT_TIMESTAMP,
   `order_status` CHAR(20)         DEFAULT NULL,
   PRIMARY KEY (`invoiceid`),
   KEY `login` (`login`),

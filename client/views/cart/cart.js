@@ -8,7 +8,7 @@ Template.cart.events({
     'click button.checkoutBtn': function () {
         var customer = Session.get(KEY_CURRENT_CUSTOMER);
         if (!customer) {
-            alert('Please login!')
+            alert('Please login!');
             return;
         }
 

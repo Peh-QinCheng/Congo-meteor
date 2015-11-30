@@ -3,8 +3,8 @@ Meteor.methods({
         check(login, String);
         check(isbn, String);
         check(content, String);
-        check(parseInt(score), Number);
         var scoreNumber = parseInt(score);
+        check(scoreNumber, Number);
         var response = Async.runSync(function (done) {
             liveDb.db.query(
 

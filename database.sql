@@ -104,7 +104,7 @@ CREATE TABLE `Ratings` (
   `login`       CHAR(30) NOT NULL DEFAULT '',
   `ISBN`        CHAR(13) NOT NULL DEFAULT '',
   `rater_login` CHAR(30) NOT NULL DEFAULT '',
-  `rating`      INT(11)           DEFAULT NULL,
+  `rating`      INT(1)           DEFAULT NULL,
   PRIMARY KEY (`login`, `ISBN`, `rater_login`),
   KEY `rater_login` (`rater_login`),
   KEY `ISBN` (`ISBN`),
@@ -115,6 +115,41 @@ CREATE TABLE `Ratings` (
   ENGINE = InnoDB
   DEFAULT CHARSET = latin1;
 
+# SEED DATA
+# -----------------------------------------------------------
+
 INSERT INTO Books (ISBN, title) VALUES ('9780804139297', 'Book 2');
 INSERT INTO Books (ISBN, title) VALUES ('9780804139298', 'Book 3');
 INSERT INTO Books (ISBN, title) VALUES ('9780804139299', 'Book 4');
+
+INSERT INTO
+  Customers (login, password, name)
+VALUES
+  ('testUser1', 'password1', 'username1'),
+  ('testUser2', 'password2', 'username2'),
+  ('testUser3', 'password3', 'username3'),
+  ('testUser4', 'password4', 'username4'),
+  ('testUser5', 'password5', 'username5');
+
+INSERT INTO
+  Feedbacks (login, ISBN, score, content)
+VALUES
+  ('testUser1', '9780804139297', 10, 'Feedback1'),
+  ('testUser2', '9780804139297', 9, 'Feedback2'),
+  ('testUser3', '9780804139297', 8, 'Feedback3'),
+  ('testUser4', '9780804139297', 7, 'Feedback4'),
+  ('testUser5', '9780804139297', 6, 'Feedback5');
+
+INSERT INTO
+  Ratings (login, ISBN, rater_login, rating)
+VALUES  # testUser2,3,4 rating testUser1's feedback on ISBN 9780804139297
+  ('testUser1', '9780804139297', 'testUser2', 2),
+  ('testUser1', '9780804139297', 'testUser3', 1),
+  ('testUser1', '9780804139297', 'testUser4', 0);
+
+INSERT INTO
+  Ratings (login, ISBN, rater_login, rating)
+VALUES  # testUser2,3,4 rating testUser1's feedback on ISBN 9780804139297
+  ('testUser2', '9780804139297', 'testUser1', 2),
+  ('testUser2', '9780804139297', 'testUser3', 1),
+  ('testUser2', '9780804139297', 'testUser4', 1);

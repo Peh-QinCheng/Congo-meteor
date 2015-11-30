@@ -17,7 +17,7 @@
 <template name="orderHistory">
     <ul>
         {{#each invoices ..}}
-            <li>{{invoiceid}} @ {{order_date}}</li>
+            <li>{{ISBN}} ${{price}} #{{copies}} @{{order_date}}</li>
         {{/each}}
     </ul>
 </template>

@@ -13,6 +13,7 @@ Template.bookDetails.helpers({
         }
     },
     allFeedback: function () {
+        Template.instance().currentBookFeedback.depend();
         return Template.instance().currentBookFeedback.reactive();
     }
 });
@@ -52,8 +53,9 @@ Template.bookDetails.events({
     'submit form': function (event) {
         event.preventDefault();
         var content = event.target.feedbackValue.value;
+        var score = event.target.bookScore.value;
         var login = localStorage.getItem(KEY_CURRENT_CUSTOMER);
-        Meteor.call('addFeedback', login, this.ISBN, content, function (error, queryError) {
+        Meteor.call('addFeedback', login, this.ISBN, content, score, function (error, queryError) {
             if (error) {
                 console.error(error);
                 return;

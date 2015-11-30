@@ -32,3 +32,7 @@ Router.route('/profile/:login', {
         this.render('profile')
     }
 });
+
+Router.route('/admin', function () {
+    this.render('adminBookList');
+});

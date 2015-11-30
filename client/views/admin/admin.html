@@ -1,0 +1,21 @@
+<template name="adminBookList">
+    Welcome {{currentCustomer}} !
+  <ol class="books">
+    {{#each books}}
+      {{> adminBook}}
+    {{/each}}
+  </ol>
+</template>
+
+
+<template name="adminBook">
+  <li class="book">
+    <form>
+      <span class="ISBN">{{ISBN}}</span>
+      <span class="title">{{title}}</span>
+      <input class="form-control" type="hidden" name="ISBN" value="{{ISBN}}">
+      <input class="form-control" type="number" name="quantity">
+      <input type="submit" value="Update Quantity">
+    </form>
+  </li>
+</template>

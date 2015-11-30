@@ -18,21 +18,6 @@ Template.bookDetails.helpers({
     }
 });
 
-function generateTestBooks() {
-    var no = 5;
-    var result = [];
-    for (var i = 0; i < no; i++) {
-        result.push({
-            login: 'user1',
-            ISBN: '0319',
-            score: 5,
-            content: 'Feedback here',
-            date: new Date()
-        });
-    };
-    return result;
-}
-
 Template.bookDetails.events({
     'click button.cart': function (e) {
         var cart = Session.get(KEY_CURRENT_CART);
@@ -65,29 +50,5 @@ Template.bookDetails.events({
                 return;
             }
         });
-    }
-});
-
-Template.bookFeedback.onCreated(function () {
-    var currentFeedback = this.data;
-    this.currentFeedbackRating = new MysqlSubscription('feedbackRating', currentFeedback.login, Template.currentData().ISBN);
-});
-
-Template.bookFeedback.helpers({
-    rating: function () {
-        Template.instance().currentFeedbackRating.depend();
-        var queryResult = Template.instance().currentFeedbackRating.reactive()[0];
-        if (queryResult) {
-            return queryResult['AVG(rating)'] || '-'
-        }
-        return '-'
-    }
-});
-
-Template.bookFeedback.events({
-    'click button.feedback-score': function (event) {
-        var changeScoreBy = parseInt(event.target.value);
-        var newScore = this.score + changeScoreBy;
-        console.log('score clicked:', this.login, this.ISBN, newScore);
     }
 });

@@ -1,5 +1,5 @@
-Meteor.publish('feedback', function (isbn) {
-    var table = 'Feedback';
+Meteor.publish('bookFeedbacks', function (isbn) {
+    var table = 'Feedbacks';
     return liveDb.select(function (esc, escId) {
         return (
             'SELECT * from ' + escId(table) +
@@ -14,5 +14,5 @@ Meteor.publish('feedback', function (isbn) {
                     // On UPDATE queries, newRow must be checked as well
                 || (newRow && newRow.id === id);
         }
-    }])
+    }]);
 });

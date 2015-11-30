@@ -1,5 +1,6 @@
 Template.bookDetails.onCreated(function () {
     this.books = new MysqlSubscription('bookByISBN', Template.currentData().ISBN);
+    this.currentBookFeedback = new MysqlSubscription('bookFeedbacks', Template.currentData().ISBN);
 });
 
 Template.bookDetails.helpers({
@@ -11,22 +12,25 @@ Template.bookDetails.helpers({
             return books.length === 0 ? 'No book found!' : books[0].title;
         }
     },
-    bookFeedbacks: function () {
-        var no = 5;
-        var result = [];
-        for (var i = 0; i < no; i++) {
-            result.push({
-                login: 'user1',
-                ISBN: '0319',
-                score: 5,
-                content: 'Feedback here',
-                date: new Date()
-            });
-        };
-
-        return result;
+    allFeedback: function () {
+        return Template.instance().currentBookFeedback.reactive();
     }
 });
+
+function generateTestBooks() {
+    var no = 5;
+    var result = [];
+    for (var i = 0; i < no; i++) {
+        result.push({
+            login: 'user1',
+            ISBN: '0319',
+            score: 5,
+            content: 'Feedback here',
+            date: new Date()
+        });
+    };
+    return result;
+}
 
 Template.bookDetails.events({
     'click button.cart': function (e) {
@@ -47,19 +51,18 @@ Template.bookDetails.events({
     },
     'submit form': function (event) {
         event.preventDefault();
-        var feedbackText = event.target.feedbackValue.value;
-
-        //  Meteor.call('submitFeed', email, password, function (err, res) {
-        //     if (err) {
-        //         console.log('OH DAMN SOMETHING REALLY BAD HAPPENED');
-        //         return
-        //     }
-        //     if (res === null) {
-        //         alert("Username is already taken!");
-        //         return
-        //     }
-        //     localStorage.setItem(KEY_CURRENT_CUSTOMER, res);
-        // });
+        var content = event.target.feedbackValue.value;
+        var login = localStorage.getItem(KEY_CURRENT_CUSTOMER);
+        Meteor.call('addFeedback', login, this.ISBN, content, function (error, queryError) {
+            if (error) {
+                console.error(error);
+                return;
+            }
+            if (queryError) {
+                console.error(queryError);
+                return;
+            }
+        });
     },
     'click button.feedback-score': function (event) {
         var changeScoreBy = parseInt(event.target.value);

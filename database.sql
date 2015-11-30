@@ -46,9 +46,9 @@ DROP TABLE IF EXISTS `Feedbacks`;
 CREATE TABLE `Feedbacks` (
   `login`   CHAR(30) NOT NULL DEFAULT '',
   `ISBN`    CHAR(13) NOT NULL DEFAULT '',
-  `score`   INT(11)           DEFAULT NULL,
+  `score`   INT(11)           DEFAULT 0,
   `content` CHAR(200)         DEFAULT NULL,
-  `date`    DATE              DEFAULT NULL,
+  `date`    TIMESTAMP         DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`login`, `ISBN`),
   KEY `ISBN` (`ISBN`),
   CONSTRAINT `feedbacks_ibfk_1` FOREIGN KEY (`login`) REFERENCES `Customers` (`login`),

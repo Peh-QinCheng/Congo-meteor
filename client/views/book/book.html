@@ -12,7 +12,7 @@
     </div>
 
     <div class="feedback-output">
-        {{#each bookFeedbacks}}
+        {{#each allFeedback}}
             {{> bookFeedback}}
         {{/each}}
     </div>
@@ -25,7 +25,9 @@
             {{content}}
         </div>
         <div class="feedback-score">
+            {{login}}
             {{score}}
+            {{content}}
             <button class="feedback-score-0 feedback-score" value="0">0</button>
             <button class="feedback-score-1 feedback-score" value="1">1</button>
             <button class="feedback-score-2 feedback-score" value="2">2</button>

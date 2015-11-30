@@ -13,7 +13,13 @@ Template.cart.events({
         }
 
         var items = Session.get(KEY_CURRENT_CART);
-        Meteor.call('checkout', customer, items)
+        Meteor.call('checkout', customer, items, function (err, res) {
+            if (err) {
+                console.log('Error while checking out cart: ', err);
+                return
+            }
+            Session.set(KEY_CURRENT_CART, {})
+        })
     }
 });
 

@@ -1,5 +1,34 @@
 <template name="bookDetails">
-  {{ISBN}}
-  {{title}}
-    <button class="cart">Add to cart </button>
+    <div class="book-details">
+        {{ISBN}} {{title}}
+        <button class="cart">Add to cart </button>
+    </div>
+
+    <div class="feedback-input">
+        <form class="form-group" name="Feedback Form">
+            <textarea name="feedbackValue" rows="4" cols="50"></textarea>
+            <input class="submit-feedback" type="submit" value="Submit Feedback">
+        </form>
+    </div>
+
+    <div class="feedback-output">
+        {{#each bookFeedbacks}}
+            {{> bookFeedback}}
+        {{/each}}
+    </div>
+</template>
+
+
+<template name="bookFeedback">
+    <div class="book-feedback">
+        <div class="feedback-content">
+            {{content}}
+        </div>
+        <div class="feedback-score">
+            {{score}}
+            <button class="feedback-score-0 feedback-score" value="0">0</button>
+            <button class="feedback-score-1 feedback-score" value="1">1</button>
+            <button class="feedback-score-2 feedback-score" value="2">2</button>
+        </div>
+    </div>
 </template>

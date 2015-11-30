@@ -1,0 +1,31 @@
+<template name="profile">
+    {{> userInfo}}
+    {{> orderHistory}}
+    {{> feedbackHistory}}
+    {{> ratedFeedback}}
+</template>
+
+<template name="userInfo">
+    {{#with profile ..}}
+        Email: {{login}}
+        Name: {{name}}
+        Credit Number: {{credit_num}}
+        Address: {{address}}
+    {{/with}}
+</template>
+
+<template name="orderHistory">
+    <ul>
+        {{#each invoices ..}}
+            <li>{{invoiceid}} @ {{order_date}}</li>
+        {{/each}}
+    </ul>
+</template>
+
+<template name="feedbackHistory">
+    No feedback yet!
+</template>
+
+<template name="ratedFeedback">
+    No ratings yet!
+</template>

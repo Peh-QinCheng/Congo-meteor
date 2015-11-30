@@ -1,39 +1,59 @@
 <template name="bookDetails">
-    <div class="book-details">
-        {{ISBN}} {{title}}
-        <button class="cart">Add to cart </button>
+  <div class="book-details">
+    <div class="book-information">
+    {{ISBN}} {{title}}
+    <button class="cart">Add to cart</button>
     </div>
 
     <div class="feedback-input">
-        <form class="form-group" name="Feedback Form">
-            <label>Content</label>
-            <textarea name="feedbackValue" rows="4" cols="50"></textarea>
-            <label>Score</label>
-            <input name="bookScore" type="number" value="0">
-            <input class="submit-feedback" type="submit" value="Submit Feedback">
-        </form>
+      <form class="form-group" name="Feedback Form">
+        <label>Content</label>
+        <textarea name="feedbackValue" rows="4" cols="50"></textarea>
+        <label>Score</label>
+        <input name="bookScore" type="number" value="0">
+        <input class="submit-feedback" type="submit" value="Submit Feedback">
+      </form>
     </div>
 
     <div class="feedback-output">
-        {{#each allFeedback}}
-            {{> bookFeedback}}
-        {{/each}}
+      {{#each allFeedback}}
+        {{> bookFeedback}}
+      {{/each}}
     </div>
+  </div>
 </template>
 
 
 <template name="bookFeedback">
-    <div class="book-feedback">
-        <div class="feedback-content">
-            {{content}}
-        </div>
-        <div class="feedback-score">
-            {{login}}
-            {{score}}
-            {{content}}
-            <button class="feedback-score-0 feedback-score" value="0">0</button>
-            <button class="feedback-score-1 feedback-score" value="1">1</button>
-            <button class="feedback-score-2 feedback-score" value="2">2</button>
-        </div>
+  <div class="book-feedback">
+    <div class="feedback-score">
+
+      <div class="feedback-details">
+        <span class="feedback-label">
+          Posted by:
+        </span>
+        {{login}}
+      </div>
+
+      <div class="feedback-details">
+        <span class="feedback-label">
+          Score:
+        </span>
+        {{score}}
+      </div>
+
+      <div class="feedback-details">
+        <span class="feedback-label">
+          Feedback:
+        </span>
+        {{content}}
+      </div>
+
+      <div class="feedback-rating-controls">
+        <button class="feedback-score-0 feedback-score" value="0">0</button>
+        <button class="feedback-score-1 feedback-score" value="1">1</button>
+        <button class="feedback-score-2 feedback-score" value="2">2</button>
+      </div>
     </div>
+  </div>
 </template>

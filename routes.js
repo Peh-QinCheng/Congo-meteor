@@ -23,3 +23,12 @@ Router.route('/book/:isbn', {
         this.render('bookDetails');
     }
 });
+
+Router.route('/profile/:login', {
+    data: function () {
+        return {login: this.params.login}
+    },
+    action: function () {
+        this.render('profile')
+    }
+});

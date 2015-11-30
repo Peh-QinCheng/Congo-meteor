@@ -1,9 +1,5 @@
 // Data is read from select statements published by server
 Meteor.startup(function () {
-    books = new MysqlSubscription('allBooks');
-    users = new MysqlSubscription('allUsers');
-
-
     liveDb = new LiveMysql({
         host: 'localhost',
         port: 3407,

@@ -1,0 +1,29 @@
+<template name="bookDetails">
+  <div class="book-details">
+    <div class="book-information">
+    {{ISBN}} {{title}}
+    <button class="cart">Add to cart</button>
+    </div>
+
+    <div class="feedback-input">
+      <form class="feedback-input-form" name="Feedback Form">
+        <label>Content</label>
+        <textarea name="feedbackValue" rows="4" cols="50"></textarea>
+        <label>Score</label>
+        <input name="bookScore" type="number" value="0">
+        <input class="submit-feedback" type="submit" value="Submit Feedback">
+      </form>
+    </div>
+
+    <div class="feedback-output">
+      <form class="sort-feedback-form">
+        Sort by most helpful and show <input name="queryLimit" type="number" value="5"> results
+        <input type="submit">
+      </form>
+
+      {{#each allFeedback}}
+        {{> bookFeedback}}
+      {{/each}}
+    </div>
+  </div>
+</template>

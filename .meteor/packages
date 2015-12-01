@@ -26,3 +26,4 @@ logging
 numtel:mysql@1.0.2
 iron:router
 meteorhacks:async
+less

@@ -1,0 +1,41 @@
+
+<template name="bookFeedback">
+  <div class="book-feedback">
+    <div class="feedback-score">
+
+      <div class="feedback-details">
+        <span class="feedback-label">
+          Posted by:
+        </span>
+        {{login}}
+      </div>
+
+      <div class="feedback-details">
+        <span class="feedback-label">
+          Score:
+        </span>
+        {{score}}
+      </div>
+
+      <div class="feedback-details">
+        <span class="feedback-label">
+          Feedback:
+        </span>
+        {{content}}
+      </div>
+
+      <div class="feedback-details">
+        <span class="feedback-label">
+          Helpfulness:
+        </span>
+        {{avg_rating}}
+      </div>
+
+      <div class="feedback-rating-controls">
+        <button class="feedback-score-0 feedback-score" value="0">0</button>
+        <button class="feedback-score-1 feedback-score" value="1">1</button>
+        <button class="feedback-score-2 feedback-score" value="2">2</button>
+      </div>
+    </div>
+  </div>
+</template>

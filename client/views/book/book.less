@@ -1,0 +1,23 @@
+.book-details {
+  @content-margin: 20px;
+
+  .book-information, .feedback-input, .feedback-output {
+    margin: @content-margin;
+  }
+
+  .feedback-input {
+    label {
+      display: block;
+    }
+  }
+
+  .feedback-output {
+    .book-feedback {
+      margin-top: @content-margin;
+      margin-bottom: @content-margin;
+      .feedback-label {
+        font-weight: bold;
+      }
+    }
+  }
+}

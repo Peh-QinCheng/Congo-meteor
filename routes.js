@@ -16,8 +16,11 @@ Router.route('/cart', function () {
 
 Router.route('/book/:isbn', {
     data: function () {
-        var ISBN = this.params.isbn;
-        return {ISBN: ISBN};
+        return {
+            ISBN: this.params.isbn, 
+            sortBy: this.params.query ? this.params.query.sort_by : 'date',
+            limit: this.params.query ? this.params.query.limit : null
+        };
     },
     action: function () {
         this.render('bookDetails');

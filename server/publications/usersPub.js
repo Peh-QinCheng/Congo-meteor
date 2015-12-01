@@ -21,3 +21,21 @@ Meteor.publish('customerProfile', function (login) {
         }
     }])
 });
+
+Meteor.publish('loginUser', function (login, password) {
+    var table = 'Customers';
+    return liveDb.select(function (esc, escId) {
+        return (
+            'SELECT * from ' + escId(table) +
+            'where `login`=' + esc(login) +
+            ' AND `password`=' + esc(password)
+        );
+    }, [{
+        table: table,
+        condition: function (row, newRow) {
+            return row.id === id
+                    // On UPDATE queries, newRow must be checked as well
+                || (newRow && newRow.id === id);
+        }
+    }])
+});

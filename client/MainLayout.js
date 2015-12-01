@@ -16,6 +16,3 @@ Template.MainLayout.onRendered(function () {
         localStorage.setItem(KEY_CURRENT_CART, JSON.stringify(cart));
     })
 });
-
-
-

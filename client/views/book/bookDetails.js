@@ -1,6 +1,7 @@
 Template.bookDetails.onCreated(function () {
-    this.books = new MysqlSubscription('bookByISBN', Template.currentData().ISBN);
-    this.currentBookFeedback = new MysqlSubscription('bookFeedbacks', Template.currentData().ISBN);
+    var pageState = Template.currentData();
+    this.books = new MysqlSubscription('bookByISBN', pageState.ISBN);
+    this.currentBookFeedback = new MysqlSubscription('bookFeedbacks', pageState.ISBN, pageState.sortBy, pageState.limit);
 });
 
 Template.bookDetails.helpers({

@@ -43,10 +43,15 @@ Template.bookDetails.events({
         var login = localStorage.getItem(KEY_CURRENT_CUSTOMER);
         Meteor.call('addFeedback', login, this.ISBN, content, score, function (error, queryError) {
             if (error) {
-                console.error(error);
+                console.error('feeback', error);
                 return;
             }
             if (queryError) {
+                if (queryError.code === 'ER_DUP_ENTRY') {
+                    alert('Cannot add feedback, you can only enter your feedback once.');
+                    return;
+                }
+
                 console.error(queryError);
                 return;
             }

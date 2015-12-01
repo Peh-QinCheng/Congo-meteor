@@ -4,6 +4,11 @@ Template.bookDetails.onCreated(function () {
     this.currentBookFeedback = new MysqlSubscription('bookFeedbacks', pageState.ISBN, pageState.sortBy, pageState.limit);
 });
 
+Template.bookDetails.onDestroyed(function () {
+    this.books.stop();
+    this.currentBookFeedback.stop();
+});
+
 Template.bookDetails.helpers({
     title: function () {
         // you know what fk ironrouter
@@ -35,14 +40,6 @@ Template.bookDetails.events({
             }
         }
         Session.set(KEY_CURRENT_CART, cart);
-
-        Meteor.call('getRecommendation', function (err, res) {
-            if (err) {
-                console.log('Error while getting recommendation: ', err);
-                return
-            }
-            console.log('Recommend: ', res)
-        })
     },
     'submit form.feedback-input-form': function (event) {
         event.preventDefault();

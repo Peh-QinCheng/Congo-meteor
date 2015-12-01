@@ -8,7 +8,7 @@ CREATE TABLE `Books` (
   `title`     CHAR(50)  DEFAULT NULL,
   `author`    CHAR(50)  DEFAULT NULL,
   `publisher` CHAR(50)  DEFAULT NULL,
-  `year`      DATE      DEFAULT NULL,
+  `year`      INT(4)      DEFAULT NULL,
   `price`     DOUBLE    DEFAULT NULL,
   `bkformat`  CHAR(20)  DEFAULT NULL,
   `keywords`  CHAR(100) DEFAULT NULL,

@@ -25,6 +25,12 @@ Meteor.methods({
         check(raterLogin, String);
         var scoreNumber = parseInt(raterRating);
         check(scoreNumber, Number);
+
+        if (raterLogin === login) {
+            // todo test if this works
+            return 'You cannot rate your own feedback!';
+        }
+
         var response = Async.runSync(function (done) {
             liveDb.db.query(
                 'INSERT INTO Ratings (login, ISBN, rater_login, rating) VALUES (?, ?, ?, ?) ON DUPLICATE KEY UPDATE rating=VALUES(rating)', 

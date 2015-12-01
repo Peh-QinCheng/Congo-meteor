@@ -22,6 +22,3 @@ Template.MainLayout.onRendered(function () {
         localStorage.setItem(KEY_CURRENT_CUSTOMER, currentCustomer);
     });
 });
-
-
-

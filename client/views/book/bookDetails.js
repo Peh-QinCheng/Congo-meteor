@@ -36,7 +36,7 @@ Template.bookDetails.events({
         }
         Session.set(KEY_CURRENT_CART, cart)
     },
-    'submit form': function (event) {
+    'submit form.feedback-input-form': function (event) {
         event.preventDefault();
         var content = event.target.feedbackValue.value;
         var score = event.target.bookScore.value;
@@ -51,5 +51,20 @@ Template.bookDetails.events({
                 return;
             }
         });
+    },
+    'submit form.sort-feedback-form': function (event) {
+        event.preventDefault();
+        var queryLimit = event.target.queryLimit.value;
+
+        let limitParameter = '';
+        if (queryLimit) {
+            limitParameter = `&limit=${queryLimit}`;
+        } else {
+            limitParameter = '';
+        }
+
+        var url = `${Router.current().url}?sort_by=helpfulness${limitParameter}`;
+        Router.go(url);
+        location.reload();
     }
 });

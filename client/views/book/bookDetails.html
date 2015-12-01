@@ -6,7 +6,7 @@
     </div>
 
     <div class="feedback-input">
-      <form class="form-group" name="Feedback Form">
+      <form class="feedback-input-form" name="Feedback Form">
         <label>Content</label>
         <textarea name="feedbackValue" rows="4" cols="50"></textarea>
         <label>Score</label>
@@ -16,6 +16,11 @@
     </div>
 
     <div class="feedback-output">
+      <form class="sort-feedback-form">
+        Sort by most helpful and show <input name="queryLimit" type="number" value="5"> results
+        <input type="submit">
+      </form>
+
       {{#each allFeedback}}
         {{> bookFeedback}}
       {{/each}}

@@ -1,8 +1,8 @@
 Meteor.publish('customerInvoice', function (login) {
-    var table = 'Invoices';
+    var table = 'invoices';
     return liveDb.select(function (esc, escId) {
         return (
-            'SELECT ISBN,copies,price, order_date FROM Orders o, Invoices i where o.invoiceid = i.invoiceid '+
+            'SELECT ISBN,copies,price, order_date FROM Orders o, invoices i where o.invoiceid = i.invoiceid '+
                 'AND i.login='+ esc(login)
         );
     }, [{

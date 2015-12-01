@@ -7,7 +7,7 @@ Meteor.methods({
         check(scoreNumber, Number);
         var response = Async.runSync(function (done) {
             liveDb.db.query(
-                'INSERT INTO Feedbacks (login, ISBN, content, score) VALUES (?, ?, ?, ?)',
+                'INSERT INTO feedbacks (login, ISBN, content, score) VALUES (?, ?, ?, ?)',
                 [login, isbn, content, scoreNumber], function (error, results, fields) {
                     if (error) { 
                         done(error);
@@ -32,7 +32,7 @@ Meteor.methods({
 
         var response = Async.runSync(function (done) {
             liveDb.db.query(
-                'INSERT INTO Ratings (login, ISBN, rater_login, rating) VALUES (?, ?, ?, ?) ON DUPLICATE KEY UPDATE rating=VALUES(rating)', 
+                'INSERT INTO ratings (login, ISBN, rater_login, rating) VALUES (?, ?, ?, ?) ON DUPLICATE KEY UPDATE rating=VALUES(rating)',
                 [login, isbn, raterLogin, scoreNumber], function (error, results, fields) {
                     if (error) { 
                         done(error);

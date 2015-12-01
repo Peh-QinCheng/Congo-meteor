@@ -1,12 +1,12 @@
 Meteor.publish('allCustomers', function () {
     return liveDb.select(
-        'SELECT * FROM Customers',
-        [{table: 'Customers'}]
+        'SELECT * FROM customers',
+        [{table: 'customers'}]
     );
 });
 
 Meteor.publish('customerProfile', function (login) {
-    var table = 'Customers';
+    var table = 'customers';
     return liveDb.select(function (esc, escId) {
         return (
             'SELECT * from ' + escId(table) +

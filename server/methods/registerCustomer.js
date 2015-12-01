@@ -5,7 +5,7 @@ Meteor.methods({
         var response = Async.runSync(function (done) {
             liveDb.db
                 .query(
-                    'INSERT INTO Customers (login, password) VALUES ( ? , ?)', [email, password], function (error, results, fields) {
+                    'INSERT INTO customers (login, password) VALUES ( ? , ?)', [email, password], function (error, results, fields) {
                         if (error) {
                             console.log('Error while inserting: ', error);
                             done(null, false);

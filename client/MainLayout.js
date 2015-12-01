@@ -4,7 +4,9 @@ Template.MainLayout.helpers({
             console.log('local storage not supported, not gonna care for this project');
             return false
         }
-        return Boolean(localStorage.getItem(KEY_CURRENT_CUSTOMER));
+        var currentCustomer = Session.get(KEY_CURRENT_CUSTOMER);
+        localStorage.setItem(KEY_CURRENT_CUSTOMER, currentCustomer);
+        return !!currentCustomer;
     }
 });
 

@@ -40,7 +40,7 @@ Template.bookDetails.events({
         event.preventDefault();
         var content = event.target.feedbackValue.value;
         var score = event.target.bookScore.value;
-        var login = localStorage.getItem(KEY_CURRENT_CUSTOMER);
+        var login = Session.get(KEY_CURRENT_CUSTOMER);
         Meteor.call('addFeedback', login, this.ISBN, content, score, function (error, queryError) {
             if (error) {
                 console.error('feeback', error);

@@ -2,7 +2,7 @@ books = new MysqlSubscription('allBooks');
 
 Template.home.helpers({
     currentCustomer: function () {
-        return localStorage.getItem(KEY_CURRENT_CUSTOMER)
+        return Session.get(KEY_CURRENT_CUSTOMER);
     },
 
     books: function () {

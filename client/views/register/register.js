@@ -12,7 +12,7 @@ Template.register.events({
                 alert("Username is already taken!");
                 return
             }
-            localStorage.setItem(KEY_CURRENT_CUSTOMER, res);
+            Session.set(KEY_CURRENT_CUSTOMER, res);
             Router.go('/home')
         });
     }

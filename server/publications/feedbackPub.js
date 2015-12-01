@@ -1,5 +1,5 @@
 Meteor.publish('bookFeedbacks', function (isbn, sortBy, limit) {
-    var table = 'Feedbacks';
+    var table = 'feedbacks';
     var sortParam;
     switch (sortBy) {
         case 'date':
@@ -16,14 +16,7 @@ Meteor.publish('bookFeedbacks', function (isbn, sortBy, limit) {
     return liveDb.select(function (esc, escId) {
         return feedbackQuery(isbn, sortParam, limit);
     }, [{
-        table: table,
-        condition: function (row, newRow) {
-            // Only refresh the results when the row matching the specified id is
-            // changed.
-            return row.id === id
-                    // On UPDATE queries, newRow must be checked as well
-                || (newRow && newRow.id === id);
-        }
+        table: table
     }]);
 });
 
@@ -48,12 +41,12 @@ function feedbackQuery(isbn, sortParam, limit) {
           (
             # feedback that has been rated
             SELECT
-              Feedbacks.login, ISBN, score, content, date, ratings.avg_rating
+              feedbacks.login, ISBN, score, content, date, ratings.avg_rating
             FROM
-              Feedbacks,
-              (SELECT AVG(rating) AS avg_rating, login FROM Ratings GROUP BY login, ISBN) as ratings
+              feedbacks,
+              (SELECT AVG(rating) AS avg_rating, login FROM ratings GROUP BY login, ISBN) as ratings
             WHERE
-              Feedbacks.login=ratings.login
+              feedbacks.login=ratings.login
             UNION
               # Feedback that has not been rated
               SELECT
@@ -64,9 +57,9 @@ function feedbackQuery(isbn, sortParam, limit) {
                 date,
                 '-' # indicates that it has not been rated
             FROM
-              Feedbacks
+              feedbacks
             WHERE
-              login NOT IN (SELECT login FROM Ratings)
+              login NOT IN (SELECT login FROM ratings)
           ) AS subquery
         WHERE
           ISBN=${escapedIsbn}

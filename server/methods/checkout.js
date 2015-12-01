@@ -3,7 +3,7 @@ Meteor.methods({
 
         liveDb.db
             .query(
-                'INSERT INTO Invoices (login) VALUES (?)', [login], function (err, res) {
+                'INSERT INTO invoices (login) VALUES (?)', [login], function (err, res) {
                     if (err) {
                         console.log('Error while inserting into Invoives: ', err);
                         return;

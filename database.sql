@@ -1,9 +1,9 @@
 CREATE DATABASE `bookstore`;
 USE `bookstore`;
 
-DROP TABLE IF EXISTS `Books`;
+DROP TABLE IF EXISTS `books`;
 
-CREATE TABLE `Books` (
+CREATE TABLE `books` (
   `ISBN`      CHAR(13) NOT NULL,
   `title`     CHAR(50)  DEFAULT NULL,
   `author`    CHAR(50)  DEFAULT NULL,
@@ -20,12 +20,12 @@ CREATE TABLE `Books` (
   DEFAULT CHARSET = latin1;
 
 
-# Dump of table Customers
+# Dump of table customers
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `Customers`;
+DROP TABLE IF EXISTS `customers`;
 
-CREATE TABLE `Customers` (
+CREATE TABLE `customers` (
   `login`      CHAR(30) NOT NULL,
   `password`   CHAR(30) NOT NULL,
   `name`       CHAR(30)  DEFAULT NULL,
@@ -38,12 +38,12 @@ CREATE TABLE `Customers` (
   DEFAULT CHARSET = latin1;
 
 
-# Dump of table Feedbacks
+# Dump of table feedbacks
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `Feedbacks`;
+DROP TABLE IF EXISTS `feedbacks`;
 
-CREATE TABLE `Feedbacks` (
+CREATE TABLE `feedbacks` (
   `login`   CHAR(30) NOT NULL DEFAULT '',
   `ISBN`    CHAR(13) NOT NULL DEFAULT '',
   `score`   INT(11)           DEFAULT 0,
@@ -51,26 +51,26 @@ CREATE TABLE `Feedbacks` (
   `date`    TIMESTAMP         DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`login`, `ISBN`),
   KEY `ISBN` (`ISBN`),
-  CONSTRAINT `feedbacks_ibfk_1` FOREIGN KEY (`login`) REFERENCES `Customers` (`login`),
-  CONSTRAINT `feedbacks_ibfk_2` FOREIGN KEY (`ISBN`) REFERENCES `Books` (`ISBN`)
+  CONSTRAINT `feedbacks_ibfk_1` FOREIGN KEY (`login`) REFERENCES `customers` (`login`),
+  CONSTRAINT `feedbacks_ibfk_2` FOREIGN KEY (`ISBN`) REFERENCES `books` (`ISBN`)
 )
   ENGINE = InnoDB
   DEFAULT CHARSET = latin1;
 
 
-# Dump of table Invoices
+# Dump of table invoices
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `Invoices`;
+DROP TABLE IF EXISTS `invoices`;
 
-CREATE TABLE `Invoices` (
+CREATE TABLE `invoices` (
   `invoiceid`    INT(11) NOT NULL AUTO_INCREMENT,
   `login`        CHAR(30)         DEFAULT NULL,
   `order_date`   TIMESTAMP        DEFAULT CURRENT_TIMESTAMP,
   `order_status` CHAR(20)         DEFAULT NULL,
   PRIMARY KEY (`invoiceid`),
   KEY `login` (`login`),
-  CONSTRAINT `invoices_ibfk_1` FOREIGN KEY (`login`) REFERENCES `Customers` (`login`)
+  CONSTRAINT `invoices_ibfk_1` FOREIGN KEY (`login`) REFERENCES `customers` (`login`)
 )
   ENGINE = InnoDB
   DEFAULT CHARSET = latin1;
@@ -88,19 +88,19 @@ CREATE TABLE `Orders` (
   `copies`    INT(11)           DEFAULT NULL,
   PRIMARY KEY (`invoiceid`, `ISBN`),
   KEY `ISBN` (`ISBN`),
-  CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`invoiceid`) REFERENCES `Invoices` (`invoiceid`),
-  CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`ISBN`) REFERENCES `Books` (`ISBN`)
+  CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`invoiceid`) REFERENCES `invoices` (`invoiceid`),
+  CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`ISBN`) REFERENCES `books` (`ISBN`)
 )
   ENGINE = InnoDB
   DEFAULT CHARSET = latin1;
 
 
-# Dump of table Ratings
+# Dump of table ratings
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `Ratings`;
+DROP TABLE IF EXISTS `ratings`;
 
-CREATE TABLE `Ratings` (
+CREATE TABLE `ratings` (
   `login`       CHAR(30) NOT NULL DEFAULT '',
   `ISBN`        CHAR(13) NOT NULL DEFAULT '',
   `rater_login` CHAR(30) NOT NULL DEFAULT '',
@@ -108,9 +108,9 @@ CREATE TABLE `Ratings` (
   PRIMARY KEY (`login`, `ISBN`, `rater_login`),
   KEY `rater_login` (`rater_login`),
   KEY `ISBN` (`ISBN`),
-  CONSTRAINT `ratings_ibfk_1` FOREIGN KEY (`login`) REFERENCES `Customers` (`login`),
-  CONSTRAINT `ratings_ibfk_2` FOREIGN KEY (`rater_login`) REFERENCES `Customers` (`login`),
-  CONSTRAINT `ratings_ibfk_3` FOREIGN KEY (`ISBN`) REFERENCES `Books` (`ISBN`)
+  CONSTRAINT `ratings_ibfk_1` FOREIGN KEY (`login`) REFERENCES `customers` (`login`),
+  CONSTRAINT `ratings_ibfk_2` FOREIGN KEY (`rater_login`) REFERENCES `customers` (`login`),
+  CONSTRAINT `ratings_ibfk_3` FOREIGN KEY (`ISBN`) REFERENCES `books` (`ISBN`)
 )
   ENGINE = InnoDB
   DEFAULT CHARSET = latin1;
@@ -118,12 +118,12 @@ CREATE TABLE `Ratings` (
 # SEED DATA
 # -----------------------------------------------------------
 
-INSERT INTO Books (ISBN, title) VALUES ('9780804139297', 'Book 2');
-INSERT INTO Books (ISBN, title) VALUES ('9780804139298', 'Book 3');
-INSERT INTO Books (ISBN, title) VALUES ('9780804139299', 'Book 4');
+INSERT INTO books (ISBN, title) VALUES ('9780804139297', 'Book 2');
+INSERT INTO books (ISBN, title) VALUES ('9780804139298', 'Book 3');
+INSERT INTO books (ISBN, title) VALUES ('9780804139299', 'Book 4');
 
 INSERT INTO
-  Customers (login, password, name)
+  customers (login, password, name)
 VALUES
   ('testUser1', 'password1', 'username1'),
   ('testUser2', 'password2', 'username2'),
@@ -132,7 +132,7 @@ VALUES
   ('testUser5', 'password5', 'username5');
 
 INSERT INTO
-  Feedbacks (login, ISBN, score, content)
+  feedbacks (login, ISBN, score, content)
 VALUES
   ('testUser1', '9780804139297', 10, 'Feedback1'),
   ('testUser2', '9780804139297', 9, 'Feedback2'),
@@ -141,14 +141,14 @@ VALUES
   ('testUser5', '9780804139297', 6, 'Feedback5');
 
 INSERT INTO
-  Ratings (login, ISBN, rater_login, rating)
+  ratings (login, ISBN, rater_login, rating)
 VALUES  # testUser2,3,4 rating testUser1's feedback on ISBN 9780804139297
   ('testUser1', '9780804139297', 'testUser2', 2),
   ('testUser1', '9780804139297', 'testUser3', 1),
   ('testUser1', '9780804139297', 'testUser4', 0);
 
 INSERT INTO
-  Ratings (login, ISBN, rater_login, rating)
+  ratings (login, ISBN, rater_login, rating)
 VALUES  # testUser2,3,4 rating testUser1's feedback on ISBN 9780804139297
   ('testUser2', '9780804139297', 'testUser1', 2),
   ('testUser2', '9780804139297', 'testUser3', 1),

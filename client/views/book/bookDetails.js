@@ -34,7 +34,15 @@ Template.bookDetails.events({
                 copies: 1
             }
         }
-        Session.set(KEY_CURRENT_CART, cart)
+        Session.set(KEY_CURRENT_CART, cart);
+
+        Meteor.call('getRecommendation', function (err, res) {
+            if (err) {
+                console.log('Error while getting recommendation: ', err);
+                return
+            }
+            console.log('Recommend: ', res)
+        })
     },
     'submit form.feedback-input-form': function (event) {
         event.preventDefault();

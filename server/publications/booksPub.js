@@ -24,6 +24,47 @@ Meteor.publish('bookByISBN', function (isbn) {
     }])
 });
 
+function makeStatement (query_params, sort, esc) {
+    var statement ='SELECT * FROM books WHERE ';
+    if (query_params == null) {
+            statement = 'SELECT * FROM books';
+            return statement;
+    }
+    _.each(query_params, function(key, value) {
+        if (String(value) == 'author') {
+            if (key == ''){
+                return true;
+            }
+            else {
+                statement = statement + "author=" + esc(key);
+            }
+        } 
+        else {
+            if (key == ''){
+                return true;
+            }
+            statement = statement + " AND "+String(value) + "=" + esc(key);
+        }
+    });
+    
+    if (sort != '') {
+        statement = statement + " ORDER BY " + sort + " DESC"
+    }
+
+    return statement;
+}
+
+Meteor.publish('filteredSortedBooks', function (query_params, sort) {
+    return liveDb.select(function (esc, escId) {
+        var statement = makeStatement(query_params, sort, esc);
+        console.log(statement);
+        return (
+            statement
+        );
+    }, [{ table: 'books'}])
+});
+
+
 Meteor.publish('recommendedBooks', function (isbn, login) {
     console.log(`ISBN: ${isbn}, LOGIN: ${login}`)
     return liveDb.select(function (esc, escId) {

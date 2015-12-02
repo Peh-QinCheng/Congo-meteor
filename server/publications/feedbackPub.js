@@ -14,26 +14,43 @@ Meteor.publish('bookFeedbacks', function (isbn, sortBy, limit) {
 
     return liveDb.select(function (esc, escId) {
         return feedbackQuery(isbn, sortParam, limit);
-    }, [{
-            table: 'feedbacks'
-        },
-        {
-            table: 'ratings'
-        }]);
+    }, [{ table: 'feedbacks' }, { table: 'ratings' }]);
+});
+
+Meteor.publish('feedbackHistory', function (login) {
+    return liveDb.select(function (esc, escId) {
+        return feedbackQuery(null, null, null, login);
+    }, [{ table: 'feedbacks' }]);
 });
 
 function escapeString(str) {
     return `'${str}'`;
 }
 
-function feedbackQuery(isbn, sortParam, limit) {
-    let escapedIsbn = escapeString(isbn);
+function feedbackQuery(isbn, sortParam, limit, login) {
 
     let limitQuery;
     if (limit) {
         limitQuery = `LIMIT ${limit};`;
     } else {
         limitQuery = ';';
+    }
+
+    let loginQuery = '';
+    if (login) {
+        loginQuery = `login=${escapeString(login)}`;
+    }
+
+    let isbnQuery = '';
+    if (isbn) {
+        isbnQuery = `ISBN=${escapeString(isbn)}`
+    }
+
+    let filterQuery;
+    if (isbnQuery && loginQuery) {
+        filterQuery = `WHERE ${isbnQuery} AND ${loginQuery}`;
+    } else {
+        filterQuery = `WHERE ${isbnQuery || loginQuery}`;
     }
 
     return `
@@ -63,8 +80,7 @@ function feedbackQuery(isbn, sortParam, limit) {
             WHERE
               login NOT IN (SELECT login FROM ratings)
           ) AS subquery
-        WHERE
-          ISBN=${escapedIsbn}
+        ${filterQuery}
         ORDER BY
           ${sortParam} DESC
         ${limitQuery}

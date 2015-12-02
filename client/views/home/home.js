@@ -1,6 +1,5 @@
 Template.home.onCreated(function () {
     this.filteredSortedBooks = new MysqlSubscription('filteredSortedBooks', null, null);
-    Session.set(KEY_MAKE_BOOKS_REACTIVE, true);
 });
 
 Template.home.helpers({

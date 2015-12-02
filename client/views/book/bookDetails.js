@@ -73,8 +73,14 @@ Template.bookDetails.events({
             limitParameter = '';
         }
 
-        var url = `${Router.current().url}?sort_by=helpfulness${limitParameter}`;
+        // lousy way to remove params from url because successive calls for the button will only add params to the url
+        var urlWithoutParams = stripUrlParams(Router.current().url);
+        var url = `${urlWithoutParams}?sort_by=helpfulness${limitParameter}`;
         Router.go(url);
         location.reload();
     }
 });
+
+function stripUrlParams(url) {
+    return url.replace(/\?.*/, '');
+}

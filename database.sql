@@ -8,7 +8,7 @@ CREATE TABLE `books` (
   `title`     CHAR(50)  DEFAULT NULL,
   `author`    CHAR(50)  DEFAULT NULL,
   `publisher` CHAR(50)  DEFAULT NULL,
-  `year`      DATE      DEFAULT NULL,
+  `year`      INT(4)      DEFAULT NULL,
   `price`     DOUBLE    DEFAULT NULL,
   `bkformat`  CHAR(20)  DEFAULT NULL,
   `keywords`  CHAR(100) DEFAULT NULL,
@@ -79,9 +79,9 @@ CREATE TABLE `invoices` (
 # Dump of table Orders
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `Orders`;
+DROP TABLE IF EXISTS `orders`;
 
-CREATE TABLE `Orders` (
+CREATE TABLE `orders` (
   `invoiceid` INT(11)  NOT NULL DEFAULT '0',
   `ISBN`      CHAR(13) NOT NULL DEFAULT '',
   `price`     DOUBLE            DEFAULT NULL,

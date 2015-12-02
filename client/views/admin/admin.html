@@ -1,0 +1,48 @@
+<template name="adminBookList">
+  {{> newBook}}
+  <ol class="books">
+    {{#each books}}
+      {{> adminBook}}
+    {{/each}}
+  </ol>
+</template>
+
+
+<template name="adminBook">
+  <li class="book">
+    <form>
+      <span class="ISBN">{{ISBN}}</span>
+      <span class="title">{{title}}</span>
+      <input class="form-control" type="hidden" name="ISBN" value="{{ISBN}}">
+      <input class="form-control" type="number" name="quantity">
+      <input type="submit" value="Update Quantity">
+    </form>
+  </li>
+</template>
+
+<template name="newBook">
+  <form class="new-book">
+    <label>Title</label>
+    <input class="form-control" type="text" name="bookTitle">
+    <label>ISBN</label>
+    <input class="form-control" type="text" name="ISBN">
+    <label>Publisher</label>
+    <input class="form-control" type="text" name="publisher">
+    <label>Author</label>
+    <input class="form-control" type="text" name="author">
+    <label>Year</label>
+    <input class="form-control" type="text" name="year">
+    <label>Quantity</label>
+    <input class="form-control" type="text" name="quantity">
+    <label>Price</label>
+    <input class="form-control" type="text" name="price">
+    <label>Book Format</label>
+    <input class="form-control" type="text" name="bkformat">
+    <label>Keywords</label>
+    <input class="form-control" type="text" name="keywords">
+    <label>Subject</label>
+    <input class="form-control" type="text" name="subject">
+    <input type="submit" value="Make new book">
+  </form>
+</template>
+

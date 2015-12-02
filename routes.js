@@ -17,9 +17,7 @@ Router.route('/cart', function () {
 Router.route('/book/:isbn', {
     data: function () {
         return {
-            ISBN: this.params.isbn, 
-            sortBy: this.params.query ? this.params.query.sort_by : 'date',
-            limit: this.params.query ? this.params.query.limit : null
+            ISBN: this.params.isbn
         };
     },
     action: function () {

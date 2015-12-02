@@ -19,6 +19,7 @@ Template.bookDetails.helpers({
         }
     },
     allFeedback: function () {
+        Session.get(KEY_MAKE_FEEDBACKS_REACTIVE);
         return Template.instance().currentBookFeedback.reactive();
     }
 });
@@ -63,23 +64,11 @@ Template.bookDetails.events({
     },
     'submit form.sort-feedback-form': function (event) {
         event.preventDefault();
-        var queryLimit = event.target.queryLimit.value;
-
-        let limitParameter = '';
-        if (queryLimit) {
-            limitParameter = `&limit=${queryLimit}`;
-        } else {
-            limitParameter = '';
-        }
-
-        // lousy way to remove params from url because successive calls for the button will only add params to the url
-        var urlWithoutParams = stripUrlParams(Router.current().url);
-        var url = `${urlWithoutParams}?sort_by=helpfulness${limitParameter}`;
-        Router.go(url);
-        location.reload();
+        let pageState = Template.instance();
+        pageState.currentBookFeedback.stop();
+        let queryLimit = event.target.queryLimit.value;
+        let sortBy = 'helpfulness';
+        pageState.currentBookFeedback = new MysqlSubscription('bookFeedbacks', Template.currentData().ISBN, sortBy, queryLimit);
+        Session.set(KEY_MAKE_FEEDBACKS_REACTIVE, !Session.get(KEY_MAKE_FEEDBACKS_REACTIVE));
     }
 });
-
-function stripUrlParams(url) {
-    return url.replace(/\?.*/, '');
-}

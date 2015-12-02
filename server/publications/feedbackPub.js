@@ -28,7 +28,6 @@ function escapeString(str) {
 }
 
 function feedbackQuery(isbn, sortParam, limit, login) {
-
     let limitQuery;
     if (limit) {
         limitQuery = `LIMIT ${limit};`;

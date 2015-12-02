@@ -19,7 +19,6 @@ Template.bookDetails.helpers({
         }
     },
     allFeedback: function () {
-        Template.instance().currentBookFeedback.depend();
         return Template.instance().currentBookFeedback.reactive();
     }
 });

@@ -1,5 +1,6 @@
 <template name="home">
     Welcome <a href="/profile/{{currentCustomer}}">{{currentCustomer}} </a>!
+    {{> sortForm}}
     <ol class="books">
         {{#each books}}
             {{> book}}
@@ -14,4 +15,26 @@
         <span class="title">{{title}}</span>
         <a href="/book/{{ISBN}}">See More</a>
     </li>
+</template>
+
+<template name="sortForm">
+    <h3> Filter by </h3>
+    <form>
+        <label> Author </label>
+        <input type="text" name="author">
+        <label> Publisher </label>
+        <input type="text" name="publisher">
+        <label> Title </label>
+        <input type="text" name="bookTitle">
+        <label> Subject </label>
+        <input type="text" name="subject">
+        <h4> Sort by </h4>
+        <div>
+            <input type="radio" name="sort" value="year">
+            <span> Year </span>
+            <input type="radio" name="sort" value="feedback">
+            <span> Feedbacks </span>
+        </div>
+        <input type="submit" value="Search">
+    </form>
 </template>

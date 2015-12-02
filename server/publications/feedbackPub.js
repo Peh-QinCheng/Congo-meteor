@@ -1,5 +1,4 @@
 Meteor.publish('bookFeedbacks', function (isbn, sortBy, limit) {
-    var table = 'feedbacks';
     var sortParam;
     switch (sortBy) {
         case 'date':
@@ -16,8 +15,11 @@ Meteor.publish('bookFeedbacks', function (isbn, sortBy, limit) {
     return liveDb.select(function (esc, escId) {
         return feedbackQuery(isbn, sortParam, limit);
     }, [{
-        table: table
-    }]);
+            table: 'feedbacks'
+        },
+        {
+            table: 'ratings'
+        }]);
 });
 
 function escapeString(str) {

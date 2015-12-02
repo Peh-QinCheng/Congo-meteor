@@ -79,9 +79,9 @@ CREATE TABLE `invoices` (
 # Dump of table Orders
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `Orders`;
+DROP TABLE IF EXISTS `orders`;
 
-CREATE TABLE `Orders` (
+CREATE TABLE `orders` (
   `invoiceid` INT(11)  NOT NULL DEFAULT '0',
   `ISBN`      CHAR(13) NOT NULL DEFAULT '',
   `price`     DOUBLE            DEFAULT NULL,

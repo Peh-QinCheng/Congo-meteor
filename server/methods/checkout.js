@@ -14,7 +14,7 @@ Meteor.methods({
                         if (item.copies !== 0) {
                             console.log('Inserting into Invoice %s: %s', id, JSON.stringify(item));
                             liveDb.db.query(
-                                'INSERT INTO Orders (invoiceid, ISBN, price, copies) VALUES (?, ?, ?, ?)',
+                                'INSERT INTO orders (invoiceid, ISBN, price, copies) VALUES (?, ?, ?, ?)',
                                 [id, item.ISBN, item.price, item.copies],
                                 function (err, res) {
                                     if (err) {

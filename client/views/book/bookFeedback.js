@@ -11,6 +11,8 @@ Template.bookFeedback.events({
             }
             if (queryError) {
                 console.error(queryError);
+                // todo filter alerts
+                alert(queryError);
             }
         });
     }

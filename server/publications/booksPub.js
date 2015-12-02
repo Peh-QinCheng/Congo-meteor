@@ -25,7 +25,6 @@ Meteor.publish('bookByISBN', function (isbn) {
 });
 
 Meteor.publish('recommendedBooks', function (isbn, login) {
-    console.log(`ISBN: ${isbn}, LOGIN: ${login}`)
     return liveDb.select(function (esc, escId) {
         // Orders by other users (who have bought the same book) on other books,
         // grouped by books, ordered by diff number of users who ordered the same book

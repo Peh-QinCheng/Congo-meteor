@@ -23,9 +23,68 @@
 </template>
 
 <template name="feedbackHistory">
-    No feedback yet!
+    {{#each feedbackHistory ..}}
+      {{> userFeedback}}
+    {{/each}}
 </template>
 
 <template name="ratedFeedback">
-    No ratings yet!
+  {{#each ratedFeedback ..}}
+    {{> userRated}}
+  {{/each}}
+</template>
+
+<template name="userFeedback">
+  <div class="book-feedback details">
+    <div class="feedback-detail">
+        <span class="feedback-label label">
+          ISBN:
+        </span>
+      {{ISBN}}
+    </div>
+
+    <div class="feedback-detail">
+        <span class="feedback-label label">
+          Score:
+        </span>
+      {{score}}
+    </div>
+
+    <div class="feedback-detail">
+        <span class="feedback-label label">
+          Feedback:
+        </span>
+      {{content}}
+    </div>
+
+    <div class="feedback-detail">
+        <span class="feedback-label label">
+          Helpfulness:
+        </span>
+      {{avg_rating}}
+    </div>
+  </div>
+</template>
+
+<template name="userRated">
+  <div class="user-rated details">
+    <div class="rated-detail">
+        <span class="feedback-label label">
+          ISBN:
+        </span>
+      {{ISBN}}
+    </div>
+    <div class="rated-detail">
+        <span class="feedback-label label">
+          OP:
+        </span>
+      {{login}}
+    </div>
+    <div class="rated-detail">
+        <span class="feedback-label label">
+          Rating:
+        </span>
+      {{rating}}
+    </div>
+  </div>
 </template>

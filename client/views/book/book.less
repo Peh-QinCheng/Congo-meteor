@@ -1,5 +1,5 @@
-.book-details {
-  @content-margin: 20px;
+@content-margin: 20px;
+.book-detail {
 
   .book-information, .feedback-input, .feedback-output {
     margin: @content-margin;
@@ -10,14 +10,13 @@
       display: block;
     }
   }
+}
 
-  .feedback-output {
-    .book-feedback {
-      margin-top: @content-margin;
-      margin-bottom: @content-margin;
-      .feedback-label {
-        font-weight: bold;
-      }
-    }
+.details {
+  margin-top: @content-margin;
+  margin-bottom: @content-margin;
+  .label {
+    font-weight: bold;
+    color: black;
   }
 }

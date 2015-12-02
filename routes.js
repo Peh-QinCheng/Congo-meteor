@@ -35,3 +35,16 @@ Router.route('/profile/:login', {
         this.render('profile')
     }
 });
+
+Router.route('/admin', function () {
+    if (localStorage.getItem(KEY_CURRENT_CUSTOMER) == 'admin') {
+        this.render('adminBookList');
+    }
+    else {
+        this.render('home');
+    }
+});
+
+Router.route('/login', function () {
+    this.render('login');
+});

@@ -64,7 +64,6 @@ Meteor.publish('filteredSortedBooks', function (query_params, sort) {
     }, [{ table: 'books'}])
 });
 
-
 Meteor.publish('recommendedBooks', function (isbn, login) {
     return liveDb.select(function (esc, escId) {
         // Orders by other users (who have bought the same book) on other books,
@@ -90,3 +89,27 @@ Meteor.publish('recommendedBooks', function (isbn, login) {
         }
     }])
 });
+
+var booksOrderedByFeedbackQuery = `
+    SELECT
+      *
+    FROM
+      (
+        SELECT
+          books.ISBN, title, author, publisher, year, price, bkformat, keywords, subject, copies, avg_score
+        FROM
+          books,
+          (SELECT AVG(score) as avg_score, ISBN FROM feedbacks GROUP BY ISBN) as feedback_scores
+        WHERE
+          books.ISBN=feedback_scores.ISBN
+        UNION
+        SELECT
+          *,
+          -1 # books without feedback will have score -1
+        FROM
+          books
+        WHERE
+          ISBN NOT IN (SELECT ISBN FROM feedbacks)
+      ) AS subquery
+    ORDER BY
+      ISBN;`;

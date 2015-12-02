@@ -4,12 +4,17 @@ Template.login.events({
         var login = events.target.login.value;
         var password = events.target.password.value;
         var user = new MysqlSubscription('loginUser', login, password);
-        console.log(user.ready());
-        console.log(user);
-        user.depend();
-        if (user.ready()) {
-            console.log(user[0].login);
-            localStorage.setItem(KEY_CURRENT_CUSTOMER, user[0].login);
-        }
+        Tracker.autorun(function (c) {
+            if (user.ready()) {
+                if(user.length > 0) {
+                    localStorage.setItem(KEY_CURRENT_CUSTOMER, user[0].login);
+                    Router.go('/home');
+                }
+                else {
+                    alert('No such user!');
+                }
+                c.stop();
+            }
+        });
     }
 });

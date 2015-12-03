@@ -160,12 +160,12 @@ INSERT INTO invoices (login) VALUES
   ('testUser2'),
   ('testUser3');
 
-# Seed orders so buying book 1 recommends 2, buying 2 recommends 1,3, buying 3 recommends 1
+# Seed orders so buying book 1 recommends 2,3, buying 2 recommends 1, buying 3 recommends 1
 INSERT INTO orders (invoiceid, ISBN, price, copies) VALUES
   (1, 9780804139297, 10.50, 2),
   (1, 9780804139298, 12, 2),
   (2, 9780804139298, 12, 5),
-  (2, 9780804139299, 29.99, 1),
-  (2, 9780804139297, 9.99, 55),
-  (3, 9780804139299, 29.99, 100),
-  (3, 9780804139297, 19.99, 999);
+#   (2, 9780804139299, 29.99, 1),
+  (3, 9780804139297, 9.99, 55),
+  (3, 9780804139299, 29.99, 100);
+#   (3, 9780804139298, 19.99, 999);

@@ -24,44 +24,13 @@ Meteor.publish('bookByISBN', function (isbn) {
     }])
 });
 
-function makeStatement (query_params, sort, esc) {
-    var statement ='SELECT * FROM books WHERE ';
-    if (query_params == null) {
-            statement = 'SELECT * FROM books';
-            return statement;
-    }
-    _.each(query_params, function(key, value) {
-        if (String(value) == 'author') {
-            if (key == ''){
-                return true;
-            }
-            else {
-                statement = statement + "author=" + esc(key);
-            }
-        } 
-        else {
-            if (key == ''){
-                return true;
-            }
-            statement = statement + " AND "+String(value) + "=" + esc(key);
-        }
-    });
-    
-    if (sort != '') {
-        statement = statement + " ORDER BY " + sort + " DESC"
-    }
-
-    return statement;
-}
-
-Meteor.publish('filteredSortedBooks', function (query_params, sort) {
+Meteor.publish('filteredSortedBooks', function (filterParams, sortBy) {
     return liveDb.select(function (esc, escId) {
-        var statement = makeStatement(query_params, sort, esc);
-        console.log(statement);
-        return (
-            statement
-        );
-    }, [{ table: 'books'}])
+        return booksQuery(filterParams, sortBy);
+    }, [
+        { table: 'books'},
+        { table: 'feedbacks'}
+    ]);
 });
 
 Meteor.publish('recommendedBooks', function (isbn, login) {
@@ -90,26 +59,54 @@ Meteor.publish('recommendedBooks', function (isbn, login) {
     }])
 });
 
-var booksOrderedByFeedbackQuery = `
-    SELECT
-      *
-    FROM
-      (
+function booksQuery (filterParams, sortBy) {
+
+    const orderQuery = sortBy ? `ORDER BY ${sortBy} DESC`: '';
+
+    let filterQuery = '';
+    if (filterParams) {
+        filterQuery = 'WHERE';
+        let first = true;
+        _.each(filterParams, function(value, key) {
+            if (!value) {
+                return;
+            }
+
+            if (first) {
+                first = false;
+                filterQuery += ` ${key}='${value}'`;
+                return;
+            }
+
+            filterQuery += ` AND ${key}='${value}'`;
+        });
+    }
+
+    const booksOrderedByFeedbackQuery = `
         SELECT
-          books.ISBN, title, author, publisher, year, price, bkformat, keywords, subject, copies, avg_score
+          *
         FROM
-          books,
-          (SELECT AVG(score) as avg_score, ISBN FROM feedbacks GROUP BY ISBN) as feedback_scores
-        WHERE
-          books.ISBN=feedback_scores.ISBN
-        UNION
-        SELECT
-          *,
-          -1 # books without feedback will have score -1
-        FROM
-          books
-        WHERE
-          ISBN NOT IN (SELECT ISBN FROM feedbacks)
-      ) AS subquery
-    ORDER BY
-      ISBN;`;
+          (
+            SELECT
+              books.ISBN, title, author, publisher, year, price, bkformat, keywords, subject, copies, avg_score
+            FROM
+              books,
+              (SELECT AVG(score) as avg_score, ISBN FROM feedbacks GROUP BY ISBN) as feedback_scores
+            WHERE
+              books.ISBN=feedback_scores.ISBN
+            UNION
+            SELECT
+              *,
+              -1 # books without feedback will have score -1
+            FROM
+              books
+            WHERE
+              ISBN NOT IN (SELECT ISBN FROM feedbacks)
+          ) AS subquery
+        ${filterQuery}
+        ${orderQuery};`;
+
+    console.log(booksOrderedByFeedbackQuery);
+    return booksOrderedByFeedbackQuery;
+}
+

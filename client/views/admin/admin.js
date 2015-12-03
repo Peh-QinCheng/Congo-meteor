@@ -14,7 +14,7 @@ Template.adminBookList.helpers({
 });
 
 Template.adminBookList.events({
-    'submit form': function (events) {
+    'submit form.update-book-quantity': function (events) {
         events.preventDefault();
         var quantity= Number(events.target.quantity.value);
         var ISBN = events.target.ISBN.value;
@@ -33,6 +33,16 @@ Template.adminBookList.events({
         var keywords = events.target.keywords.value;
         var subject = events.target.subject.value;
         var title = events.target.bookTitle.value;
-        Meteor.call('makeNewBook', quantity, ISBN, author, publisher, year, price, bkformat, keywords, subject, title);
+        console.log('SINSERTING');
+        Meteor.call('makeNewBook', quantity, ISBN, author, publisher, year, price, bkformat, keywords, subject, title, function (error, queryError) {
+            if (error) {
+                console.error('MAKE book error', error);
+                return;
+            }
+            if (queryError) {
+                alert(JSON.stringify(queryError));
+                return;
+            }
+        });
     }
 });

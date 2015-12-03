@@ -8,7 +8,7 @@ CREATE TABLE `books` (
   `title`     CHAR(50)  DEFAULT NULL,
   `author`    CHAR(50)  DEFAULT NULL,
   `publisher` CHAR(50)  DEFAULT NULL,
-  `year`      INT(4)      DEFAULT NULL,
+  `year`      INT(4)    DEFAULT NULL,
   `price`     DOUBLE    DEFAULT NULL,
   `bkformat`  CHAR(20)  DEFAULT NULL,
   `keywords`  CHAR(100) DEFAULT NULL,
@@ -104,7 +104,7 @@ CREATE TABLE `ratings` (
   `login`       CHAR(30) NOT NULL DEFAULT '',
   `ISBN`        CHAR(13) NOT NULL DEFAULT '',
   `rater_login` CHAR(30) NOT NULL DEFAULT '',
-  `rating`      INT(1)           DEFAULT NULL,
+  `rating`      INT(1)            DEFAULT NULL,
   PRIMARY KEY (`login`, `ISBN`, `rater_login`),
   KEY `rater_login` (`rater_login`),
   KEY `ISBN` (`ISBN`),
@@ -118,18 +118,18 @@ CREATE TABLE `ratings` (
 # SEED DATA
 # -----------------------------------------------------------
 
-INSERT INTO books (ISBN, title) VALUES ('9780804139297', 'Book 2');
-INSERT INTO books (ISBN, title) VALUES ('9780804139298', 'Book 3');
-INSERT INTO books (ISBN, title) VALUES ('9780804139299', 'Book 4');
+INSERT INTO books (ISBN, title) VALUES ('9780804139297', 'Book 1');
+INSERT INTO books (ISBN, title) VALUES ('9780804139298', 'Book 2');
+INSERT INTO books (ISBN, title) VALUES ('9780804139299', 'Book 3');
 
 INSERT INTO
-  customers (login, password, name)
+customers (login, PASSWORD, NAME )
 VALUES
-  ('testUser1', 'password1', 'username1'),
-  ('testUser2', 'password2', 'username2'),
-  ('testUser3', 'password3', 'username3'),
-  ('testUser4', 'password4', 'username4'),
-  ('testUser5', 'password5', 'username5');
+('testUser1', 'password1', 'username1'),
+('testUser2', 'password2', 'username2'),
+('testUser3', 'password3', 'username3'),
+('testUser4', 'password4', 'username4'),
+('testUser5', 'password5', 'username5');
 
 INSERT INTO
   feedbacks (login, ISBN, score, content)
@@ -142,14 +142,30 @@ VALUES
 
 INSERT INTO
   ratings (login, ISBN, rater_login, rating)
-VALUES  # testUser2,3,4 rating testUser1's feedback on ISBN 9780804139297
+VALUES # testUser2,3,4 rating testUser1's feedback on ISBN 9780804139297
   ('testUser1', '9780804139297', 'testUser2', 2),
   ('testUser1', '9780804139297', 'testUser3', 1),
   ('testUser1', '9780804139297', 'testUser4', 0);
 
 INSERT INTO
   ratings (login, ISBN, rater_login, rating)
-VALUES  # testUser2,3,4 rating testUser1's feedback on ISBN 9780804139297
+VALUES # testUser2,3,4 rating testUser1's feedback on ISBN 9780804139297
   ('testUser2', '9780804139297', 'testUser1', 2),
   ('testUser2', '9780804139297', 'testUser3', 1),
   ('testUser2', '9780804139297', 'testUser4', 1);
+
+
+INSERT INTO invoices (login) VALUES
+  ('testUser1'),
+  ('testUser2'),
+  ('testUser3');
+
+# Seed orders so buying book 1 recommends 2, buying 2 recommends 1,3, buying 3 recommends 1
+INSERT INTO orders (invoiceid, ISBN, price, copies) VALUES
+  (1, 9780804139297, 10.50, 2),
+  (1, 9780804139298, 12, 2),
+  (2, 9780804139298, 12, 5),
+  (2, 9780804139299, 29.99, 1),
+  (2, 9780804139297, 9.99, 55),
+  (3, 9780804139299, 29.99, 100),
+  (3, 9780804139297, 19.99, 999);

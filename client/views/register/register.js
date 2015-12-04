@@ -17,7 +17,7 @@ Template.register.events({
 
         Meteor.call('registerCustomer', email, password, function (err, res) {
             if (err) {
-                console.log('OH DAMN SOMETHING REALLY BAD HAPPENED');
+                console.error('OH SOMETHING REALLY BAD HAPPENED');
                 return
             }
             if (res === null) {

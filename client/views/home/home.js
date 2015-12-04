@@ -26,7 +26,6 @@ Template.home.events ({
         var sort = events.target.sort.value;
         var filteredSortedBooks = Template.instance().filteredSortedBooks;
         filteredSortedBooks.stop();
-        console.log('sort by:', sort);
         Template.instance().filteredSortedBooks = new MysqlSubscription('filteredSortedBooks', query_params, sort);
         Session.set(KEY_MAKE_BOOKS_REACTIVE, !Session.get(KEY_MAKE_BOOKS_REACTIVE));
     }

@@ -7,7 +7,7 @@ Template.login.events({
         Tracker.autorun(function (c) {
             if (user.ready()) {
                 if(user.length > 0) {
-                    localStorage.setItem(KEY_CURRENT_CUSTOMER, user[0].login);
+                    Session.set(KEY_CURRENT_CUSTOMER, user[0].login);
                     Router.go('/home');
                 }
                 else {

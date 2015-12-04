@@ -4,7 +4,7 @@ Template.adminBookList.onCreated(function () {
 
 Template.adminBookList.helpers({
     currentCustomer: function () {
-        return localStorage.getItem(KEY_CURRENT_CUSTOMER)
+        return Session.get(KEY_CURRENT_CUSTOMER)
     },
 
     books: function () {
@@ -33,7 +33,6 @@ Template.adminBookList.events({
         var keywords = events.target.keywords.value;
         var subject = events.target.subject.value;
         var title = events.target.bookTitle.value;
-        console.log('SINSERTING');
         Meteor.call('makeNewBook', quantity, ISBN, author, publisher, year, price, bkformat, keywords, subject, title, function (error, queryError) {
             if (error) {
                 console.error('MAKE book error', error);

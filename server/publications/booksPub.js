@@ -105,8 +105,6 @@ function booksQuery (filterParams, sortBy) {
           ) AS subquery
         ${filterQuery}
         ${orderQuery};`;
-
-    console.log(booksOrderedByFeedbackQuery);
     return booksOrderedByFeedbackQuery;
 }
 

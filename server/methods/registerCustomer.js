@@ -7,7 +7,7 @@ Meteor.methods({
                 .query(
                     'INSERT INTO customers (login, password) VALUES ( ? , ?)', [email, password], function (error, results, fields) {
                         if (error) {
-                            console.log('Error while inserting: ', error);
+                            console.error('Error while inserting: ', error);
                             done(null, false);
                         }
 

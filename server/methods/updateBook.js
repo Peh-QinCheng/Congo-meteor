@@ -11,7 +11,6 @@ Meteor.methods({
                 'INSERT INTO books (copies, ISBN, author, publisher, year, price, bkformat, keywords, subject, title) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
                 [quantity, ISBN, author, publisher, year, price, bkformat, keywords, subject, title],
                 function (error, results, fields) {
-                    console.log('done');
                     if (error) {
                         done(error);
                         return;

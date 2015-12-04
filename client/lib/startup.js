@@ -5,6 +5,7 @@ Meteor.startup(function () {
 
     var customer = localStorage.getItem(KEY_CURRENT_CUSTOMER);
     if (customer) {
-        Session.set(KEY_CURRENT_CUSTOMER, customer)
+        Session.set(KEY_CURRENT_CUSTOMER, customer);
+        Router.go('/home');
     }
 });

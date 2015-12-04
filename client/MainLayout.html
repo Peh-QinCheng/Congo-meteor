@@ -1,15 +1,16 @@
 <head>
-    <title>Congo</title>
-    <meta name="viewport" content="width=device-width, user-scalable=no">
-    <!--<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600' rel='stylesheet' type='text/css'>-->
+  <title>Congo</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+  <!--<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600' rel='stylesheet' type='text/css'>-->
 </head>
 <template name="MainLayout">
-    <article>
-        {{#unless loggedIn}}
-            {{> register}}
-        {{else}}
-            <a href="/cart">Cart</a>
-            {{> yield}}
-        {{/unless}}
-    </article>
+  <article>
+    {{#unless loggedIn}}
+      {{> register}}
+    {{else}}
+      <a href="/cart">Cart</a>
+      <button class="logout-button">Logout</button>
+      {{> yield}}
+    {{/unless}}
+  </article>
 </template>

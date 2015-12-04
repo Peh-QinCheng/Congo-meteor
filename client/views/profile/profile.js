@@ -22,7 +22,6 @@ Template.orderHistory.helpers({
         var invoices= context.invoices;
         invoices.depend();
         if (invoices.ready()) {
-            console.log(invoices);
             return invoices.length === 0 ? ['No invoices found!'] : invoices;
         } else {
             return []

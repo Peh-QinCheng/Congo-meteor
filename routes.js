@@ -31,10 +31,17 @@ Router.route('/profile/:login', {
 });
 
 Router.route('/admin', function () {
-    if (localStorage.getItem(KEY_CURRENT_CUSTOMER) == 'admin') {
+    if (Session.get(KEY_CURRENT_CUSTOMER) == 'admin') {
         this.render('adminBookList');
+    } else {
+        this.render('home');
     }
-    else {
+});
+
+Router.route('/statistics', function () {
+    if (Session.get(KEY_CURRENT_CUSTOMER) == 'admin') {
+        this.render('statistics');
+    } else {
         this.render('home');
     }
 });

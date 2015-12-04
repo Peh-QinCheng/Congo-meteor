@@ -4,8 +4,10 @@ Template.MainLayout.helpers({
             console.error('local storage not supported, not gonna care for this project');
             return false
         }
-
         return !!Session.get(KEY_CURRENT_CUSTOMER);
+    },
+    isAdmin: function () {
+        return Session.get(KEY_CURRENT_CUSTOMER) === 'admin';
     }
 });
 

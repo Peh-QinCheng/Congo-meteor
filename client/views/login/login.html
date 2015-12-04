@@ -1,10 +1,10 @@
 <template name="login">
     <form class="form-group" name="login">
         <label> Email </label>
-        <input class="form-control" type="text" name="login">
+        <input id="login-field-email" class="form-control" type="text" name="login">
         <label> Password </label>
-        <input class="form-control" type="password" name="password">
-        <input type="submit" value="login">
+        <input id="login-field-password" class="form-control" type="password" name="password">
+        <input class="submit-login-form" name="register" type="submit" value="login">
+        <input class="submit-register-form" name="register" type="submit" value="register">
     </form>
-    <p> Don't have an account? <a href='/'> register </a></p>
 </template>

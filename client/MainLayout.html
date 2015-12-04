@@ -6,7 +6,7 @@
 <template name="MainLayout">
   <article>
     {{#unless loggedIn}}
-      {{> register}}
+      {{> login}}
     {{else}}
       <a href="/cart">Cart</a>
       <button class="logout-button">Logout</button>

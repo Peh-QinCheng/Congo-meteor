@@ -2,10 +2,6 @@ Router.configure({
     layoutTemplate: 'MainLayout'
 });
 
-Router.route('/', function () {
-    this.render('register');
-});
-
 Router.route('/home', function () {
     this.render('home');
 });
@@ -41,8 +37,4 @@ Router.route('/admin', function () {
     else {
         this.render('home');
     }
-});
-
-Router.route('/login', function () {
-    this.render('login');
 });

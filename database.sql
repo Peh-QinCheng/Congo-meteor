@@ -5,7 +5,7 @@ DROP TABLE IF EXISTS `books`;
 
 CREATE TABLE `books` (
   `ISBN`      CHAR(13) NOT NULL,
-  `title`     CHAR(50)  DEFAULT NULL,
+  `title`     CHAR(200)  DEFAULT NULL,
   `author`    CHAR(50)  DEFAULT NULL,
   `publisher` CHAR(50)  DEFAULT NULL,
   `year`      INT(4)    DEFAULT NULL,
@@ -18,7 +18,6 @@ CREATE TABLE `books` (
 )
   ENGINE = InnoDB
   DEFAULT CHARSET = latin1;
-
 
 # Dump of table customers
 # ------------------------------------------------------------
@@ -121,6 +120,11 @@ CREATE TABLE `ratings` (
 INSERT INTO books (ISBN, title) VALUES ('9780804139297', 'Book 1');
 INSERT INTO books (ISBN, title) VALUES ('9780804139298', 'Book 2');
 INSERT INTO books (ISBN, title) VALUES ('9780804139299', 'Book 3');
+
+INSERT INTO books (ISBN, title, author, publisher, year, price, bkformat, keywords, subject, copies) VALUES
+  ('9781449389673', 'Photoshop Elements 9: The Missing Manual', 'Barbara Brundage', 'Pogue Press', 2010, 20, 'hardcover', 'photography', 'self-help', 20),
+  ('9781594487712', 'Where Good Ideas Come From: The Natural History of Innovation', 'Steven Johnson', 'Pogue Press', 2010, 20, 'hardcover', 'photography', 'self-help', 9),
+  ('9781449389671', 'Another Photoshop', 'Barbara Brundage', 'Pogue Press', 2011, 20, 'hardcover', 'photography', 'self-help', 2);
 
 INSERT INTO
 customers (login, PASSWORD, NAME )

@@ -1,3 +1,53 @@
 <template name="statistics">
-  Statistics here
+  <div>
+    <div>
+      Most Popular Books
+      {{#each mostPopularBooks}}
+        {{> bookInformation}}
+      {{/each}}
+    </div>
+
+    <div>
+      Most Popular Authors
+      {{#each mostPopularAuthors}}
+        {{> authorInformation}}
+      {{/each}}
+    </div>
+
+    <div>
+      Most Popular Publishers
+      {{#each mostPopularPublishers}}
+        {{> publisherInformation}}
+      {{/each}}
+    </div>
+  </div>
 </template>
+
+<template name="bookInformation">
+  <div>
+    {{ISBN}}
+  </div>
+</template>
+
+<template name="authorInformation">
+  <div>
+    {{author}}
+  </div>
+</template>
+
+<template name="publisherInformation">
+  <div>
+    {{publisher}}
+  </div>
+</template>
+
+<!--Template.statistics.helpers({-->
+<!--mostPopularBooks: () => {-->
+<!--return Template.instance().mostPopularBooks.reactive();-->
+<!--},-->
+<!--mostPopularAuthors: () => {-->
+<!--return Template.instance().mostPopularAuthors.reactive();-->
+<!--},-->
+<!--mostPopularPublishers: () => {-->
+<!--return Template.instance().mostPopularPublishers.reactive();-->
+<!--}-->

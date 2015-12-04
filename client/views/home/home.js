@@ -9,8 +9,7 @@ Template.home.helpers({
 
     books: function () {
         Session.get(KEY_MAKE_BOOKS_REACTIVE);
-        var filteredSortedBooks = Template.instance().filteredSortedBooks.reactive();
-        return filteredSortedBooks;
+        return Template.instance().filteredSortedBooks.reactive();
     }
 });
 

@@ -59,7 +59,7 @@ Meteor.publish('recommendedBooks', function (isbn, login) {
     }])
 });
 
-function booksQuery (filterParams, sortBy) {
+function booksQuery (filterParams, sortBy, limit) {
 
     const orderQuery = sortBy ? `ORDER BY ${sortBy} DESC`: '';
 
@@ -82,7 +82,12 @@ function booksQuery (filterParams, sortBy) {
         });
     }
 
-    const booksOrderedByFeedbackQuery = `
+    let limitQuery = '';
+    if (limit) {
+        limitQuery = `LIMIT ${limit}`;
+    }
+
+    return `
         SELECT
           *
         FROM
@@ -104,7 +109,7 @@ function booksQuery (filterParams, sortBy) {
               ISBN NOT IN (SELECT ISBN FROM feedbacks)
           ) AS subquery
         ${filterQuery}
-        ${orderQuery};`;
-    return booksOrderedByFeedbackQuery;
+        ${orderQuery}
+        ${limitQuery};`;
 }
 

@@ -6,9 +6,6 @@ Template.MainLayout.helpers({
         }
         return !!Session.get(KEY_CURRENT_CUSTOMER);
     },
-    isAdmin: function () {
-        return Session.get(KEY_CURRENT_CUSTOMER) === 'admin';
-    }
 });
 
 Template.MainLayout.onRendered(function () {
@@ -38,3 +35,13 @@ Template.MainLayout.events({
     }
 });
 
+Template.navBar.helpers({
+    isAdmin: function () {
+        console.log('ISADMIN');
+        return Session.get(KEY_CURRENT_CUSTOMER) === 'admin';
+
+    },
+    currentCustomer: function () {
+        return Session.get(KEY_CURRENT_CUSTOMER);
+    }
+});

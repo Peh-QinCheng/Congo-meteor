@@ -3,10 +3,6 @@ Template.home.onCreated(function () {
 });
 
 Template.home.helpers({
-    currentCustomer: function () {
-        return Session.get(KEY_CURRENT_CUSTOMER);
-    },
-
     books: function () {
         Session.get(KEY_MAKE_BOOKS_REACTIVE);
         return Template.instance().filteredSortedBooks.reactive();

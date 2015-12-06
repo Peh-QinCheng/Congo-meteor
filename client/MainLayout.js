@@ -34,14 +34,3 @@ Template.MainLayout.events({
         Router.go('/');
     }
 });
-
-Template.navBar.helpers({
-    isAdmin: function () {
-        console.log('ISADMIN');
-        return Session.get(KEY_CURRENT_CUSTOMER) === 'admin';
-
-    },
-    currentCustomer: function () {
-        return Session.get(KEY_CURRENT_CUSTOMER);
-    }
-});

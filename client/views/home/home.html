@@ -1,11 +1,15 @@
 <template name="home">
-  <h1>Welcome to Congo!</h1>
-  {{> sortForm}}
-  <ol class="books">
-    {{#each books}}
-      {{> book}}
-    {{/each}}
-  </ol>
+  <div class="container">
+    <div class="page-header">
+      <h1>Welcome to Congo!</h1>
+    </div>
+    {{> sortForm}}
+    <ol class="books">
+      {{#each books}}
+        {{> book}}
+      {{/each}}
+    </ol>
+  </div>
 </template>
 
 

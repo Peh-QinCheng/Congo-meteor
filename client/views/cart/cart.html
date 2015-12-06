@@ -3,18 +3,38 @@
     <div class="page-header">
       <h1>Cart</h1>
     </div>
-    <ul>
+
+    <table class="table">
+      <!--<caption>Books</caption>-->
+      <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>ISBN</th>
+        <th>Quantity</th>
+      </tr>
+      </thead>
+      <tbody>
       {{#each cartItems}}
         {{> cartItem}}
       {{/each}}
-    </ul>
-    <button class="checkoutBtn"> Check it out yo!</button>
+      </tbody>
+    </table>
+    <button class="checkoutBtn btn btn-default">Checkout</button>
   </div>
 </template>
 
 <template name="cartItem">
-  <li> {{ISBN}} - {{title}} Copies:
-    <button intent="copies" data="{{ISBN}}" delta="-1">-</button> {{copies}}
-    <button intent="copies" data="{{ISBN}}" delta="1">+</button>
-  </li>
+  <tr>
+    <td>{{title}}</td>
+    <td>{{author}}</td>
+    <td>
+      <a href="/book/{{ISBN}}">{{ISBN}}</a>
+    </td>
+    <td>
+      <button class="btn btn-default btn-xs" intent="copies" data="{{ISBN}}" delta="-1">-</button>
+      {{copies}}
+      <button class="btn btn-default btn-xs" intent="copies" data="{{ISBN}}" delta="1">+</button>
+    </td>
+  </tr>
 </template>

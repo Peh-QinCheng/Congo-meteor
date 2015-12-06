@@ -6,7 +6,7 @@ Template.login.events({
         var user = new MysqlSubscription('loginUser', email, password);
         Tracker.autorun(function (c) {
             if (user.ready()) {
-                if(user.length > 0) {
+                if (user.length > 0) {
                     Session.set(KEY_CURRENT_CUSTOMER, user[0].login);
                     Router.go('/home');
                 }

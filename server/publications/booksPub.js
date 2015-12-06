@@ -28,8 +28,8 @@ Meteor.publish('filteredSortedBooks', function (filterParams, sortBy) {
     return liveDb.select(function (esc, escId) {
         return booksQuery(filterParams, sortBy);
     }, [
-        { table: 'books'},
-        { table: 'feedbacks'}
+        {table: 'books'},
+        {table: 'feedbacks'}
     ]);
 });
 
@@ -59,15 +59,15 @@ Meteor.publish('recommendedBooks', function (isbn, login) {
     }])
 });
 
-function booksQuery (filterParams, sortBy, limit) {
+function booksQuery(filterParams, sortBy, limit) {
 
-    const orderQuery = sortBy ? `ORDER BY ${sortBy} DESC`: '';
+    const orderQuery = sortBy ? `ORDER BY ${sortBy} DESC` : '';
 
     let filterQuery = '';
     if (filterParams) {
         filterQuery = 'WHERE';
         let first = true;
-        _.each(filterParams, function(value, key) {
+        _.each(filterParams, function (value, key) {
             if (!value) {
                 return;
             }

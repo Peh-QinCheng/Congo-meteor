@@ -17,7 +17,7 @@ Template.MainLayout.onRendered(function () {
     });
 
     self.autorun(function () {
-        var currentCustomer= Session.get(KEY_CURRENT_CUSTOMER);
+        var currentCustomer = Session.get(KEY_CURRENT_CUSTOMER);
 
         if (!currentCustomer) {
             localStorage.removeItem(KEY_CURRENT_CUSTOMER);

@@ -9,21 +9,21 @@ Template.adminBookList.helpers({
 
     books: function () {
         Template.instance().books.depend();
-      return Template.instance().books.reactive();
+        return Template.instance().books.reactive();
     }
 });
 
 Template.adminBookList.events({
     'submit form.update-book-quantity': function (events) {
         events.preventDefault();
-        var quantity= Number(events.target.quantity.value);
+        var quantity = Number(events.target.quantity.value);
         var ISBN = events.target.ISBN.value;
         Meteor.call('updateQuantity', quantity, ISBN);
     },
 
     'submit form.new-book': function (events) {
         events.preventDefault();
-        var quantity= Number(events.target.quantity.value);
+        var quantity = Number(events.target.quantity.value);
         var ISBN = events.target.ISBN.value;
         var author = events.target.author.value;
         var publisher = events.target.publisher.value;

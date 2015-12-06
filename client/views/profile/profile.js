@@ -19,7 +19,7 @@ Template.userInfo.helpers({
 
 Template.orderHistory.helpers({
     invoices: function (context) {
-        var invoices= context.invoices;
+        var invoices = context.invoices;
         invoices.depend();
         if (invoices.ready()) {
             return invoices.length === 0 ? ['No invoices found!'] : invoices;

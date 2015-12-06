@@ -1,4 +1,4 @@
 {
-  "port": 3407,
-  "initialize": "database.sql"
+    "port": 3407,
+    "initialize": "database.sql"
 }

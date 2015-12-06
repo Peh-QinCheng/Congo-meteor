@@ -80,6 +80,10 @@ function booksQuery(filterParams, sortBy, limit) {
 
             filterQuery += ` AND ${key}='${value}'`;
         });
+
+        if (filterQuery.length === 5) {
+            filterQuery = ''; // if nothing is added, meaning all values are ''
+        }
     }
 
     let limitQuery = '';

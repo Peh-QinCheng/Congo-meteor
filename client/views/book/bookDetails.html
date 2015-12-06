@@ -1,8 +1,8 @@
 <template name="bookDetails">
     <div class="book-details">
+        <h1>{{title}}<small>{{ISBN}}</small></h1>
         <div class="book-information">
-            {{ISBN}} {{title}}
-            <button class="cart btn btn-primary" data-toggle="modal" data-target="#myModal" data-isbn="{{ISBN}}">Add to cart</button>
+            <button class="cart btn btn-default" data-toggle="modal" data-target="#myModal" data-isbn="{{ISBN}}">Add to cart</button>
             {{> recommendationModal ISBN}}
         </div>
 

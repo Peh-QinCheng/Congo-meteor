@@ -4,21 +4,33 @@
       <h1>Welcome to Congo!</h1>
     </div>
     {{> sortForm}}
-    <ol class="books">
+
+    <table class="table">
+      <!--<caption>Books</caption>-->
+      <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>ISBN</th>
+      </tr>
+      </thead>
+      <tbody>
       {{#each books}}
-        {{> book}}
+        {{>book}}
       {{/each}}
-    </ol>
+      </tbody>
+    </table>
   </div>
 </template>
 
-
 <template name="book">
-  <li class="book">
-    <span class="ISBN">{{ISBN}}</span>
-    <span class="title">{{title}}</span>
-    <a href="/book/{{ISBN}}">See More</a>
-  </li>
+  <tr>
+    <td>{{title}}</td>
+    <td>{{author}}</td>
+    <td>
+      <a href="/book/{{ISBN}}">{{ISBN}}</a>
+    </td>
+  </tr>
 </template>
 
 <template name="sortForm">

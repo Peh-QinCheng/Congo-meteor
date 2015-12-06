@@ -5,24 +5,56 @@
     </div>
     {{> sortForm}}
 
-    <table class="table">
-      <!--<caption>Books</caption>-->
-      <thead>
-      <tr>
-        <th>Title</th>
-        <th>Author</th>
-        <th>ISBN</th>
-        <th>Year</th>
-        <th>Publisher</th>
-        <th>Score</th>
-      </tr>
-      </thead>
-      <tbody>
+    <div class="book-catalog">
+
+      <table class="table">
+        <!--<caption>Books</caption>-->
+        <thead>
+        <tr>
+          <th>Title</th>
+          <th>Author</th>
+          <th>ISBN</th>
+          <th>Year</th>
+          <th>Publisher</th>
+          <th>Score</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each books}}
+          {{> book}}
+        {{/each}}
+        </tbody>
+      </table>
+
       {{#each books}}
-        {{>book}}
+        {{> bookCard}}
       {{/each}}
-      </tbody>
-    </table>
+
+    </div>
+  </div>
+</template>
+
+<template name="bookCard">
+  <div class="col-sm-3">
+    <div class="fixed-panel-height panel panel-default">
+      <div class="panel-heading">
+        <a href="/book/{{ISBN}}">
+          <h3 class="panel-title">{{ISBN}}</h3>
+        </a>
+      </div>
+      <div class="panel-body">
+        <label>Title</label>
+        {{title}}
+        <label>Author</label>
+        {{author}}
+        <label>Year</label>
+        {{year}}
+        <label>Publisher</label>
+        {{publisher}}
+        <label>Score</label>
+        {{avg_score}}
+      </div>
+    </div>
   </div>
 </template>
 

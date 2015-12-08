@@ -28,8 +28,8 @@ Meteor.publish('filteredSortedBooks', function (filterParams, sortBy) {
     return liveDb.select(function (esc, escId) {
         return booksQuery(filterParams, sortBy);
     }, [
-        { table: 'books'},
-        { table: 'feedbacks'}
+        {table: 'books'},
+        {table: 'feedbacks'}
     ]);
 });
 
@@ -38,14 +38,16 @@ Meteor.publish('recommendedBooks', function (isbn, login) {
         // Orders by other users (who have bought the same book) on other books,
         // grouped by books, ordered by diff number of users who ordered the same book
         return (`
-                SELECT ISBN, COUNT(DISTINCT login) AS count
-                FROM orders o JOIN invoices i ON o.invoiceid = i.invoiceid
+                SELECT b.ISBN, b.title, b.author, b.price, b.copies, COUNT(DISTINCT login) AS count
+                FROM orders o
+                  JOIN invoices i ON o.invoiceid = i.invoiceid
+                  JOIN books b ON o.ISBN = b.ISBN
                 WHERE i.login IN (
-                    SELECT i2.login FROM orders o2 JOIN invoices i2 ON o2.invoiceid = i2.invoiceid
-                    WHERE o2.ISBN = ${esc(isbn)} AND i2.login != ${esc(login)}
-                    )
-                AND ISBN != ${esc(isbn)}
-                GROUP BY ISBN ORDER BY count DESC
+                  SELECT i2.login FROM orders o2 JOIN invoices i2 ON o2.invoiceid = i2.invoiceid
+                  WHERE o2.ISBN = ${esc(isbn)} AND i2.login != ${esc(login)}
+                )
+                      AND b.ISBN != ${esc(isbn)}
+                GROUP BY b.ISBN ORDER BY count DESC;
                 `)
     }, [{
         table: 'books',
@@ -59,15 +61,15 @@ Meteor.publish('recommendedBooks', function (isbn, login) {
     }])
 });
 
-function booksQuery (filterParams, sortBy, limit) {
+function booksQuery(filterParams, sortBy, limit) {
 
-    const orderQuery = sortBy ? `ORDER BY ${sortBy} DESC`: '';
+    const orderQuery = sortBy ? `ORDER BY ${sortBy} DESC` : '';
 
     let filterQuery = '';
     if (filterParams) {
         filterQuery = 'WHERE';
         let first = true;
-        _.each(filterParams, function(value, key) {
+        _.each(filterParams, function (value, key) {
             if (!value) {
                 return;
             }

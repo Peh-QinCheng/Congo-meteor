@@ -13,7 +13,7 @@ Router.route('/cart', function () {
 Router.route('/book/:isbn', {
     data: function () {
         return {
-            ISBN: this.params.isbn
+            ISBN: this.getParams().isbn
         };
     },
     action: function () {

@@ -1,7 +1,11 @@
 Template.bookDetails.onCreated(function () {
-    var pageState = Template.currentData();
-    this.books = new MysqlSubscription('bookByISBN', pageState.ISBN);
-    this.currentBookFeedback = new MysqlSubscription('bookFeedbacks', pageState.ISBN, pageState.sortBy, pageState.limit);
+    let tpl = this;
+    tpl.autorun(()=> {
+        let pageState = Template.currentData();
+        console.log('Subscribing to: ', pageState.ISBN);
+        tpl.books = new MysqlSubscription('bookByISBN', pageState.ISBN);
+        tpl.currentBookFeedback = new MysqlSubscription('bookFeedbacks', pageState.ISBN, pageState.sortBy, pageState.limit);
+    });
 });
 
 Template.bookDetails.onDestroyed(function () {

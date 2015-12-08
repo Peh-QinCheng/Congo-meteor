@@ -117,13 +117,12 @@ INSERT INTO books (ISBN, title) VALUES ('9780804139297', 'Book 1');
 INSERT INTO books (ISBN, title) VALUES ('9780804139298', 'Book 2');
 INSERT INTO books (ISBN, title) VALUES ('9780804139299', 'Book 3');
 
-INSERT INTO books (ISBN, title, author, publisher, year, price, bkformat, keywords, subject, copies) VALUES
-  ('9781449389673', 'Photoshop Elements 9: The Missing Manual', 'Barbara Brundage', 'Pogue Press', 2010, 20,
-   'hardcover', 'photography', 'self-help', 20),
-  ('9781594487712', 'Where Good Ideas Come From: The Natural History of Innovation', 'Steven Johnson', 'Pogue Press',
-   2010, 20, 'hardcover', 'photography', 'self-help', 9),
-  ('9781449389671', 'Another Photoshop', 'Barbara Brundage', 'Pogue Press', 2011, 20, 'hardcover', 'photography',
-   'self-help', 2);
+INSERT INTO
+  books (ISBN, title, author, publisher, year, price, bkformat, keywords, subject, copies)
+VALUES
+  ('9781449389673', 'Photoshop Elements 9: The Missing Manual', 'Barbara Brundage', 'Pogue Press', 2010, 20, 'hardcover', 'photography', 'self-help', 20),
+  ('9781594487712', 'Where Good Ideas Come From: The Natural History of Innovation', 'Steven Johnson', 'Pogue Press', 2010, 20, 'hardcover', 'photography', 'self-help', 9),
+  ('9781449389671', 'Another Photoshop', 'Barbara Brundage', 'Pogue Press', 2011, 20, 'hardcover', 'photography', 'self-help', 2);
 
 INSERT INTO
   customers (login, PASSWORD, NAME)

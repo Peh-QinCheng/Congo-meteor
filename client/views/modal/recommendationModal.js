@@ -1,6 +1,9 @@
 Template.recommendationModal.onCreated(function () {
-    var isbn = Template.currentData();
-    this.items = new MysqlSubscription('recommendedBooks', isbn, Session.get(KEY_CURRENT_CUSTOMER));
+    let tpl = this;
+    tpl.autorun(()=> {
+        let isbn = Template.currentData();
+        this.items = new MysqlSubscription('recommendedBooks', isbn, Session.get(KEY_CURRENT_CUSTOMER));
+    });
 });
 
 Template.recommendationModal.helpers({
@@ -10,7 +13,7 @@ Template.recommendationModal.helpers({
 });
 
 Template.recommendationModal.events({
-    'click a': function (e){
+    'click a': function (e) {
         $('#myModal').modal('hide');
     }
 });

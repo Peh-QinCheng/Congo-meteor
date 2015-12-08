@@ -5,7 +5,12 @@ Template.recommendationModal.onCreated(function () {
 
 Template.recommendationModal.helpers({
     items: function () {
-        let items = Template.instance().items.reactive();
-        return items;
+        return Template.instance().items.reactive();
+    }
+});
+
+Template.recommendationModal.events({
+    'click a': function (e){
+        $('#myModal').modal('hide');
     }
 });

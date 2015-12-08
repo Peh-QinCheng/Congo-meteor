@@ -28,4 +28,3 @@ iron:router
 meteorhacks:async
 less
 twbs:bootstrap
-percolate:momentum

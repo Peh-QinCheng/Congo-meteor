@@ -1,11 +1,15 @@
 <template name="adminBookList">
-  <a href="/statistics">Statistics</a>
-  {{> newBook}}
-  <ol class="books">
-    {{#each books}}
-      {{> adminBook}}
-    {{/each}}
-  </ol>
+  <div class="container">
+    <div class="page-header">
+      <h1>Admin Page</h1>
+    </div>
+    {{> newBook}}
+    <ol class="books">
+      {{#each books}}
+        {{> adminBook}}
+      {{/each}}
+    </ol>
+  </div>
 </template>
 
 

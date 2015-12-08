@@ -1,40 +1,115 @@
 <template name="home">
-    Welcome <a href="/profile/{{currentCustomer}}">{{currentCustomer}} </a>!
+  <div class="container">
+    <div class="page-header">
+      <h1>Welcome to Congo!</h1>
+    </div>
     {{> sortForm}}
-    <ol class="books">
+
+    <div class="book-catalog">
+
+      <table class="table">
+        <!--<caption>Books</caption>-->
+        <thead>
+        <tr>
+          <th>Title</th>
+          <th>Author</th>
+          <th>ISBN</th>
+          <th>Year</th>
+          <th>Publisher</th>
+          <th>Score</th>
+        </tr>
+        </thead>
+        <tbody>
         {{#each books}}
-            {{> book}}
+          {{> book}}
         {{/each}}
-    </ol>
+        </tbody>
+      </table>
+
+      {{#each books}}
+        {{> bookCard}}
+      {{/each}}
+
+    </div>
+  </div>
 </template>
 
+<template name="bookCard">
+  <div class="col-sm-3">
+    <div class="fixed-panel-height panel panel-default">
+      <div class="panel-heading">
+        <a href="/book/{{ISBN}}">
+          <h3 class="panel-title">{{ISBN}}</h3>
+        </a>
+      </div>
+      <div class="panel-body">
+        <label>Title</label>
+        {{title}}
+        <label>Author</label>
+        {{author}}
+        <label>Year</label>
+        {{year}}
+        <label>Publisher</label>
+        {{publisher}}
+        <label>Score</label>
+        {{avg_score}}
+        <!--<label>Price</label>-->
+        <!--${{price}}-->
+        <!--<label>Copies Left</label>-->
+        <!--{{copies}}-->
+      </div>
+    </div>
+  </div>
+</template>
 
 <template name="book">
-    <li class="book">
-        <span class="ISBN">{{ISBN}}</span>
-        <span class="title">{{title}}</span>
-        <a href="/book/{{ISBN}}">See More</a>
-    </li>
+  <tr>
+    <td>{{title}}</td>
+    <td>{{author}}</td>
+    <td>
+      <a href="/book/{{ISBN}}">{{ISBN}}</a>
+    </td>
+    <td>{{year}}</td>
+    <td>{{publisher}}</td>
+    <td>{{avg_score}}</td>
+  </tr>
 </template>
 
 <template name="sortForm">
-    <h3> Filter by </h3>
-    <form>
-        <label> Author </label>
-        <input type="text" name="author">
-        <label> Publisher </label>
-        <input type="text" name="publisher">
-        <label> Title </label>
-        <input type="text" name="bookTitle">
-        <label> Subject </label>
-        <input type="text" name="subject">
-        <h4> Sort by </h4>
-        <div>
-            <input type="radio" name="sort" value="year">
-            <span> Year </span>
-            <input type="radio" name="sort" value="feedback">
-            <span> Feedbacks </span>
-        </div>
-        <input type="submit" value="Search">
-    </form>
+  <h3>Filter by</h3>
+  <form>
+    <div class="form-group">
+      <label>Author</label>
+      <input type="text" class="form-control" name="author">
+    </div>
+    <div class="form-group">
+      <label>Publisher</label>
+      <input type="text" class="form-control" name="publisher">
+    </div>
+    <div class="form-group">
+      <label>Title</label>
+      <input type="text" class="form-control" name="bookTitle">
+    </div>
+    <div class="form-group">
+      <label>Subject</label>
+      <input type="text" class="form-control" name="subject">
+    </div>
+    <div class="form-group">
+      <label>Sort</label>
+      <div class="radio">
+        <label>
+          <input type="radio" name="sort" value="year">
+          Year
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          <input type="radio" name="sort" value="avg_score">
+          Score
+        </label>
+      </div>
+
+    </div>
+    <input class="btn btn-default" type="submit" value="Search">
+  </form>
 </template>

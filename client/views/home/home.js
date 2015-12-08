@@ -3,13 +3,15 @@ Template.home.onCreated(function () {
 });
 
 Template.home.helpers({
-    currentCustomer: function () {
-        return Session.get(KEY_CURRENT_CUSTOMER);
-    },
-
     books: function () {
         Session.get(KEY_MAKE_BOOKS_REACTIVE);
-        return Template.instance().filteredSortedBooks.reactive();
+        let booksList = Template.instance().filteredSortedBooks.reactive();
+        return booksList.map(book => {
+            if (book.avg_score === -1) {
+                book.avg_score = '-';
+            }
+            return book;
+        });
     }
 });
 

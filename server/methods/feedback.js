@@ -9,7 +9,7 @@ Meteor.methods({
             liveDb.db.query(
                 'INSERT INTO feedbacks (login, ISBN, content, score) VALUES (?, ?, ?, ?)',
                 [login, isbn, content, scoreNumber], function (error, results, fields) {
-                    if (error) { 
+                    if (error) {
                         done(error);
                         return;
                     }
@@ -34,7 +34,7 @@ Meteor.methods({
             liveDb.db.query(
                 'INSERT INTO ratings (login, ISBN, rater_login, rating) VALUES (?, ?, ?, ?) ON DUPLICATE KEY UPDATE rating=VALUES(rating)',
                 [login, isbn, raterLogin, scoreNumber], function (error, results, fields) {
-                    if (error) { 
+                    if (error) {
                         done(error);
                         return;
                     }

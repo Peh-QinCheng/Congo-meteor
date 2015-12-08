@@ -23,7 +23,7 @@ Meteor.publish('customerProfile', function (login) {
 });
 
 Meteor.publish('loginUser', function (login, password) {
-    var table = 'Customers';
+    var table = 'customers';
     return liveDb.select(function (esc, escId) {
         return (
             'SELECT * from ' + escId(table) +

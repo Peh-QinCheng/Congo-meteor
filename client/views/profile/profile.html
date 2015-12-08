@@ -1,31 +1,36 @@
 <template name="profile">
-    {{> userInfo}}
-    {{> orderHistory}}
-    {{> feedbackHistory}}
-    {{> ratedFeedback}}
+  <div class="container">
+    <div class="page-header">
+      <h1>Your Profile</h1>
+    </div>
+  </div>
+  {{> userInfo}}
+  {{> orderHistory}}
+  {{> feedbackHistory}}
+  {{> ratedFeedback}}
 </template>
 
 <template name="userInfo">
-    {{#with profile ..}}
-        Email: {{login}}
-        Name: {{name}}
-        Credit Number: {{credit_num}}
-        Address: {{address}}
-    {{/with}}
+  {{#with profile ..}}
+    Email: {{login}}
+    Name: {{name}}
+    Credit Number: {{credit_num}}
+    Address: {{address}}
+  {{/with}}
 </template>
 
 <template name="orderHistory">
-    <ul>
-        {{#each invoices ..}}
-            <li>{{ISBN}} ${{price}} #{{copies}} @{{order_date}}</li>
-        {{/each}}
-    </ul>
+  <ul>
+    {{#each invoices ..}}
+      <li>{{ISBN}} ${{price}} #{{copies}} @{{order_date}}</li>
+    {{/each}}
+  </ul>
 </template>
 
 <template name="feedbackHistory">
-    {{#each feedbackHistory ..}}
-      {{> userFeedback}}
-    {{/each}}
+  {{#each feedbackHistory ..}}
+    {{> userFeedback}}
+  {{/each}}
 </template>
 
 <template name="ratedFeedback">

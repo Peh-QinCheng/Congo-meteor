@@ -1,24 +1,29 @@
 <template name="statistics">
-  <div>
-    <div>
-      Most Popular Books
-      {{#each mostPopularBooks}}
-        {{> bookInformation}}
-      {{/each}}
+  <div class="container">
+    <div class="page-header">
+      <h1>Statistics</h1>
     </div>
-
     <div>
-      Most Popular Authors
-      {{#each mostPopularAuthors}}
-        {{> authorInformation}}
-      {{/each}}
-    </div>
+      <div>
+        Most Popular Books
+        {{#each mostPopularBooks}}
+          {{> bookInformation}}
+        {{/each}}
+      </div>
 
-    <div>
-      Most Popular Publishers
-      {{#each mostPopularPublishers}}
-        {{> publisherInformation}}
-      {{/each}}
+      <div>
+        Most Popular Authors
+        {{#each mostPopularAuthors}}
+          {{> authorInformation}}
+        {{/each}}
+      </div>
+
+      <div>
+        Most Popular Publishers
+        {{#each mostPopularPublishers}}
+          {{> publisherInformation}}
+        {{/each}}
+      </div>
     </div>
   </div>
 </template>

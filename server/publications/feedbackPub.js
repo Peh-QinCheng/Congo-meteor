@@ -14,13 +14,13 @@ Meteor.publish('bookFeedbacks', function (isbn, sortBy, limit) {
 
     return liveDb.select(function (esc, escId) {
         return feedbackQuery(isbn, sortParam, limit);
-    }, [{ table: 'feedbacks' }, { table: 'ratings' }]);
+    }, [{table: 'feedbacks'}, {table: 'ratings'}]);
 });
 
 Meteor.publish('feedbackHistory', function (login) {
     return liveDb.select(function (esc, escId) {
         return feedbackQuery(null, null, null, login);
-    }, [{ table: 'feedbacks' }]);
+    }, [{table: 'feedbacks'}]);
 });
 
 function escapeString(str) {

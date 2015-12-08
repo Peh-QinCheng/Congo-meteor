@@ -6,9 +6,6 @@ Template.MainLayout.helpers({
         }
         return !!Session.get(KEY_CURRENT_CUSTOMER);
     },
-    isAdmin: function () {
-        return Session.get(KEY_CURRENT_CUSTOMER) === 'admin';
-    }
 });
 
 Template.MainLayout.onRendered(function () {
@@ -20,7 +17,7 @@ Template.MainLayout.onRendered(function () {
     });
 
     self.autorun(function () {
-        var currentCustomer= Session.get(KEY_CURRENT_CUSTOMER);
+        var currentCustomer = Session.get(KEY_CURRENT_CUSTOMER);
 
         if (!currentCustomer) {
             localStorage.removeItem(KEY_CURRENT_CUSTOMER);
@@ -37,4 +34,3 @@ Template.MainLayout.events({
         Router.go('/');
     }
 });
-

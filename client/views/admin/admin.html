@@ -4,29 +4,74 @@
       <h1>Admin Page</h1>
     </div>
     {{> newBook}}
-    <ol class="books">
+
+
+    <h3>All Books</h3>
+
+    <table class="table">
+      <!--<caption>Books</caption>-->
+      <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>ISBN</th>
+        <th>Year</th>
+        <th>Publisher</th>
+        <th>Score</th>
+        <th>Copies</th>
+        <th>Update Copies</th>
+      </tr>
+      </thead>
+      <tbody>
       {{#each books}}
-        {{> adminBook}}
+        {{> book}}
       {{/each}}
-    </ol>
+      </tbody>
+    </table>
+
+    <!--    <ol class="books">
+      {{#each books}}
+      {{> adminBook}}
+    {{/each}}
+    </ol> -->
   </div>
 </template>
 
-
 <template name="adminBook">
+  <tr>
+    <td>{{title}}</td>
+    <td>{{author}}</td>
+    <td>
+      <a href="/book/{{ISBN}}">{{ISBN}}</a>
+    </td>
+    <td>{{year}}</td>
+    <td>{{publisher}}</td>
+    <td>{{avg_score}}</td>
+    <td>{{copies}}</td>
+    <td>
+      <input class="form-control" type="hidden" name="ISBN" value="{{ISBN}}">
+      <input class="form-control" type="number" name="quantity">
+      <input class="btn btn-default btn-sm" type="submit" value="Update">
+    </td>
+    <!--<input class="form-control" type="hidden" name="ISBN" value="{{ISBN}}">-->
+  </tr>
+</template>
+
+
+<!-- <template name="adminBook">
   <li class="book">
     <form class="update-book-quantity">
       <span class="ISBN">{{ISBN}}</span>
       <span class="title">{{title}}</span>
-      <input class="form-control" type="hidden" name="ISBN" value="{{ISBN}}">
       <input class="form-control" type="number" name="quantity">
-      <input type="submit" value="Update Quantity">
+      <input class="btn btn-default" type="submit" value="Update Quantity">
     </form>
   </li>
-</template>
+</template> -->
 
 <template name="newBook">
   <form class="new-book">
+    <h3>New Book</h3>
     <label>Title</label>
     <input class="form-control" type="text" name="bookTitle">
     <label>ISBN</label>
@@ -47,7 +92,7 @@
     <input class="form-control" type="text" name="keywords">
     <label>Subject</label>
     <input class="form-control" type="text" name="subject">
-    <input type="submit" value="Make new book">
+    <input class="btn btn-default" type="submit" value="Make new book">
   </form>
 </template>
 

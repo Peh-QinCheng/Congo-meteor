@@ -6,9 +6,10 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                             aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Like this book? How about...</h4>
+                    <h4 class="modal-title" id="myModalLabel">Book added to cart!</h4>
                 </div>
                 <div class="modal-body">
+                    {{subtitle}}
                     <ul>
                       {{#each items}}
                           <li><a href="/book/{{ISBN}}"> {{title}} by {{author}}</a> - {{count}} other users</li>

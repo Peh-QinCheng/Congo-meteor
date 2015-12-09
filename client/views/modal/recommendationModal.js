@@ -9,6 +9,18 @@ Template.recommendationModal.onCreated(function () {
 Template.recommendationModal.helpers({
     items: function () {
         return Template.instance().items.reactive();
+    },
+    subtitle: function () {
+        let items = Template.instance().items.reactive();
+        if (items.ready){
+            let numItems = items.length;
+            if (numItems > 0){
+                return "Other users also bought..."
+            }else{
+                return "No recommendations yet!"
+            }
+        }
+
     }
 });
 

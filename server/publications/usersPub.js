@@ -13,12 +13,12 @@ Meteor.publish('customerProfile', function (login) {
             'where `login`=' + esc(login)
         );
     }, [{
-        table: table,
-        condition: function (row, newRow) {
-            return row.id === id
-                    // On UPDATE queries, newRow must be checked as well
-                || (newRow && newRow.id === id);
-        }
+        table: table
+        //condition: function (row, newRow) {
+        //    return row.id === id
+        //            // On UPDATE queries, newRow must be checked as well
+        //        || (newRow && newRow.id === id);
+        //}
     }])
 });
 
@@ -31,11 +31,11 @@ Meteor.publish('loginUser', function (login, password) {
             ' AND `password`=' + esc(password)
         );
     }, [{
-        table: table,
-        condition: function (row, newRow) {
-            return row.id === id
-                    // On UPDATE queries, newRow must be checked as well
-                || (newRow && newRow.id === id);
-        }
+        table: table
+        //condition: function (row, newRow) {
+        //    return row.id === id
+        //            // On UPDATE queries, newRow must be checked as well
+        //        || (newRow && newRow.id === id);
+        //}
     }])
 });

@@ -76,11 +76,11 @@ function booksQuery(filterParams, sortBy, limit) {
 
             if (first) {
                 first = false;
-                filterQuery += ` ${key}='${value}'`;
+                filterQuery += ` ${key} LIKE '%${value}%'`;
                 return;
             }
 
-            filterQuery += ` AND ${key}='${value}'`;
+            filterQuery += ` AND ${key} LIKE '%${value}%'`;
         });
 
         if (filterQuery.length === 5) {

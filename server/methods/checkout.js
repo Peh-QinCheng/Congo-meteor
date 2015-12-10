@@ -22,7 +22,7 @@ Meteor.methods({
                                                 done(err, false);
                                                 return
                                             }
-                                            if (res.length < 0) {
+                                            if (res.length < 1) {
                                                 console.log('Insufficient copies!');
                                                 done("Insufficient Copies of book", false);
                                                 return

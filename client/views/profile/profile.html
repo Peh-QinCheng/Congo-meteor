@@ -1,33 +1,46 @@
 <template name="profile">
-    <div class="container">
-        <div class="page-header">
-            <h1>Your Profile</h1>
+  <div class="container profile">
+    <div class="page-header">
+      <h1>Your Profile</h1>
+    </div>
+
+    {{> userInfo}}
+
+    <div class="row">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3>Order History</h3>
         </div>
 
-      {{> userInfo}}
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3>Order History</h3>
-            </div>
-
-            <div class="panel-content">
-              {{> orderHistory}}
-            </div>
+        <div class="panel-content">
+          {{> orderHistory}}
         </div>
+      </div>
+    </div>
 
-        <h2> Feedback History</h2>
+    <div class="row">
+      <h2> Feedback History</h2>
       {{> feedbackHistory}}
-        <h2> Rated Feedback</h2>
+    </div>
+
+    <div class="row">
+      <h2> Rated Feedback</h2>
       {{> ratedFeedback}}
     </div>
+
+  </div>
 </template>
 
 <template name="userInfo">
   {{#with profile ..}}
-      User: {{login}}
-      <!--Name: {{name}}-->
-      <!--Credit Number: {{credit_num}}-->
-      <!--Address: {{address}}-->
+    <label>User</label>
+    {{login}}
+    <label>Name</label>
+    {{name}}
+    <label>Credit Number</label>
+    {{credit_num}}
+    <label>Address</label>
+    {{address}}
   {{/with}}
 </template>
 
@@ -37,7 +50,7 @@
       {{> userFeedback}}
     {{/each}}
   {{else}}
-      <span> Nothing here yet!</span>
+    <span> Nothing here yet!</span>
   {{/if}}
 </template>
 
@@ -47,62 +60,40 @@
       {{> userRated}}
     {{/each}}
   {{else}}
-      <span> Nothing here yet!</span>
+    <span> Nothing here yet!</span>
   {{/if}}
 </template>
 
 <template name="userFeedback">
-    JIAHAO PLEASE FIX ME IM UGLY
-    <div class="book-feedback details">
-        <div class="feedback-detail">
-        <span class="feedback-label label">
-          ISBN:
-        </span>
-          {{ISBN}}
-        </div>
-
-        <div class="feedback-detail">
-        <span class="feedback-label label">
-          Score:
-        </span>
-          {{score}}
-        </div>
-
-        <div class="feedback-detail">
-        <span class="feedback-label label">
-          Feedback:
-        </span>
-          {{content}}
-        </div>
-
-        <div class="feedback-detail">
-        <span class="feedback-label label">
-          Helpfulness:
-        </span>
-          {{avg_rating}}
-        </div>
+  <div class="col-sm-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">{{ISBN}}</h3>
+      </div>
+      <div class="panel-body">
+        <label>Score</label>
+        {{score}}
+        <label>Content</label>
+        {{content}}
+        <label>Helpfulness</label>
+        {{avg_rating}}
+      </div>
     </div>
+  </div>
 </template>
 
 <template name="userRated">
-    <div class="user-rated details">
-        <div class="rated-detail">
-        <span class="feedback-label label">
-          ISBN:
-        </span>
-          {{ISBN}}
-        </div>
-        <div class="rated-detail">
-        <span class="feedback-label label">
-          OP:
-        </span>
-          {{login}}
-        </div>
-        <div class="rated-detail">
-        <span class="feedback-label label">
-          Rating:
-        </span>
-          {{rating}}
-        </div>
+  <div class="col-sm-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        {{ISBN}}
+      </div>
+      <div class="panel-body">
+        <label>OP</label>
+        {{login}}
+        <label>Rating</label>
+        {{rating}}
+      </div>
     </div>
+  </div>
 </template>

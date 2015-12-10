@@ -31,46 +31,24 @@
   {{/with}}
 </template>
 
-<template name="orderHistory">
-    <div class="order-history">
-        <table class="table table-hover">
-            <!--<caption>Books</caption>-->
-            <thead>
-            <tr>
-                <th>ISBN</th>
-                <th>Price</th>
-                <th>Copies</th>
-                <th>Date</th>
-            </tr>
-            </thead>
-            <tbody>
-            {{#each invoices ..}}
-              {{> invoice}}
-            {{/each}}
-            </tbody>
-        </table>
-    </div>
-</template>
-
-<template name="invoice">
-    <tr>
-        <td>{{ISBN}}</td>
-        <td>${{price}}</td>
-        <td>{{copies}}</td>
-        <td>{{order_date}}</td>
-    </tr>
-</template>
-
 <template name="feedbackHistory">
-  {{#each feedbackHistory ..}}
-    {{> userFeedback}}
-  {{/each}}
+  {{#if feedbackHistory ..}}
+    {{#each feedbackHistory ..}}
+      {{> userFeedback}}
+    {{/each}}
+  {{else}}
+      <span> Nothing here yet!</span>
+  {{/if}}
 </template>
 
 <template name="ratedFeedback">
-  {{#each ratedFeedback ..}}
-    {{> userRated}}
-  {{/each}}
+  {{#if ratedFeedback ..}}
+    {{#each ratedFeedback ..}}
+      {{> userRated}}
+    {{/each}}
+  {{else}}
+      <span> Nothing here yet!</span>
+  {{/if}}
 </template>
 
 <template name="userFeedback">

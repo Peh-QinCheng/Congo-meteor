@@ -22,7 +22,7 @@ Template.orderHistory.helpers({
         var invoices = context.invoices;
         invoices.depend();
         if (invoices.ready()) {
-            return invoices.length === 0 ? ['No invoices found!'] : invoices;
+            return invoices.length === 0 ? [] : invoices;
         } else {
             return []
         }
@@ -34,7 +34,7 @@ Template.feedbackHistory.helpers({
         var invoices = context.feedbackHistory;
         invoices.depend();
         if (invoices.ready()) {
-            return invoices.length === 0 ? ['No feedback history found!'] : invoices;
+            return invoices.length === 0 ? [] : invoices;
         } else {
             return []
         }
@@ -46,7 +46,7 @@ Template.ratedFeedback.helpers({
         var invoices = context.ratedFeedback;
         invoices.depend();
         if (invoices.ready()) {
-            return invoices.length === 0 ? ['No rated feedback found!'] : invoices;
+            return invoices.length === 0 ? [] : invoices;
         } else {
             return []
         }

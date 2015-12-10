@@ -14,12 +14,12 @@ Template.bookDetails.onDestroyed(function () {
 });
 
 Template.bookDetails.helpers({
-    title: function () {
-        // you know what fk ironrouter
+    bookData: () =>{
         var books = Template.instance().books;
         books.depend();
         if (books.ready()) {
-            return books.length === 0 ? 'No book found!' : books[0].title;
+            //console.log(books)
+            return books[0];
         }
     },
     allFeedback: function () {
@@ -40,6 +40,7 @@ Template.bookDetails.events({
                 ISBN: book.ISBN,
                 title: book.title,
                 price: book.price,
+                author: book.author,
                 copies: 1
             }
         }

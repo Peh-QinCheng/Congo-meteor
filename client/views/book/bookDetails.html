@@ -2,12 +2,14 @@
   <div class="book-details">
     <div class="container">
       <div class="page-header">
+        {{#with bookData}}
         <h1>{{title}} </h1>
-        <small>{{ISBN}} - {{author}}</small>
+        <small> by {{author}} | {{copies}} left</small>
         <button class="cart btn btn-default" data-toggle="modal" data-target="#myModal" data-isbn="{{ISBN}}">
           Add to cart
         </button>
         {{> recommendationModal ISBN}}
+        {{/with}}
 
       </div>
 

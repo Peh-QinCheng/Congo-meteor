@@ -1,40 +1,40 @@
 <template name="cart">
-  <div class="container">
-    <div class="page-header">
-      <h1>Cart</h1>
-    </div>
+    <div class="container">
+        <div class="page-header">
+            <h1>Cart <button class="btn btn-sm" id="clearBtn">Clear</button> </h1>
+        </div>
 
-    <table class="table">
-      <!--<caption>Books</caption>-->
-      <thead>
-      <tr>
-        <th>Title</th>
-        <th>Author</th>
-        <th>ISBN</th>
-        <th>Quantity</th>
-      </tr>
-      </thead>
-      <tbody>
-      {{#each cartItems}}
-        {{> cartItem}}
-      {{/each}}
-      </tbody>
-    </table>
-    <button class="checkoutBtn btn btn-default">Checkout</button>
-  </div>
+        <table class="table">
+            <!--<caption>Books</caption>-->
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>ISBN</th>
+                <th>Quantity</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each cartItems}}
+              {{> cartItem}}
+            {{/each}}
+            </tbody>
+        </table>
+        <button class="checkoutBtn btn btn-default">Checkout</button>
+    </div>
 </template>
 
 <template name="cartItem">
-  <tr>
-    <td>{{title}}</td>
-    <td>{{author}}</td>
-    <td>
-      <a href="/book/{{ISBN}}">{{ISBN}}</a>
-    </td>
-    <td>
-      <button class="btn btn-default btn-xs" intent="copies" data="{{ISBN}}" delta="-1">-</button>
-      {{copies}}
-      <button class="btn btn-default btn-xs" intent="copies" data="{{ISBN}}" delta="1">+</button>
-    </td>
-  </tr>
+    <tr>
+        <td>{{title}}</td>
+        <td>{{author}}</td>
+        <td>
+            <a href="/book/{{ISBN}}">{{ISBN}}</a>
+        </td>
+        <td>
+            <button class="btn btn-default btn-xs" intent="copies" data="{{ISBN}}" delta="-1">-</button>
+          {{copies}}
+            <button class="btn btn-default btn-xs" intent="copies" data="{{ISBN}}" delta="1">+</button>
+        </td>
+    </tr>
 </template>

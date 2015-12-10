@@ -20,6 +20,9 @@ Template.cart.events({
             }
             Session.set(KEY_CURRENT_CART, {})
         })
+    },
+    'click button#clearBtn': ()=> {
+        Session.set(KEY_CURRENT_CART, {})
     }
 });
 

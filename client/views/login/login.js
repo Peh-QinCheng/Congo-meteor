@@ -21,7 +21,6 @@ Template.login.events({
         events.preventDefault();
         var email = $('#login-field-email').val();
         var password = $('#login-field-password').val();
-        console.log('register', email, password);
 
         if (email.trim().search(/^[a-z0-9_-]{3,16}$/i) === -1) {
             alert('Username can only contain alphanumeric characters, hyphens and underscore and be within 3 to 16 characters')

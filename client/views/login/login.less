@@ -1,3 +1,7 @@
+//@import "client/palette.import.less";
+
+@import "../../palette.import.less";
+
 .login {
   .vertical-center {
     //http://stackoverflow.com/a/22196760/5076225
@@ -15,5 +19,14 @@
 
   .page-header {
     text-align: center;
+  }
+
+  .btn-group {
+    box-shadow: none;
+  }
+
+  .btn-info {
+    background-color: transparent !important;
+    color: @buttonTextColor !important;
   }
 }

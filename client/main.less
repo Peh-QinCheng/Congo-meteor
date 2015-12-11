@@ -1,3 +1,5 @@
+@import "palette.import.less";
+
 body {
   //background-color: white;
 }
@@ -30,7 +32,20 @@ a, a:hover, a:focus {
 }
 
 .mdl-layout__header {
-  a, a:hover, a:focus  {
+  a, a:hover, a:focus {
     color: inherit;
   }
+}
+
+.congo-ribbon {
+  width: 100%;
+  height: 40vh;
+  background-color: @primaryColor;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+main {
+  margin-top: -40vh;
 }

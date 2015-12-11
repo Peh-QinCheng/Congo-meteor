@@ -1,4 +1,11 @@
+@import "../../palette.import.less";
+
 .congo-nav {
+  .mdl-layout__header {
+    position: relative; // so shadow will not be covered
+    background-color: @darkPrimaryColor;
+  }
+
   // somehow the blaze will mess the mdl js up on smaller screen sizes
   // and hide the nav bar
   @media screen and (max-width: 1024px) {

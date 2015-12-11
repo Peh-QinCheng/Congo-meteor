@@ -1,4 +1,12 @@
 .congo-nav {
+  // somehow the blaze will mess the mdl js up on smaller screen sizes
+  // and hide the nav bar
+  @media screen and (max-width: 1024px) {
+    .mdl-layout__header {
+      display: flex;
+    }
+  }
+
   .mdl-navigation__link {
     display: flex;
     flex-direction: row;

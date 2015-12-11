@@ -10,8 +10,12 @@
             <i class="material-icons">shopping_cart</i>
           </a>
           {{#if isAdmin}}
-            <a class="mdl-navigation__link" href="/admin">Admin</a>
-            <a class="mdl-navigation__link" href="/statistics">Statistics</a>
+            <a class="mdl-navigation__link" href="/admin">
+              <i class="material-icons">store</i>
+            </a>
+            <a class="mdl-navigation__link" href="/statistics">
+              <i class="material-icons">assessment</i>
+            </a>
           {{/if}}
           <a class="nav-customer-profile-container mdl-navigation__link" href="/profile/{{currentCustomer}}">
               <i class="material-icons">account_circle</i>

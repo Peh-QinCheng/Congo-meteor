@@ -2,6 +2,23 @@ Template.home.onCreated(function () {
     this.filteredSortedBooks = new MysqlSubscription('filteredSortedBooks', null, null);
 });
 
+/**
+ * Returns a random integer between min (inclusive) and max (inclusive)
+ * Using Math.round() will give you a non-uniform distribution!
+ */
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+Template.bookCard.helpers({
+
+    bookCover: function () {
+        var number = getRandomInt(1,3);
+        var imgUrl = 'images/book-cover-' + number.toString() +'.jpg'; 
+        return imgUrl;
+    }
+});
+
 Template.home.helpers({
     books: function () {
         Session.get(KEY_MAKE_BOOKS_REACTIVE);

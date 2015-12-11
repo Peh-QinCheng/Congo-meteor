@@ -1,23 +1,18 @@
 Meteor.publish('ratedFeedback', function (login) {
     return liveDb.select(function (esc, escId) {
-        //return `SELECT * FROM ratings WHERE rater_login=${esc(login)}`
         return `
             SELECT
-              AVG(rating) as avg_rating, ISBN
+              feedbacks.login, feedbacks.ISBN, feedbacks.score, feedbacks.content, feedbacks.date, ratings.rating
             FROM
-              ratings
+              feedbacks, ratings
             WHERE
-              ISBN IN ( #All books that I have rated feedbacks
-                SELECT
-                  ISBN
-                FROM
-                  ratings
-                WHERE
-                  rater_login='${login}'
-              )
-            GROUP BY
-              ISBN
+              feedbacks.login=ratings.login
+              AND
+                ratings.rater_login='sda'
             ORDER BY
-              avg_rating DESC`
-    }, [{table: 'ratings'}]);
+              rating DESC;`;
+    }, [
+        {table: 'ratings'},
+        {table: 'feedbacks'}
+    ]);
 });

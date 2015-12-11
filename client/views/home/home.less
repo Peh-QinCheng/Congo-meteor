@@ -1,11 +1,29 @@
 .book-catalog {
-  .panel-body {
-    label {
-      display: block;
-    }
+  .book-info-card {
+    width: auto;
+    height: 320px;
   }
-  .fixed-panel-height {
-    min-height: 300px;
-    max-height: 300px;
+  .book-info-card > .mdl-card__title {
+    color: #fff;
+    background:
+      linear-gradient(
+        rgba(0, 0, 0, 0.1),
+        rgba(0, 0, 0, 0.1)
+      ),
+      url('images/book-cover-1.jpg') 15% no-repeat #46B6AC;
+    background-size: 100%;
+  }
+
+  .price-label {
+    //width: 100%;
+    //height: 100%;
+  }
+
+  .details-flex-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    justify-content: space-between;
   }
 }

@@ -6,73 +6,34 @@
     {{> sortForm}}
 
     <div class="book-catalog">
-
-      <table class="table">
-        <!--<caption>Books</caption>-->
-        <thead>
-        <tr>
-          <th>Title</th>
-          <th>Author</th>
-          <th>ISBN</th>
-          <th>Year</th>
-          <th>Publisher</th>
-          <th>Score</th>
-        </tr>
-        </thead>
-        <tbody>
+      <div class="mdl-grid">
         {{#each books}}
-          {{> book}}
+          {{> bookCard}}
         {{/each}}
-        </tbody>
-      </table>
-
-      {{#each books}}
-        {{> bookCard}}
-      {{/each}}
-
+      </div>
     </div>
   </div>
 </template>
 
 <template name="bookCard">
-  <div class="col-sm-3">
-    <div class="fixed-panel-height panel panel-default">
-      <div class="panel-heading">
-        <a href="/book/{{ISBN}}">
-          <h3 class="panel-title">{{ISBN}}</h3>
-        </a>
+  <div class="mdl-cell mdl-cell--4-col">
+    <a href="/book/{{ISBN}}">
+      <div class="book-info-card mdl-card mdl-shadow--2dp">
+        <div class="mdl-card__title mdl-card--expand">
+          <div class="details-flex-container">
+            <div class="price-label">
+              ${{price}}
+            </div>
+            <div class="price-label">
+              {{copies}} left
+            </div>
+          </div>
+          <div class="mdl-card__title-text">{{title}}</div>
+          <div class="mdl-card__subtitle-text">{{author}}</div>
+        </div>
       </div>
-      <div class="panel-body">
-        <label>Title</label>
-        {{title}}
-        <label>Author</label>
-        {{author}}
-        <label>Year</label>
-        {{year}}
-        <label>Publisher</label>
-        {{publisher}}
-        <label>Score</label>
-        {{avg_score}}
-        <!--<label>Price</label>-->
-        <!--${{price}}-->
-        <!--<label>Copies Left</label>-->
-        <!--{{copies}}-->
-      </div>
-    </div>
+    </a>
   </div>
-</template>
-
-<template name="book">
-  <tr>
-    <td>{{title}}</td>
-    <td>{{author}}</td>
-    <td>
-      <a href="/book/{{ISBN}}">{{ISBN}}</a>
-    </td>
-    <td>{{year}}</td>
-    <td>{{publisher}}</td>
-    <td>{{avg_score}}</td>
-  </tr>
 </template>
 
 <template name="sortForm">

@@ -8,13 +8,15 @@
 </head>
 <template name="MainLayout">
   <div>
-    {{#unless loggedIn}}
-      {{> login}}
-    {{else}}
-      <div class="mdl-layout mdl-js-layout">
+    <div class="mdl-layout mdl-js-layout">
+      {{#unless loggedIn}}
+        <main class="mdl-layout__content">
+          {{> login}}
+        </main>
+      {{else}}
         {{> navBar}}
         <div class="congo-ribbon"></div>
-        <main class="mdl-layout__content">
+        <main class="congo-main mdl-layout__content">
           {{> yield}}
           <footer class="mdl-mini-footer">
             <div class="mdl-mini-footer--left-section">
@@ -26,7 +28,7 @@
             </div>
           </footer>
         </main>
-      </div>
-    {{/unless}}
+      {{/unless}}
+    </div>
   </div>
 </template>

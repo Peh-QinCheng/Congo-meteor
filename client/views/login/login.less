@@ -3,22 +3,12 @@
 @import "../../palette.import.less";
 
 .login {
-  .vertical-center {
-    //http://stackoverflow.com/a/22196760/5076225
+  .login-container {
     min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
     min-height: 100vh; /* These two lines are counted as one :-)       */
-
-    display: flex;
+    justify-content: center;
     align-items: center;
-  }
-
-  .container {
-    padding-left: 200px;
-    padding-right: 200px;
-  }
-
-  .page-header {
-    text-align: center;
+    display: flex;
   }
 
   .btn-group {
@@ -29,4 +19,48 @@
     background-color: transparent !important;
     color: @buttonTextColor !important;
   }
+
+  .mdl-card__title {
+    padding-top: 35px;
+    flex-direction: column;
+    align-items: center;
+    color: @secondaryTextColor;
+
+    i {
+      font-size: 50px;
+    }
+  }
+
+  .mdl-card__title-text {
+    font-weight: 300;
+    align-self: center;
+    padding-top: 12px;
+    font-size: 30px;
+  }
+
+  .mdl-card__supporting-text {
+    width: 100%;
+    padding: 0 40px 25px;
+  }
+
+  .mdl-card__actions {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+  }
+
+  .mdl-textfield__label {
+    font-weight: lighter;
+  }
+
+  .login-background {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    background: url('images/login_background.jpg');
+    background-size: cover;
+    filter: blur(10px);
+    -webkit-filter: blur(10px);
+  }
+
 }

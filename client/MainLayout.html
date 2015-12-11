@@ -7,12 +7,16 @@
   <!--<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600' rel='stylesheet' type='text/css'>-->
 </head>
 <template name="MainLayout">
-  <article>
+  <div>
     {{#unless loggedIn}}
       {{> login}}
     {{else}}
-      {{> navBar}}
-      {{> yield}}
+      <div class="mdl-layout mdl-js-layout">
+        {{> navBar}}
+        <main class="mdl-layout__content">
+          {{> yield}}
+        </main>
+      </div>
     {{/unless}}
-  </article>
+  </div>
 </template>

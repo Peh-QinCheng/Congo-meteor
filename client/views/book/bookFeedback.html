@@ -3,25 +3,26 @@
 
     <div class="book-feedback-title details-title vertical-align-container">
       <i class="material-icons">face</i>
-      <span class="vertical-align-text">{{login}}</span>
+      <div class="book-feedback-op vertical-align-text">{{login}}</div>
+      <div class="book-feedback-score details-subtitle vertical-align-text">
+        {{score}}/10
+      </div>
+      <div class="flex-separator"></div>
+      <div class="book-feedback-helpfulness details-subtitle vertical-align-text" id="book-feedback-helpfulness__{{login}}">
+        {{avg_rating}}
+      </div>
+      <div class="mdl-tooltip" for="book-feedback-helpfulness__{{login}}">
+        Helpfulness
+      </div>
+      <div class="book-feedback-controls">
+        <button class="book-feedback-score mdl-button mdl-js-button material-icons" value="0">keyboard_arrow_down</button>
+        <button class="book-feedback-score mdl-button mdl-js-button material-icons" value="1">keyboard_arrow_up</button>
+        <button class="book-feedback-score mdl-button mdl-js-button material-icons" value="2">keyboard_capslock</button>
+      </div>
     </div>
 
-    <div class="book-feedback-body">
+    <div class="book-feedback-body text-body">
       {{content}}
-    </div>
-
-    <div class="book-feedback-score">
-      {{score}}
-    </div>
-
-    <div class="book-feedback-helpfulness">
-      Helpfulness: {{avg_rating}}
-    </div>
-
-    <div class="feedback-rating-controls">
-      <button class="feedback-score-0 feedback-score btn btn-default btn-xs" value="0">0</button>
-      <button class="feedback-score-1 feedback-score btn btn-default btn-xs" value="1">1</button>
-      <button class="feedback-score-2 feedback-score btn btn-default btn-xs" value="2">2</button>
     </div>
 
   </div>

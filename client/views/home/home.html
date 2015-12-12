@@ -43,42 +43,44 @@
       <span class="sort-form-collapsible-text">Search</span>
     </label>
     <div class="collapsible-1-area">
-      <div class="mdl-card__supporting-text">
-        <form>
-          <div class="form-group">
-            <label>Author</label>
-            <input type="text" class="form-control" name="author">
+      <form>
+        <div class="mdl-card__supporting-text">
+
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" id="filter-form-author" name="author">
+            <label class="mdl-textfield__label" for="filter-form-author">Author</label>
           </div>
-          <div class="form-group">
-            <label>Publisher</label>
-            <input type="text" class="form-control" name="publisher">
+
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" id="filter-form-publisher" name="publisher">
+            <label class="mdl-textfield__label" for="filter-form-publisher">Publisher</label>
           </div>
-          <div class="form-group">
-            <label>Title</label>
-            <input type="text" class="form-control" name="bookTitle">
+
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" id="filter-form-title" name="bookTitle">
+            <label class="mdl-textfield__label" for="filter-form-title">Title</label>
           </div>
-          <div class="form-group">
-            <label>Subject</label>
-            <input type="text" class="form-control" name="subject">
+
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" id="filter-form-subject" name="subject">
+            <label class="mdl-textfield__label" for="filter-form-subject">Subject</label>
           </div>
-          <div class="form-group">
-            <div class="radio">
-              <label>
-                <input type="radio" name="sort" value="year"><span class="circle"></span><span class="check"></span>
-                Year
-              </label>
-            </div>
-            <div class="radio">
-              <label>
-                <input type="radio" name="sort" value="avg_score"><span class="circle"></span><span
-                      class="check"></span>
-                Score
-              </label>
-            </div>
+
+          <div class="mdl-textfield">
+            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
+              <input type="radio" id="option-1" class="mdl-radio__button" name="sort" value="year" checked>
+              <span class="mdl-radio__label">Year</span>
+            </label>
+            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-2">
+              <input type="radio" id="option-2" class="mdl-radio__button" name="sort" value="avg_score">
+              <span class="mdl-radio__label">Score</span>
+            </label>
           </div>
-          <input class="btn btn-raised btn-info" type="submit" value="Search">
-        </form>
-      </div>
+
+          <input class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored"
+                 type="submit" value="Search">
+        </div>
+      </form>
     </div>
   </div>
 </template>

@@ -34,9 +34,14 @@
 </template>
 
 <template name="sortForm">
-  <div class="mdl-cell mdl-cell--12-col">
-    <div class="filter-form panel panel-default">
-      <div class="panel-body">
+  <div class="filter-form collapsible-wrap mdl-card mdl-cell mdl-cell--12-col mdl-shadow--2dp">
+    <input type="checkbox" id="collapsible-1">
+    <label class="sort-form-collapsible-title" for="collapsible-1">
+      <i class="material-icons">search</i>
+      <span class="sort-form-collapsible-text">Search</span>
+    </label>
+    <div class="collapsible-1-area">
+      <div class="mdl-card__supporting-text">
         <form>
           <div class="form-group">
             <label>Author</label>
@@ -63,7 +68,8 @@
             </div>
             <div class="radio">
               <label>
-                <input type="radio" name="sort" value="avg_score"><span class="circle"></span><span class="check"></span>
+                <input type="radio" name="sort" value="avg_score"><span class="circle"></span><span
+                      class="check"></span>
                 Score
               </label>
             </div>

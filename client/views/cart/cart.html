@@ -5,6 +5,8 @@
 
 
     <div class="main-content mdl-grid">
+
+      {{#if cartItems}}
       <table class="mdl-cell mdl-cell--12-col mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
         <thead>
         <tr>
@@ -21,6 +23,9 @@
         {{/each}}
         </tbody>
       </table>
+      {{else}}
+        <div class="cart-empty-cart-message">Your cart is empty!</div>
+      {{/if}}
 
       <div class="cart-actions">
         <button class="checkoutBtn mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored">

@@ -1,40 +1,59 @@
 <template name="cart">
-    <div class="container">
-        <div class="page-header">
-            <h1>Cart <button class="btn btn-sm" id="clearBtn">Clear</button> </h1>
-        </div>
+  <div class="cart">
 
-        <table class="table">
-            <!--<caption>Books</caption>-->
-            <thead>
-            <tr>
-                <th>Title</th>
-                <th>Author</th>
-                <th>ISBN</th>
-                <th>Quantity</th>
-            </tr>
-            </thead>
-            <tbody>
-            {{#each cartItems}}
-              {{> cartItem}}
-            {{/each}}
-            </tbody>
-        </table>
-        <button class="checkoutBtn btn btn-default">Checkout</button>
+    <h3 class="page-title-container">Cart</h3>
+
+
+    <div class="main-content mdl-grid">
+      <table class="mdl-cell mdl-cell--12-col mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+        <thead>
+        <tr>
+          <th class="mdl-data-table__cell--non-numeric">Title</th>
+          <th class="mdl-data-table__cell--non-numeric">Author</th>
+          <th>ISBN</th>
+          <th class="mdl-data-table__cell--non-numeric">Quantity</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        {{#each cartItems}}
+          {{> cartItem}}
+        {{/each}}
+        </tbody>
+      </table>
+
+      <div class="cart-actions">
+        <button class="checkoutBtn mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored">
+          Checkout
+        </button>
+        <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--accent"
+                id="clearBtn">
+          Clear
+        </button>
+      </div>
     </div>
+
+
+  </div>
 </template>
 
 <template name="cartItem">
-    <tr>
-        <td>{{title}}</td>
-        <td>{{author}}</td>
-        <td>
-            <a href="/book/{{ISBN}}">{{ISBN}}</a>
-        </td>
-        <td>
-            <button class="btn btn-default btn-xs" intent="copies" data="{{ISBN}}" delta="-1">-</button>
-          {{copies}}
-            <button class="btn btn-default btn-xs" intent="copies" data="{{ISBN}}" delta="1">+</button>
-        </td>
-    </tr>
+  <tr>
+    <td class="mdl-data-table__cell--non-numeric">{{title}}</td>
+    <td class="mdl-data-table__cell--non-numeric">{{author}}</td>
+    <td>
+      <a href="/book/{{ISBN}}">{{ISBN}}</a>
+    </td>
+    <td class="mdl-data-table__cell--non-numeric">
+      <div class="cart-td-quantity-controls">
+        <button class="mdl-button mdl-js-button mdl-button--primary"
+                intent="copies" data="{{ISBN}}" delta="-1">-
+        </button>
+        {{copies}}
+        <button class="mdl-button mdl-js-button mdl-button--primary"
+                intent="copies" data="{{ISBN}}" delta="1">+
+        </button>
+      </div>
+    </td>
+  </tr>
 </template>

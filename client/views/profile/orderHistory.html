@@ -1,33 +1,35 @@
 <template name="orderHistory">
-  {{#if invoices ..}}
-      <div class="order-history">
-          <table class="table table-hover">
-              <!--<caption>Books</caption>-->
-              <thead>
-              <tr>
-                  <th>ISBN</th>
-                  <th>Price</th>
-                  <th>Copies</th>
-                  <th>Date</th>
-              </tr>
-              </thead>
-              <tbody>
-              {{#each invoices ..}}
-                {{> invoice}}
-              {{/each}}
-              </tbody>
-          </table>
-      </div>
-  {{else}}
-      <span> Nothing here yet!</span>
-  {{/if}}
+  <div class="order-history">
+    {{#if invoices ..}}
+      <table class="order-history-table mdl-data-table mdl-js-data-table">
+        <thead>
+        <tr>
+          <th class="mdl-data-table__cell--non-numeric">Date</th>
+          <th>ISBN</th>
+          <th>Price</th>
+          <th>Copies</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {{#each invoices ..}}
+          {{> invoice}}
+        {{/each}}
+        </tbody>
+
+      </table>
+
+    {{else}}
+      <span>Nothing here yet!</span>
+    {{/if}}
+  </div>
 </template>
 
 <template name="invoice">
-    <tr>
-        <td>{{ISBN}}</td>
-        <td>${{price}}</td>
-        <td>{{copies}}</td>
-        <td>{{order_date}}</td>
-    </tr>
+  <tr>
+    <td class="mdl-data-table__cell--non-numeric">{{order_date}}</td>
+    <td>{{ISBN}}</td>
+    <td>${{price}}</td>
+    <td>{{copies}}</td>
+  </tr>
 </template>

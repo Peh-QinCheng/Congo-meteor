@@ -1,47 +1,43 @@
 <template name="profile">
-  <div class="container profile">
-    <div class="page-header">
-      <h1>Your Profile</h1>
+  <div class="profile">
+    <div class="page-title-container">
+      <h3>
+        Your Profile
+      </h3>
+      {{> userInfo}}
     </div>
+    <div class="main-content mdl-grid">
+      <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--2dp">
+        <div class="mdl-card__supporting-text">
 
-    {{> userInfo}}
-
-    <div class="row">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3>Order History</h3>
-        </div>
-
-        <div class="panel-content">
+          <h2>Order history</h2>
           {{> orderHistory}}
+
+          <h2> Feedback History</h2>
+          {{> feedbackHistory}}
+
+          <h2> Rated Feedback</h2>
+          {{> ratedFeedback}}
         </div>
       </div>
     </div>
-
-    <div class="row">
-      <h2> Feedback History</h2>
-      {{> feedbackHistory}}
-    </div>
-
-    <div class="row">
-      <h2> Rated Feedback</h2>
-      {{> ratedFeedback}}
-    </div>
-
   </div>
 </template>
 
 <template name="userInfo">
   {{#with profile ..}}
-    <label>User</label>
-    {{login}}
-    <label>Name</label>
-    {{name}}
-    <label>Credit Number</label>
-    {{credit_num}}
-    <label>Address</label>
-    {{address}}
+    <div class="user-info">
+      <label>User</label>
+      {{login}}
+      <label>Name</label>
+      {{name}}
+      <label>Credit Number</label>
+      {{credit_num}}
+      <label>Address</label>
+      {{address}}
+    </div>
   {{/with}}
+
 </template>
 
 <template name="feedbackHistory">

@@ -70,7 +70,7 @@ Template.bookDetails.events({
             }
         });
     },
-    'submit form.sort-feedback-form': function (event) {
+    'submit form.feedback-output-sort-controls ': function (event) {
         event.preventDefault();
         let pageState = Template.instance();
         pageState.currentBookFeedback.stop();

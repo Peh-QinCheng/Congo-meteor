@@ -16,7 +16,8 @@
           <div class="book-info-copies">
             {{copies}} copies left
           </div>
-          <button class="cart mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored" data-toggle="modal" data-target="#myModal" data-isbn="{{ISBN}}">
+          <button class="cart mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored"
+                  data-toggle="modal" data-target="#myModal" data-isbn="{{ISBN}}">
             Add to cart
           </button>
         </div>
@@ -32,7 +33,8 @@
             <form class="feedback-input-form" name="Feedback Form">
 
               <div class="feedback-input-content-container mdl-textfield mdl-js-textfield">
-                <textarea class="mdl-textfield__input" type="text" rows= "1" name="feedbackValue" id="feedback-input-content" ></textarea>
+                <textarea class="mdl-textfield__input" type="text" rows="1" name="feedbackValue"
+                          id="feedback-input-content"></textarea>
                 <label class="mdl-textfield__label" for="feedback-input-content">Submit feedback</label>
               </div>
 
@@ -43,7 +45,8 @@
               </div>
 
               <div class="feedback-input-action-container">
-                <button class="submit-feedback mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored" type="submit" value="Submit Feedback">
+                <button class="submit-feedback mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored"
+                        type="submit" value="Submit Feedback">
                   Submit
                 </button>
               </div>
@@ -53,6 +56,19 @@
         </div>
 
         <div class="feedback-output mdl-card__supporting-text top-separator">
+          <form class="feedback-output-sort-controls">
+            <div class="vertical-align-text">Show</div>
+            <div class="mdl-textfield mdl-js-textfield">
+              <input class="mdl-textfield__input" name="queryLimit" type="number" value="5" id="feedback-output-limit">
+              <label class="mdl-textfield__label" for="feedback-output-limit">Limit</label>
+            </div>
+
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary material-icons"
+                    type="submit">
+              filter_list
+            </button>
+          </form>
+
           <div class="all-feedback">
             {{#each allFeedback}}
               {{> bookFeedback}}
@@ -65,19 +81,9 @@
   </div>
 </template>
 
-
-<!--<div>-->
-  <!--<h3>Sort Feedback</h3>-->
-  <!--<form class="sort-feedback-form form-inline">-->
-    <!--Sort by most helpful and show <input class="form-control" name="queryLimit" type="number" value="5">-->
-    <!--results-->
-    <!--<input class="btn btn-default" type="submit">-->
-  <!--</form>-->
-<!--</div>-->
-
 <template name="rating">
-    <input type="range" value="0" step="1" id="bookScore" name="bookScore">
-    <div class="rateit" data-rateit-backingfld="#bookScore" data-rateit-resetable="false"  data-rateit-ispreset="true"
-         data-rateit-min="0" data-rateit-max="10">
-    </div>
+  <input type="range" value="0" step="1" id="bookScore" name="bookScore">
+  <div class="rateit" data-rateit-backingfld="#bookScore" data-rateit-resetable="false" data-rateit-ispreset="true"
+       data-rateit-min="0" data-rateit-max="10">
+  </div>
 </template>

@@ -3,14 +3,14 @@ Meteor.methods({
         let checkoutCb = function (err, res) {
             if (err) {
                 console.error('Error while inserting into Invoives: ', err);
-                return;
+                return items;
             }
 
             var id = res.insertId;
-            _.each(items, function (item) {
+            return _.map(items, function (item) {
                 if (item.copies !== 0) {
                     // shitty async waterfall
-                    _.reduce([
+                    let success = _.reduce([
                             (memo)=> {
                                 return Async.runSync((done)=> {
                                     liveDb.db.query(
@@ -34,10 +34,9 @@ Meteor.methods({
                                 })
                             },
                             (memo)=> {
-                                if (memo.error || !memo.result) {
-                                    console.log('Aborting insert into orders due to error!');
-                                    console.log('Error: ', memo.error);
-                                    return res;
+                                if (memo.error) {
+                                    console.log(`Aborting insert into orders due to error: ${memo.error}`);
+                                    return memo;
                                 }
 
                                 return Async.runSync((done)=> {
@@ -56,9 +55,9 @@ Meteor.methods({
                                 })
                             },
                             (memo) => {
-                                if (memo.error || !memo.result) {
+                                if (memo.error) {
                                     console.log('Aborting update to books due to error!');
-                                    return res
+                                    return memo;
                                 }
 
                                 return Async.runSync((done)=> {
@@ -75,19 +74,25 @@ Meteor.methods({
                                             done(null, true)
                                         }
                                     )
-                                })
+                                });
+
                             }
                         ],
 
                         (memo, fn) => {
                             return fn(memo)
-                        }, true)
+                        }, true);
+
+                    console.log("Item status: ", success);
+                    return success.error ? item : null;
                 }
             })
         };
-        liveDb.db.query('INSERT INTO invoices (login) VALUES (?)', [login],
-            Meteor.bindEnvironment(checkoutCb, (e)=> {
-                console.log(e)
-            }))
+        let {error, result} = Async.runSync((done)=> {
+            liveDb.db.query('INSERT INTO invoices (login) VALUES (?)', [login], (err, res)=> {
+                done(err, res);
+            })
+        });
+        return checkoutCb(error, result);
     }
 });

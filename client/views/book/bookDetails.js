@@ -2,11 +2,14 @@ Template.bookDetails.onCreated(function () {
     let tpl = this;
     tpl.autorun(()=> {
         let pageState = Template.currentData();
-        console.log('Subscribing to: ', pageState.ISBN);
         tpl.books = new MysqlSubscription('bookByISBN', pageState.ISBN);
         tpl.currentBookFeedback = new MysqlSubscription('bookFeedbacks', pageState.ISBN, pageState.sortBy, pageState.limit);
     });
 });
+
+Template.rating.rendered = function () {
+    this.$('.rateit').rateit();
+};
 
 Template.bookDetails.onDestroyed(function () {
     this.books.stop();
@@ -14,11 +17,10 @@ Template.bookDetails.onDestroyed(function () {
 });
 
 Template.bookDetails.helpers({
-    bookData: () =>{
+    bookData: () => {
         var books = Template.instance().books;
         books.depend();
         if (books.ready()) {
-            //console.log(books)
             return books[0];
         }
     },
@@ -48,9 +50,10 @@ Template.bookDetails.events({
     },
     'submit form.feedback-input-form': function (event) {
         event.preventDefault();
-        var content = event.target.feedbackValue.value;
+        var content = event.target.feedbackValue.value.trim();
         var score = event.target.bookScore.value;
         var login = Session.get(KEY_CURRENT_CUSTOMER);
+
         Meteor.call('addFeedback', login, this.ISBN, content, score, function (error, queryError) {
             if (error) {
                 console.error('feeback', error);

@@ -39,6 +39,7 @@
               <div class="feedback-input-score-container mdl-textfield mdl-js-textfield">
                 <input class="mdl-textfield__input" name="bookScore" type="number" id="feedback-input-score">
                 <label class="mdl-textfield__label" for="feedback-input-score">Score</label>
+                {{> rating}}
               </div>
 
               <div class="feedback-input-action-container">
@@ -58,6 +59,7 @@
             {{/each}}
           </div>
         </div>
+
       </div>
     </div>
   </div>
@@ -72,3 +74,10 @@
     <!--<input class="btn btn-default" type="submit">-->
   <!--</form>-->
 <!--</div>-->
+
+<template name="rating">
+    <input type="range" value="0" step="1" id="bookScore" name="bookScore">
+    <div class="rateit" data-rateit-backingfld="#bookScore" data-rateit-resetable="false"  data-rateit-ispreset="true"
+         data-rateit-min="0" data-rateit-max="10">
+    </div>
+</template>

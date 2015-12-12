@@ -18,7 +18,23 @@ Template.cart.events({
                 console.error('Error while checking out cart: ', err);
                 return
             }
-            Session.set(KEY_CURRENT_CART, {})
+
+            if (res.length > 0) {
+                alert('Something went wrong while checking out! Maybe there are insufficient copies :(')
+            }
+
+            let newCart = _.object(
+                _.chain(res)
+                    .filter((item)=> {
+                        return !!item
+                    })
+                    .map((item)=> {
+                        return item.ISBN
+                    })
+                    .value()
+                , res);
+
+            Session.set(KEY_CURRENT_CART, newCart)
         })
     },
     'click button#clearBtn': ()=> {

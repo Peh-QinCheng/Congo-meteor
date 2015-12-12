@@ -2,7 +2,7 @@
   <div class="congo-home mdl-grid">
     {{> sortForm}}
 
-    <div class="book-catalog">
+    <div class="book-catalog main-content">
       <div class="mdl-grid">
         {{#each books}}
           {{> bookCard}}
@@ -34,7 +34,7 @@
 </template>
 
 <template name="sortForm">
-  <div class="filter-form collapsible-wrap mdl-card mdl-cell mdl-cell--12-col mdl-shadow--2dp">
+  <div class="filter-form heading-content collapsible-wrap mdl-card mdl-cell mdl-cell--12-col mdl-shadow--2dp">
     <input type="checkbox" id="collapsible-1">
     <label class="sort-form-collapsible-title" for="collapsible-1">
       <i class="material-icons">search</i>

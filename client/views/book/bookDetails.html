@@ -1,13 +1,25 @@
 <template name="bookDetails">
   <div class="book-details">
     <div class="mdl-grid">
-      <div class="page-header mdl-cell mdl-cell--12-col">
+      <div class="book-info mdl-cell mdl-cell--12-col">
         {{#with bookData}}
-          <h1>{{title}} </h1>
-          <small> by {{author}} | {{copies}} left</small>
-          <button class="cart btn btn-default" data-toggle="modal" data-target="#myModal" data-isbn="{{ISBN}}">
-            Add to cart
-          </button>
+
+          <div class="book-info-title-author">
+            <h3>{{title}}</h3>
+            {{author}}
+          </div>
+
+          <div class="book-info-actions">
+            <div class="book-info-price vertical-align-text">
+              $ {{price}}
+            </div>
+            <div class="book-info-copies">
+              {{copies}} copies left
+            </div>
+            <button class="cart mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored" data-toggle="modal" data-target="#myModal" data-isbn="{{ISBN}}">
+              Add to cart
+            </button>
+          </div>
 
         {{/with}}
       </div>
@@ -30,7 +42,7 @@
               </div>
 
               <div class="feedback-input-action-container">
-                <button class="submit-feedback mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit" value="Submit Feedback">
+                <button class="submit-feedback mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored" type="submit" value="Submit Feedback">
                   Submit
                 </button>
               </div>

@@ -1,49 +1,63 @@
 <template name="bookDetails">
   <div class="book-details">
-    <div class="container">
-      <div class="page-header">
+    <div class="mdl-grid">
+      <div class="page-header mdl-cell mdl-cell--12-col">
         {{#with bookData}}
-        <h1>{{title}} </h1>
-        <small> by {{author}} | {{copies}} left</small>
-        <button class="cart btn btn-default" data-toggle="modal" data-target="#myModal" data-isbn="{{ISBN}}">
-          Add to cart
-        </button>
-        {{> recommendationModal ISBN}}
+          <h1>{{title}} </h1>
+          <small> by {{author}} | {{copies}} left</small>
+          <button class="cart btn btn-default" data-toggle="modal" data-target="#myModal" data-isbn="{{ISBN}}">
+            Add to cart
+          </button>
+          {{> recommendationModal ISBN}}
         {{/with}}
-
       </div>
+    </div>
 
-      <div class="feedback-input">
-        <h3>Submit Feedback</h3>
-        <form class="feedback-input-form" name="Feedback Form">
-          <div class="form-group">
-            <label>Content</label>
-            <textarea class="form-control" name="feedbackValue" rows="4" cols="50"></textarea>
-          </div>
-          <div class="form-group">
-            <label>Score</label>
-            <input class="form-control" name="bookScore" type="number" value="0">
-          </div>
-          <input class="submit-feedback btn btn-default" type="submit" value="Submit Feedback">
-        </form>
-      </div>
+    <div class="mdl-grid">
+      <div class="main-content mdl-cell mdl-cell--12-col mdl-card mdl-shadow--2dp">
+        <div class="mdl-card__supporting-text">
 
-      <div class="feedback-output">
-        <div>
-          <h3>Sort Feedback</h3>
-          <form class="sort-feedback-form form-inline">
-            Sort by most helpful and show <input class="form-control" name="queryLimit" type="number" value="5"> results
-            <input class="btn btn-default" type="submit">
-          </form>
+          <div class="feedback-input">
+            <form class="feedback-input-form" name="Feedback Form">
+
+              <div class="feedback-input-content-container mdl-textfield mdl-js-textfield">
+                <textarea class="mdl-textfield__input" type="text" rows= "1" name="feedbackValue" id="feedback-input-content" ></textarea>
+                <label class="mdl-textfield__label" for="feedback-input-content">Submit feedback</label>
+              </div>
+
+              <div class="feedback-input-score-container mdl-textfield mdl-js-textfield">
+                <input class="mdl-textfield__input" name="bookScore" type="number" id="feedback-input-score">
+                <label class="mdl-textfield__label" for="feedback-input-score">Score</label>
+              </div>
+
+              <div class="feedback-input-action-container">
+                <button class="submit-feedback mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit" value="Submit Feedback">
+                  Submit
+                </button>
+              </div>
+
+            </form>
+          </div>
         </div>
 
-        <div class="all-feedback">
-          {{#each allFeedback}}
-            {{> bookFeedback}}
-          {{/each}}
+        <div class="feedback-output mdl-card__supporting-text top-separator">
+          <div class="all-feedback">
+            {{#each allFeedback}}
+              {{> bookFeedback}}
+            {{/each}}
+          </div>
         </div>
-
       </div>
     </div>
   </div>
 </template>
+
+
+<!--<div>-->
+  <!--<h3>Sort Feedback</h3>-->
+  <!--<form class="sort-feedback-form form-inline">-->
+    <!--Sort by most helpful and show <input class="form-control" name="queryLimit" type="number" value="5">-->
+    <!--results-->
+    <!--<input class="btn btn-default" type="submit">-->
+  <!--</form>-->
+<!--</div>-->

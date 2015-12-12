@@ -1,10 +1,51 @@
 .book-details {
-  .all-feedback {
-    margin-top: 20px;
-  }
+
+
   .book-feedback {
-    label {
-      display: block;
+    padding-top: 30px;
+    padding-bottom: 30px;
+
+    i {
+      font-size: 30px;
+      margin-right: 15px;
+    }
+
+    .book-feedback-title {
+      margin-bottom: 20px;
     }
   }
+
+  .book-feedback:nth-child(1) {
+    padding-top: 30px - 16px;
+    border-top: none;
+  }
+
+  .mdl-card__supporting-text {
+    width: initial;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  .feedback-input-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .mdl-textfield {
+      display: block;
+      width: 500px;
+      margin-right: 40px;
+    }
+
+    .feedback-input-score-container {
+      width: 50px;
+    }
+
+    .feedback-input-action-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+
 }

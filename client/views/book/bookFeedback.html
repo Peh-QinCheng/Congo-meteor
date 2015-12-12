@@ -1,23 +1,28 @@
 <template name="bookFeedback">
-  <div class="col-sm-3 book-feedback">
-    <div class="fixed-panel-height panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">{{login}}</h3>
-      </div>
-      <div class="panel-body">
-        <label>Score</label>
-        {{score}}
-        <label>Content</label>
-        {{content}}
-        <label>Helpfulness</label>
-        {{avg_rating}}
-        <label>Is this review helpful?</label>
-        <div class="feedback-rating-controls">
-          <button class="feedback-score-0 feedback-score btn btn-default btn-xs" value="0">0</button>
-          <button class="feedback-score-1 feedback-score btn btn-default btn-xs" value="1">1</button>
-          <button class="feedback-score-2 feedback-score btn btn-default btn-xs" value="2">2</button>
-        </div>
-      </div>
+  <div class="book-feedback top-separator">
+
+    <div class="book-feedback-title details-title vertical-align-container">
+      <i class="material-icons">face</i>
+      <span class="vertical-align-text">{{login}}</span>
     </div>
+
+    <div class="book-feedback-body">
+      {{content}}
+    </div>
+
+    <div class="book-feedback-score">
+      {{score}}
+    </div>
+
+    <div class="book-feedback-helpfulness">
+      Helpfulness: {{avg_rating}}
+    </div>
+
+    <div class="feedback-rating-controls">
+      <button class="feedback-score-0 feedback-score btn btn-default btn-xs" value="0">0</button>
+      <button class="feedback-score-1 feedback-score btn btn-default btn-xs" value="1">1</button>
+      <button class="feedback-score-2 feedback-score btn btn-default btn-xs" value="2">2</button>
+    </div>
+
   </div>
 </template>

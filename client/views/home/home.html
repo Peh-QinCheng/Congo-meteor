@@ -2,11 +2,13 @@
   <div class="congo-home mdl-grid">
     {{> sortForm}}
 
-    <div class="book-catalog main-content">
-      <div class="mdl-grid">
-        {{#each books}}
-          {{> bookCard}}
-        {{/each}}
+    <div class="mdl-cell mdl-cell--12-col">
+      <div class="book-catalog main-content">
+        <div class="mdl-grid">
+          {{#each books}}
+            {{> bookCard}}
+          {{/each}}
+        </div>
       </div>
     </div>
   </div>

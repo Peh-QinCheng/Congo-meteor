@@ -27,7 +27,5 @@ numtel:mysql@1.0.2
 iron:router
 meteorhacks:async
 less
-twbs:bootstrap
-fezvrasta:bootstrap-material-design
 zodiase:mdl
 fourseven:scss

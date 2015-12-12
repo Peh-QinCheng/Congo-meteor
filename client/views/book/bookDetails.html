@@ -1,29 +1,29 @@
 <template name="bookDetails">
   <div class="book-details">
-    <div class="mdl-grid">
-      <div class="book-info mdl-cell mdl-cell--12-col">
-        {{#with bookData}}
 
-          <div class="book-info-title-author">
-            <h3>{{title}}</h3>
-            {{author}}
+    <div class="book-info page-title-container">
+      {{#with bookData}}
+
+        <div class="book-info-title-author">
+          <h3>{{title}}</h3>
+          {{author}}
+        </div>
+
+        <div class="book-info-actions">
+          <div class="book-info-price vertical-align-text">
+            $ {{price}}
           </div>
-
-          <div class="book-info-actions">
-            <div class="book-info-price vertical-align-text">
-              $ {{price}}
-            </div>
-            <div class="book-info-copies">
-              {{copies}} copies left
-            </div>
-            <button class="cart mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored" data-toggle="modal" data-target="#myModal" data-isbn="{{ISBN}}">
-              Add to cart
-            </button>
+          <div class="book-info-copies">
+            {{copies}} copies left
           </div>
+          <button class="cart mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored" data-toggle="modal" data-target="#myModal" data-isbn="{{ISBN}}">
+            Add to cart
+          </button>
+        </div>
 
-        {{/with}}
-      </div>
+      {{/with}}
     </div>
+
     <div class="mdl-grid">
       <div class="main-content mdl-cell mdl-cell--12-col mdl-card mdl-shadow--2dp">
         <div class="mdl-card__supporting-text">

@@ -2,7 +2,6 @@ Template.bookDetails.onCreated(function () {
     let tpl = this;
     tpl.autorun(()=> {
         let pageState = Template.currentData();
-        console.log('Subscribing to: ', pageState.ISBN);
         tpl.books = new MysqlSubscription('bookByISBN', pageState.ISBN);
         tpl.currentBookFeedback = new MysqlSubscription('bookFeedbacks', pageState.ISBN, pageState.sortBy, pageState.limit);
     });

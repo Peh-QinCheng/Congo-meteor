@@ -42,54 +42,62 @@
 
 <template name="feedbackHistory">
   {{#if feedbackHistory ..}}
-    {{#each feedbackHistory ..}}
-      {{> userFeedback}}
-    {{/each}}
-  {{else}}
-    <span> Nothing here yet!</span>
-  {{/if}}
-</template>
+    <table class="feedback-history-table mdl-data-table mdl-js-data-table">
+      <thead>
+      <tr>
+        <th class="mdl-data-table__cell--non-numeric">ISBN</th>
+        <th>Content</th>
+        <th class="mdl-data-table__cell--non-numeric">Score</th>
+        <th class="mdl-data-table__cell--non-numeric">Feedback Rating</th>
+      </tr>
+      </thead>
 
-<template name="ratedFeedback">
-  {{#if ratedFeedback ..}}
-    {{#each ratedFeedback ..}}
-      {{> userRated}}
-    {{/each}}
+      <tbody>
+      {{#each feedbackHistory ..}}
+        {{> userFeedback}}
+      {{/each}}
+      </tbody>
+    </table>
   {{else}}
     <span> Nothing here yet!</span>
   {{/if}}
 </template>
 
 <template name="userFeedback">
-  <div class="col-sm-3">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">{{ISBN}}</h3>
-      </div>
-      <div class="panel-body">
-        <label>Score</label>
-        {{score}}
-        <label>Content</label>
-        {{content}}
-        <label>Helpfulness</label>
-        {{avg_rating}}
-      </div>
-    </div>
-  </div>
+  <tr>
+    <td class="mdl-data-table__cell--non-numeric">{{ISBN}}</td>
+    <td>{{content}}</td>
+    <td class="mdl-data-table__cell--non-numeric">${{score}}</td>
+    <td class="mdl-data-table__cell--non-numeric">{{avg_rating}}</td>
+  </tr>
+</template>
+
+<template name="ratedFeedback">
+  {{#if ratedFeedback ..}}
+    <table class="rated-feedback-table mdl-data-table mdl-js-data-table">
+      <thead>
+      <tr>
+        <th class="mdl-data-table__cell--non-numeric">ISBN</th>
+        <th>Original Poster</th>
+        <th class="mdl-data-table__cell--non-numeric">Feedback Rating</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      {{#each ratedFeedback ..}}
+        {{> userRated}}
+      {{/each}}
+      </tbody>
+    </table>
+  {{else}}
+    <span> Nothing here yet!</span>
+  {{/if}}
 </template>
 
 <template name="userRated">
-  <div class="col-sm-3">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        {{ISBN}}
-      </div>
-      <div class="panel-body">
-        <label>OP</label>
-        {{login}}
-        <label>Rating</label>
-        {{rating}}
-      </div>
-    </div>
-  </div>
+  <tr>
+    <td class="mdl-data-table__cell--non-numeric">{{ISBN}}</td>
+    <td>{{login}}</td>
+    <td class="mdl-data-table__cell--non-numeric">{{avg_rating}}</td>
+  </tr>
 </template>

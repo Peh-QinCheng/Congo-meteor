@@ -1,58 +1,80 @@
 <template name="statistics">
-  <div class="container small-page">
-    <div class="page-header">
-      <h1>Statistics</h1>
-    </div>
-    <div>
-      <div>
-        Most Popular Books
-        {{#each mostPopularBooks}}
-          {{> bookInformation}}
-        {{/each}}
-      </div>
+  <div class="statistics small-page">
+    <h3 class="page-title-container">Statistics</h3>
 
-      <div>
-        Most Popular Authors
-        {{#each mostPopularAuthors}}
-          {{> authorInformation}}
-        {{/each}}
-      </div>
+    <div class="main-content mdl-grid">
+      <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--2dp">
+        <div class="mdl-card__supporting-text">
+          <h2>Most Popular Books</h2>
+          <table class="mdl-cell mdl-cell--12-col mdl-data-table mdl-js-data-table">
+            <thead>
+            <tr>
+              <th class="mdl-data-table__cell--non-numeric">ISBN</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each mostPopularBooks}}
+              {{> bookInformation}}
+            {{/each}}
+            </tbody>
+          </table>
 
-      <div>
-        Most Popular Publishers
-        {{#each mostPopularPublishers}}
-          {{> publisherInformation}}
-        {{/each}}
+
+          <h2>Most Popular Authors</h2>
+          <table class="mdl-cell mdl-cell--12-col mdl-data-table mdl-js-data-table">
+            <thead>
+            <tr>
+              <th class="mdl-data-table__cell--non-numeric">Author</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each mostPopularAuthors}}
+              {{> authorInformation}}
+            {{/each}}
+            </tbody>
+          </table>
+
+
+          <h2>Most Popular Publishers</h2>
+          <table class="mdl-cell mdl-cell--12-col mdl-data-table mdl-js-data-table">
+            <thead>
+            <tr>
+              <th class="mdl-data-table__cell--non-numeric">Publisher</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each mostPopularPublishers}}
+              {{> publisherInformation}}
+            {{/each}}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <template name="bookInformation">
-  <div>
-    {{ISBN}}
-  </div>
+  <tr>
+    <td class="mdl-data-table__cell--non-numeric">
+      {{ISBN}}
+    </td>
+  </tr>
 </template>
 
 <template name="authorInformation">
-  <div>
-    {{author}}
-  </div>
+  <tr>
+    <td class="mdl-data-table__cell--non-numeric">
+      {{author}}
+    </td>
+  </tr>
+
 </template>
 
 <template name="publisherInformation">
-  <div>
-    {{publisher}}
-  </div>
+  <tr>
+    <td class="mdl-data-table__cell--non-numeric">
+      {{publisher}}
+    </td>
+  </tr>
 </template>
-
-<!--Template.statistics.helpers({-->
-<!--mostPopularBooks: () => {-->
-<!--return Template.instance().mostPopularBooks.reactive();-->
-<!--},-->
-<!--mostPopularAuthors: () => {-->
-<!--return Template.instance().mostPopularAuthors.reactive();-->
-<!--},-->
-<!--mostPopularPublishers: () => {-->
-<!--return Template.instance().mostPopularPublishers.reactive();-->
-<!--}-->

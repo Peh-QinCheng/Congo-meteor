@@ -11,7 +11,11 @@
     <div class="mdl-layout mdl-js-layout">
       {{#unless loggedIn}}
         <main class="mdl-layout__content">
-          {{> login}}
+            {{#if signingUp}}
+              {{> register}}
+            {{else}}
+              {{> login}}
+            {{/if}}
         </main>
       {{else}}
         {{> navBar}}

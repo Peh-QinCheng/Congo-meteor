@@ -12,8 +12,8 @@
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
               <input id="login-field-email" class="mdl-textfield__input" type="text" pattern="^[a-z0-9_-]{3,16}$" name="login">
               <!--<input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample4">-->
-              <label class="mdl-textfield__label" for="login-field-email">Email</label>
-              <span class="mdl-textfield__error">Should be 3-6 alphanumeric characters</span>
+              <label class="mdl-textfield__label" for="login-field-email">Username</label>
+              <span class="mdl-textfield__error">Should be 3-16 alphanumeric characters</span>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
               <input id="login-field-password" class="mdl-textfield__input" type="password" name="password">
@@ -21,17 +21,85 @@
               <label class="mdl-textfield__label" for="login-field-password">Password</label>
               <!--<span class="mdl-textfield__error">Input is not a number!</span>-->
             </div>
+              Don't have an account? <a href="/register">Register here</a>
           </div>
           <div class="mdl-card__actions mdl-card--border">
-            <button class="submit-login-form mdl-button mdl-js-button mdl-button--primary" name="login" type="submit">
+            <button class="submit-login-form mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect" name="login" type="submit">
               Login
-            </button>
-            <button class="submit-register-form mdl-button mdl-js-button mdl-button--accent" name="register"
-                    type="submit">Register
             </button>
           </div>
         </div>
       </form>
+      </div>
     </div>
-  </div>
 </template>
+
+<template name="register">
+    <div class="login">
+        <div class="login-background"></div>
+        <div class="login-container">
+            <form name="login">
+                <div class="mdl-card mdl-shadow--2dp">
+                    <div class="mdl-card__title">
+                        <i class="material-icons">chrome_reader_mode</i>
+                        <span class="mdl-card__title-text">Congo</span>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                        <span class="mdl-info">Login Credentials</span>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input id="login-field-email" class="mdl-textfield__input" type="text" pattern="^[a-z0-9_-]{3,16}$" name="login">
+                            <label class="mdl-textfield__label" for="login-field-email">Username</label>
+                            <span class="mdl-textfield__error">Should be 3-16 alphanumeric characters</span>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input id="login-field-password" class="mdl-textfield__input" type="password" name="password">
+                            <label class="mdl-textfield__label" for="login-field-password">Password</label>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input id="login-field-password-again" class="mdl-textfield__input" type="password" name="password">
+                            <label class="mdl-textfield__label" for="login-field-password-again">Password (Again)</label>
+                        </div>
+                      <span class="mdl-info">Credit Card Info</span>
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <input class="mdl-textfield__input" type="text" id="cardnumber" placeholder="XXXX XXXX XXXX XXXX" pattern="-?[0-9]*(\.[0-9]+)?" maxlength="16" />
+                            <label class="mdl-textfield__label" for="cardnumber">XXXX XXXX XXXX XXXX</label>
+                            <span class="mdl-textfield__error">Input is not a number!</span>
+                        </div>
+
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <input class="mdl-textfield__input" type="text" id="expire" placeholder="MM / YY" maxlength="5" />
+                            <label class="mdl-textfield__label" for="expire">MM / YY</label>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <input class="mdl-textfield__input" type="text" id="ccv" placeholder="CCV" pattern="-?[0-9]*(\.[0-9]+)?" maxlength="3" />
+                            <label class="mdl-textfield__label" for="ccv">CCV</label>
+                            <span class="mdl-textfield__error">Input is not a number!</span>
+                        </div>
+                        <span class="mdl-info">Contact Info</span>
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <input class="mdl-textfield__input" type="text" id="fullname" placeholder="Full Name"/>
+                            <label class="mdl-textfield__label" for="address">Full Name</label>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <input class="mdl-textfield__input" type="text" id="address" placeholder="Address"/>
+                            <label class="mdl-textfield__label" for="address">Address</label>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <input class="mdl-textfield__input" type="text" id="phonenumber" pattern="[0-9]*?" placeholder="Phone Number"/>
+                            <label class="mdl-textfield__label" for="phonenumber">Phone Number</label>
+                            <span class="mdl-textfield__error">Input is not a phone number!</span>
+                        </div>
+                        Already have an account? <a href="/">Login here</a>
+                    </div>
+
+                    <div class="mdl-card__actions mdl-card--border">
+                        <button class="submit-register-form mdl-button mdl-js-button mdl-button--accent mdl-js-ripple-effect" name="register"
+                                type="submit">Register
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</template>
+

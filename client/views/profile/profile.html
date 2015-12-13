@@ -21,11 +21,10 @@
 
 <template name="userInfo">
   {{#with profile ..}}
-      <div class="mdl-card user-img mdl-cell mdl-cell--12-col">
+      <div class="profile-user-info mdl-card user-img mdl-cell mdl-cell--12-col mdl-shadow--2dp">
           <div class="mdl-card__media mdl-color-text--grey-50">
               <div class="media-text">
-                  <h3><a>{{name}}</a></h3>
-                  <h4><a>{{phone_num}}</a></h4>
+                <h3>{{name}}</h3>
               </div>
           </div>
 
@@ -37,6 +36,10 @@
               <div>
                   <strong>Address:</strong>
                   <span>{{address}}</span>
+              </div>
+              <div>
+                <strong>Phone:</strong>
+                <span>{{phone_num}}</span>
               </div>
           </div>
       </div>

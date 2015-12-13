@@ -1,9 +1,13 @@
 .profile {
-  .user-info {
+  .profile-user-info {
     label {
       display: block;
       font-weight: bold;
     }
+
+    max-width: 500px;
+    min-height: 300px;
+    margin: 40px auto;
   }
   .mdl-card__media {
     box-sizing: border-box;
@@ -45,7 +49,11 @@
 
   .user-img {
     .mdl-card__media {
-      background-image: url('images/darren.jpg')
+      background: linear-gradient(
+        rgba(0, 0, 0, 0.1),
+        rgba(0, 0, 0, 0.1)
+      ), url('images/darren.jpg');
+      background-size: 100%;
     }
   }
   .mdl-data-table {

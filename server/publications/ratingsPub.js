@@ -8,7 +8,7 @@ Meteor.publish('ratedFeedback', function (login) {
             WHERE
               feedbacks.login=ratings.login
               AND
-                ratings.rater_login='sda'
+                ratings.rater_login='${login}'
             ORDER BY
               rating DESC;`;
     }, [

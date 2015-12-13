@@ -30,7 +30,14 @@ Template.cart.events({
                     .value()
                 , res);
 
-            if (newCart.length > 0) {
+
+            let errorCount = 0;
+
+            _.each(newCart,() => {
+                errorCount += 1;
+            });
+
+            if (errorCount) {
                 alert('Something went wrong while checking out! Maybe there are insufficient copies :(')
             }
             Session.set(KEY_CURRENT_CART, newCart)

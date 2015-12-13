@@ -47,7 +47,8 @@ Meteor.publish('recommendedBooks', function (isbn, login) {
                   WHERE o2.ISBN = ${esc(isbn)} AND i2.login != ${esc(login)}
                 )
                       AND b.ISBN != ${esc(isbn)}
-                GROUP BY b.ISBN ORDER BY count DESC;
+                GROUP BY b.ISBN ORDER BY count DESC
+                LIMIT 3;
                 `)
     }, [{
         table: 'books'

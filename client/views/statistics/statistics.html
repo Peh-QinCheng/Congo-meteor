@@ -5,6 +5,23 @@
     <div class="main-content mdl-grid">
       <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--2dp">
         <div class="mdl-card__supporting-text">
+
+          <div class="flex-row-align-end mdl-card__supporting-text">
+            <form class="statistics-controls">
+              <div class="vertical-align-text">Show</div>
+              <div class="mdl-textfield mdl-js-textfield">
+                <input class="mdl-textfield__input" name="queryLimit" type="number" value="5"
+                       id="statistics-limit">
+                <label class="mdl-textfield__label" for="statistics-limit">Limit</label>
+              </div>
+
+              <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary material-icons"
+                      type="submit">
+                filter_list
+              </button>
+            </form>
+          </div>
+
           <h2>Most Popular Books</h2>
           <table class="mdl-cell mdl-cell--12-col mdl-data-table mdl-js-data-table">
             <thead>

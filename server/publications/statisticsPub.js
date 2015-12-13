@@ -1,8 +1,5 @@
 Meteor.publish('mostPopularAuthors', function (limit) {
-    let limitQuery = '';
-    if (limit) {
-        limitQuery = `LIMIT ${limit}`;
-    }
+    let limitQuery = getLimitQuery(limit);
     return liveDb.select(`
         SELECT
           author, SUM(copies) as copies_sold
@@ -18,10 +15,7 @@ Meteor.publish('mostPopularAuthors', function (limit) {
 });
 
 Meteor.publish('mostPopularPublishers', function (limit) {
-    let limitQuery = '';
-    if (limit) {
-        limitQuery = `LIMIT ${limit}`;
-    }
+    let limitQuery = getLimitQuery(limit);
     return liveDb.select(`
         SELECT
           publisher, COUNT(publisher) as copies_sold
@@ -36,7 +30,8 @@ Meteor.publish('mostPopularPublishers', function (limit) {
     );
 });
 
-Meteor.publish('mostPopularBooks', function (filterParams, sortBy) {
+Meteor.publish('mostPopularBooks', function (filterParams, sortBy, limit) {
+    let limitQuery = getLimitQuery(limit);
     return liveDb.select(function (esc, escId) {
         return (`
             SELECT
@@ -50,7 +45,7 @@ Meteor.publish('mostPopularBooks', function (filterParams, sortBy) {
             AND books.ISBN = orders.ISBN
             GROUP BY books.ISBN
             ORDER BY popz DESC
-            LIMIT 10;
+            ${limitQuery};
     `)
     }, [
         {table: 'orders'},

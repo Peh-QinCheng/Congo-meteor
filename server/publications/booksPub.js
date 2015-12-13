@@ -24,9 +24,9 @@ Meteor.publish('bookByISBN', function (isbn) {
     }])
 });
 
-Meteor.publish('filteredSortedBooks', function (filterParams, sortBy) {
+Meteor.publish('filteredSortedBooks', function (filterParams, sortBy, limit) {
     return liveDb.select(function (esc, escId) {
-        return booksQuery(filterParams, sortBy);
+        return booksQuery(filterParams, sortBy, limit);
     }, [
         {table: 'books'},
         {table: 'feedbacks'}
@@ -62,7 +62,6 @@ Meteor.publish('recommendedBooks', function (isbn, login) {
 });
 
 function booksQuery(filterParams, sortBy, limit) {
-
     const orderQuery = sortBy ? `ORDER BY ${sortBy} DESC` : '';
 
     let filterQuery = '';
@@ -88,10 +87,7 @@ function booksQuery(filterParams, sortBy, limit) {
         }
     }
 
-    let limitQuery = '';
-    if (limit) {
-        limitQuery = `LIMIT ${limit}`;
-    }
+    let limitQuery = getLimitQuery(limit);
 
     return `
         SELECT

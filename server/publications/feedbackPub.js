@@ -28,12 +28,7 @@ function escapeString(str) {
 }
 
 function feedbackQuery(isbn, sortParam, limit, login) {
-    let limitQuery;
-    if (limit) {
-        limitQuery = `LIMIT ${limit};`;
-    } else {
-        limitQuery = ';';
-    }
+    let limitQuery = getLimitQuery(limit);
 
     let loginQuery = '';
     if (login) {
@@ -82,6 +77,6 @@ function feedbackQuery(isbn, sortParam, limit, login) {
         ${filterQuery}
         ORDER BY
           ${sortParam} DESC
-        ${limitQuery}
+        ${limitQuery};
     `;
 }

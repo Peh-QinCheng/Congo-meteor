@@ -3,9 +3,8 @@ Meteor.methods({
         check(email, String);
         check(password, String);
         var response = Async.runSync(function (done) {
-            liveDb.db
-                .query(
-                    'INSERT INTO customers (login, password) VALUES ( ? , ?)', [email, password], function (error, results, fields) {
+            liveDb.db.query(
+                    'INSERT INTO customers (login, password) VALUES (? , ?)', [email, password], function (error, results, fields) {
                         if (error) {
                             console.error('Error while inserting: ', error);
                             done(null, false);

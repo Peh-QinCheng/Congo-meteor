@@ -13,14 +13,14 @@ Meteor.publish('bookByISBN', function (isbn) {
             'where `ISBN`=' + esc(isbn)
         );
     }, [{
-        table: table,
-        condition: function (row, newRow) {
-            // Only refresh the results when the row matching the specified id is
-            // changed.
-            return row.id === id
-                    // On UPDATE queries, newRow must be checked as well
-                || (newRow && newRow.id === id);
-        }
+        table: table
+        //condition: function (row, newRow) {
+        //    // Only refresh the results when the row matching the specified id is
+        //    // changed.
+        //    return row.id === id
+        //            // On UPDATE queries, newRow must be checked as well
+        //        || (newRow && newRow.id === id);
+        //}
     }])
 });
 
@@ -50,14 +50,14 @@ Meteor.publish('recommendedBooks', function (isbn, login) {
                 GROUP BY b.ISBN ORDER BY count DESC;
                 `)
     }, [{
-        table: 'books',
-        condition: function (row, newRow) {
-            // Only refresh the results when the row matching the specified id is
-            // changed.
-            return row.id === id
-                    // On UPDATE queries, newRow must be checked as well
-                || (newRow && newRow.id === id);
-        }
+        table: 'books'
+        //condition: function (row, newRow) {
+        //    // Only refresh the results when the row matching the specified id is
+        //    // changed.
+        //    return row.id === id
+        //            // On UPDATE queries, newRow must be checked as well
+        //        || (newRow && newRow.id === id);
+        //}
     }])
 });
 

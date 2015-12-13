@@ -26,7 +26,7 @@
       {{else}}
         <div class="cart-empty-cart-message">Your cart is empty!</div>
       {{/if}}
-
+      {{#if cartItems}}
       <div class="cart-actions">
         <button class="checkoutBtn mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored">
           Checkout
@@ -36,6 +36,7 @@
           Clear
         </button>
       </div>
+      {{/if}}
     </div>
 
 

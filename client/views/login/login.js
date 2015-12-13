@@ -16,14 +16,24 @@ Template.login.events({
                 c.stop();
             }
         });
-    },
+    }
+});
+
+
+Template.register.events({
     'click .submit-register-form': function (events) {
         events.preventDefault();
-        var email = $('#login-field-email').val();
-        var password = $('#login-field-password').val();
+        let email = $('#login-field-email').val();
+        let password = $('#login-field-password').val();
+        let passwordAgain = $('#login-field-password-again').val();
+        let cardNumber = $('#cardnumber').val();
+        let phoneNumber = $('#phonenumber').val();
+        let address = $('#address').val();
+        let fullName = $('#fullname').val();
 
-        if (email.trim().search(/^[a-z0-9_-]{3,16}$/i) === -1) {
-            alert('Username can only contain alphanumeric characters, hyphens and underscore and be within 3 to 16 characters')
+        if (password !== passwordAgain) {
+            alert('Passwords are not the same!');
+            // Do reactive error message if too free
             return;
         }
 
@@ -33,7 +43,12 @@ Template.login.events({
             }
         }
 
-        Meteor.call('registerCustomer', email, password, function (err, res) {
+        if (cardNumber.length === 0 || address.length === 0 || phoneNumber.length === 0){
+            alert('Please fill in all required forms!');
+            return;
+        }
+
+        Meteor.call('registerCustomer', [email, password, fullName, cardNumber, address, phoneNumber], function (err, res) {
             if (err) {
                 console.error('OH SOMETHING REALLY BAD HAPPENED');
                 return

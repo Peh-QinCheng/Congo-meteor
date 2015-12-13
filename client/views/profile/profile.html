@@ -1,12 +1,7 @@
 <template name="profile">
   <div class="profile small-page">
-    <div class="page-title-container">
-      <h3>
-        Your Profile
-      </h3>
-      {{> userInfo}}
-    </div>
     <div class="main-content mdl-grid">
+        {{> userInfo}}
       <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--2dp">
         <div class="mdl-card__supporting-text">
 
@@ -26,16 +21,25 @@
 
 <template name="userInfo">
   {{#with profile ..}}
-    <div class="user-info">
-      <label>User</label>
-      {{login}}
-      <label>Name</label>
-      {{name}}
-      <label>Credit Number</label>
-      {{credit_num}}
-      <label>Address</label>
-      {{address}}
-    </div>
+      <div class="mdl-card user-img mdl-cell mdl-cell--12-col">
+          <div class="mdl-card__media mdl-color-text--grey-50">
+              <div class="media-text">
+                  <h3><a>{{name}}</a></h3>
+                  <h4><a>{{phone_num}}</a></h4>
+              </div>
+          </div>
+
+          <div class="mdl-card__supporting-text mdl-color-text--grey-600">
+              <div>
+                  <strong>Credit Card:</strong>
+                  <span>{{credit_num}}</span>
+              </div>
+              <div>
+                  <strong>Address:</strong>
+                  <span>{{address}}</span>
+              </div>
+          </div>
+      </div>
   {{/with}}
 
 </template>

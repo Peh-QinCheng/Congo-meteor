@@ -1,14 +1,24 @@
 //@import "client/palette.import.less";
-
 @import "../../palette.import.less";
 
 .login {
   .login-container {
-    min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+    min-height: 100%; /* Fallback for browsers do NOT support vh unit */
     min-height: 100vh; /* These two lines are counted as one :-)       */
     justify-content: center;
     align-items: center;
     display: flex;
+  }
+
+  .submit-login-form {
+    width: 50%;
+  }
+
+  .mdl-info {
+    font-weight: 900;
+    font-size: 16px;
+    color: rgba(114, 114, 114, 0.709804);
+    margin-left: -20px;
   }
 
   .btn-group {

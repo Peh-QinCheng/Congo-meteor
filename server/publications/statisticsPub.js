@@ -16,6 +16,7 @@ Meteor.publish('mostPopularAuthors', function (limit) {
         [{table: 'books'}]
     );
 });
+
 Meteor.publish('mostPopularPublishers', function (limit) {
     let limitQuery = '';
     if (limit) {
@@ -33,4 +34,26 @@ Meteor.publish('mostPopularPublishers', function (limit) {
         ${limitQuery};`,
         [{table: 'books'}]
     );
+});
+
+Meteor.publish('mostPopularBooks', function (filterParams, sortBy) {
+    return liveDb.select(function (esc, escId) {
+        return (`
+            SELECT
+              books.ISBN, books.title, SUM(orders.copies) AS copies
+            FROM orders, books
+            WHERE invoiceid IN (
+              SELECT invoiceid
+              FROM invoices
+              WHERE EXTRACT(YEAR_MONTH FROM order_date) = EXTRACT(YEAR_MONTH FROM NOW())
+            )
+            AND books.ISBN = orders.ISBN
+            GROUP BY books.ISBN
+            ORDER BY popz DESC
+            LIMIT 10;
+    `)
+    }, [
+        {table: 'orders'},
+        {table: 'books'}
+    ]);
 });

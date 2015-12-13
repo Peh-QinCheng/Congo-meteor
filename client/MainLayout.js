@@ -6,6 +6,9 @@ Template.MainLayout.helpers({
         }
         return !!Session.get(KEY_CURRENT_CUSTOMER);
     },
+    signingUp: function (){
+        return Router.current().route.path(this) === '/register'
+    }
 });
 
 Template.MainLayout.onRendered(function () {

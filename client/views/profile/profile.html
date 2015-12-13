@@ -1,7 +1,7 @@
 <template name="profile">
   <div class="profile small-page">
     <div class="main-content mdl-grid">
-        {{> userInfo}}
+      {{> userInfo}}
       <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--2dp">
         <div class="mdl-card__supporting-text">
 
@@ -21,28 +21,28 @@
 
 <template name="userInfo">
   {{#with profile ..}}
-      <div class="profile-user-info mdl-card user-img mdl-cell mdl-cell--12-col mdl-shadow--2dp">
-          <div class="mdl-card__media mdl-color-text--grey-50">
-              <div class="media-text">
-                <h3>{{name}}</h3>
-              </div>
-          </div>
-
-          <div class="mdl-card__supporting-text mdl-color-text--grey-600">
-              <div>
-                  <strong>Credit Card:</strong>
-                  <span>{{credit_num}}</span>
-              </div>
-              <div>
-                  <strong>Address:</strong>
-                  <span>{{address}}</span>
-              </div>
-              <div>
-                <strong>Phone:</strong>
-                <span>{{phone_num}}</span>
-              </div>
-          </div>
+    <div class="profile-user-info mdl-card user-img mdl-cell mdl-cell--12-col mdl-shadow--2dp">
+      <div class="mdl-card__media mdl-color-text--grey-50">
+        <div class="media-text">
+          <h3>{{name}}</h3>
+        </div>
       </div>
+
+      <div class="mdl-card__supporting-text mdl-color-text--grey-600">
+        <div>
+          <strong>Credit Card:</strong>
+          <span>{{credit_num}}</span>
+        </div>
+        <div>
+          <strong>Address:</strong>
+          <span>{{address}}</span>
+        </div>
+        <div>
+          <strong>Phone:</strong>
+          <span>{{phone_num}}</span>
+        </div>
+      </div>
+    </div>
   {{/with}}
 
 </template>

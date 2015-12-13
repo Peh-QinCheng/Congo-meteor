@@ -19,10 +19,6 @@ Template.cart.events({
                 return
             }
 
-            if (res.length > 0) {
-                alert('Something went wrong while checking out! Maybe there are insufficient copies :(')
-            }
-
             let newCart = _.object(
                 _.chain(res)
                     .filter((item)=> {
@@ -34,6 +30,9 @@ Template.cart.events({
                     .value()
                 , res);
 
+            if (newCart.length > 0) {
+                alert('Something went wrong while checking out! Maybe there are insufficient copies :(')
+            }
             Session.set(KEY_CURRENT_CART, newCart)
         })
     },

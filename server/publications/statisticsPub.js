@@ -44,7 +44,7 @@ Meteor.publish('mostPopularBooks', function (filterParams, sortBy, limit) {
             )
             AND books.ISBN = orders.ISBN
             GROUP BY books.ISBN
-            ORDER BY popz DESC
+            ORDER BY copies DESC
             ${limitQuery};
     `)
     }, [

@@ -30,7 +30,5 @@ Meteor.publish('loginUser', function (login, password) {
             'where `login`=' + esc(login) +
             ' AND `password`=' + esc(password)
         );
-    }, [{
-        table: table
-    }])
+    }, [{table: table}])
 });

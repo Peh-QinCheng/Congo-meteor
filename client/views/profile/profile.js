@@ -7,12 +7,14 @@ Template.profile.onCreated(function () {
 
 Template.userInfo.helpers({
     profile: function (context) {
-        var profile = context.profile;
-        profile.depend();
-        if (profile.ready()) {
-            return profile.length === 0 ? 'No such customer found!' : profile[0];
-        } else {
-            return 'Loading...'
+        if (context) {
+            var profile = context.profile;
+            profile.depend();
+            if (profile.ready()) {
+                return profile.length === 0 ? 'No such customer found!' : profile[0];
+            } else {
+                return 'Loading...'
+            }
         }
     }
 });

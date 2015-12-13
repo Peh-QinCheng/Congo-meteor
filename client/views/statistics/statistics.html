@@ -11,6 +11,12 @@
             <tr>
               <th class="mdl-data-table__cell--non-numeric">ISBN</th>
             </tr>
+            <tr>
+                <th class="mdl-data-table__cell--non-numeric">Title</th>
+            </tr>
+            <tr>
+                <th class="mdl-data-table__cell--non-numeric">Copies sold this month</th>
+            </tr>
             </thead>
             <tbody>
             {{#each mostPopularBooks}}
@@ -58,6 +64,12 @@
   <tr>
     <td class="mdl-data-table__cell--non-numeric">
       {{ISBN}}
+    </td>
+    <td class="mdl-data-table__cell--non-numeric">
+      {{title}}
+    </td>
+    <td class="mdl-data-table__cell--non-numeric">
+      {{copies}}
     </td>
   </tr>
 </template>

@@ -30,12 +30,5 @@ Meteor.publish('loginUser', function (login, password) {
             'where `login`=' + esc(login) +
             ' AND `password`=' + esc(password)
         );
-    }, [{
-        table: table
-        //condition: function (row, newRow) {
-        //    return row.id === id
-        //            // On UPDATE queries, newRow must be checked as well
-        //        || (newRow && newRow.id === id);
-        //}
-    }])
+    }, [{table: table}])
 });

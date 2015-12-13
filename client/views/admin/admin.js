@@ -14,7 +14,7 @@ Template.adminBookList.helpers({
 });
 
 Template.adminBookList.events({
-    'submit form.update-book-quantity': function (events) {
+    'submit form.admin-book-update-form': function (events) {
         events.preventDefault();
         var quantity = Number(events.target.quantity.value);
         var ISBN = events.target.ISBN.value;

@@ -1,118 +1,128 @@
 <template name="adminBookList">
-  <div class="container small-page">
-    <div class="page-header">
-      <h1>Admin Page</h1>
+  <div class="admin small-page">
+    <h3 class="page-title-container">Admin</h3>
+
+    <div class="main-content mdl-grid">
+      {{> userInfo}}
+      <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--2dp">
+        <div class="mdl-card__supporting-text">
+
+          {{> newBook}}
+
+
+        </div>
+      </div>
+
     </div>
-    {{> newBook}}
 
-
-    <h3>All Books</h3>
-
-    <table class="table">
-      <!--<caption>Books</caption>-->
-      <thead>
-      <tr>
-        <th>Title</th>
-        <th>Author</th>
-        <th>ISBN</th>
-        <th>Year</th>
-        <th>Publisher</th>
-        <th>Score</th>
-        <th>Copies</th>
-        <th>Update Copies</th>
-      </tr>
-      </thead>
-      <tbody>
-      {{#each books}}
-        {{> adminBook}}
-      {{/each}}
-      </tbody>
-    </table>
-
-    <!--    <ol class="books">
-      {{#each books}}
-      {{> adminBook}}
-    {{/each}}
-    </ol> -->
+    <div class="mdl-grid">
+      <table class="admin-book-table mdl-cell mdl-cell--12-col mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+        <thead>
+        <tr>
+          <th class="fixed-width mdl-data-table__cell--non-numeric">Title</th>
+          <th class="mdl-data-table__cell--non-numeric">Author</th>
+          <th>ISBN</th>
+          <th class="small-table-cell-width">Year</th>
+          <th class="mdl-data-table__cell--non-numeric">Publisher</th>
+          <th class="small-table-cell-width">Score</th>
+          <th class="small-table-cell-width">Copies</th>
+          <th class="mdl-data-table__cell--non-numeric">Update</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each books}}
+          {{> adminBook}}
+        {{/each}}
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
 
 <template name="adminBook">
   <tr>
-    <td>{{title}}</td>
-    <td>{{author}}</td>
+    <td class="mdl-data-table__cell--non-numeric">{{title}}</td>
+    <td class="mdl-data-table__cell--non-numeric">{{author}}</td>
     <td>
       <a href="/book/{{ISBN}}">{{ISBN}}</a>
     </td>
-    <td>{{year}}</td>
-    <td>{{publisher}}</td>
-    <td>{{avg_score}}</td>
-    <td>{{copies}}</td>
-    <td>
-      <input class="form-control" type="hidden" name="ISBN" value="{{ISBN}}">
-      <input class="form-control" type="number" name="quantity">
-      <input class="btn btn-default btn-sm" type="submit" value="Update">
+    <td class="small-table-cell-width">{{year}}</td>
+    <td class="mdl-data-table__cell--non-numeric">{{publisher}}</td>
+    <td class="small-table-cell-width">{{avg_score}}</td>
+    <td class="small-table-cell-width">{{copies}}</td>
+    <td class="mdl-data-table__cell--non-numeric">
+      <form class="admin-book-update-form">
+        <input type="hidden" name="ISBN" value="{{ISBN}}">
+        <div class="admin-book-update-cell mdl-textfield mdl-js-textfield">
+          <input class="admin-book-update-text-field mdl-textfield__input" type="number" id="admin-book-update-quantity-{{ISBN}}" name="quantity">
+          <label class="mdl-textfield__label" for="admin-book-update-quantity-{{ISBN}}">Update</label>
+        </div>
+
+        <button class="admin-book-update-text-button mdl-button mdl-js-button mdl-button--primary"
+                type="submit" value="Update">Copies</button>
+      </form>
     </td>
-    <!--<input class="form-control" type="hidden" name="ISBN" value="{{ISBN}}">-->
   </tr>
 </template>
-
-
-<!-- <template name="adminBook">
-  <li class="book">
-    <form class="update-book-quantity">
-      <span class="ISBN">{{ISBN}}</span>
-      <span class="title">{{title}}</span>
-      <input class="form-control" type="number" name="quantity">
-      <input class="btn btn-default" type="submit" value="Update Quantity">
-    </form>
-  </li>
-</template> -->
 
 <template name="newBook">
   <form class="new-book">
     <h3>New Book</h3>
-    <div class="col-sm-6">
-      <label>Title</label>
-      <input class="form-control" type="text" name="bookTitle">
+
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="admin-new-book-title" name="bookTitle">
+      <label class="mdl-textfield__label" for="admin-new-book-title">Title</label>
     </div>
-    <div class="col-sm-6">
-      <label>ISBN</label>
-      <input class="form-control" type="text" name="ISBN">
+
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="number" id="admin-new-book-isbn" name="ISBN">
+      <label class="mdl-textfield__label" for="admin-new-book-isbn">ISBN</label>
     </div>
-    <div class="col-sm-6">
-      <label>Publisher</label>
-      <input class="form-control" type="text" name="publisher">
+
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="admin-new-book-publisher" name="publisher">
+      <label class="mdl-textfield__label" for="admin-new-book-publisher">Publisher</label>
     </div>
-    <div class="col-sm-6">
-      <label>Author</label>
-      <input class="form-control" type="text" name="author">
+
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="admin-new-book-author" name="author">
+      <label class="mdl-textfield__label" for="admin-new-book-author">Author</label>
     </div>
-    <div class="col-sm-6">
-      <label>Year</label>
-      <input class="form-control" type="text" name="year">
+
+
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="number" id="admin-new-book-year" name="year">
+      <label class="mdl-textfield__label" for="admin-new-book-year">Year</label>
     </div>
-    <div class="col-sm-6">
-      <label>Quantity</label>
-      <input class="form-control" type="text" name="quantity">
+
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="number" id="admin-new-book-quantity" name="quantity">
+      <label class="mdl-textfield__label" for="admin-new-book-quantity">Quantity</label>
     </div>
-    <div class="col-sm-6">
-      <label>Price</label>
-      <input class="form-control" type="text" name="price">
+
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="number" id="admin-new-book-price" name="price">
+      <label class="mdl-textfield__label" for="admin-new-book-price">Price</label>
     </div>
-    <div class="col-sm-6">
-      <label>Book Format</label>
-      <input class="form-control" type="text" name="bkformat">
+
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="admin-new-book-bkformat" name="bkformat">
+      <label class="mdl-textfield__label" for="admin-new-book-bkformat">Book Format</label>
     </div>
-    <div class="col-sm-6">
-      <label>Keywords</label>
-      <input class="form-control" type="text" name="keywords">
+
+
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="admin-new-book-keywords" name="keywords">
+      <label class="mdl-textfield__label" for="admin-new-book-keywords">Keywords</label>
     </div>
-    <div class="col-sm-6">
-      <label>Subject</label>
-      <input class="form-control" type="text" name="subject">
+
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="admin-new-book-subject" name="subject">
+      <label class="mdl-textfield__label" for="admin-new-book-subject">Subject</label>
     </div>
-    <input class="btn btn-default" type="submit" value="Make new book">
+
+    <input class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored"
+           type="submit" value="Make new book">
   </form>
 </template>
 

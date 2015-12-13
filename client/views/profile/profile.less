@@ -5,6 +5,49 @@
       font-weight: bold;
     }
   }
+  .mdl-card__media {
+    box-sizing: border-box;
+    background-size: cover;
+    padding: 24px;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: row;
+    align-items: flex-end;
+    cursor: pointer;
+  }
+
+  .mdl-card {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    min-height: 360px;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      font-weight: inherit;
+
+    }
+
+    h3{
+      display: block;
+      font-size: 4em;
+      margin-top: 0.5em;
+    }
+
+    .media-text{
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      width: 100%;
+    }
+  }
+
+  .user-img {
+    .mdl-card__media {
+      background-image: url('images/darren.jpg')
+    }
+  }
   .mdl-data-table {
     width: 100%;
   }

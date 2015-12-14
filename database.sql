@@ -114,11 +114,10 @@ CREATE TABLE `ratings` (
 # SEED DATA
 # -----------------------------------------------------------
 INSERT INTO books (ISBN, title, author, publisher, year, price, bkformat, keywords, subject, copies) VALUES
-  ('9781449389673', 'Photoshop Elements 9: The Missing Manual', 'Barbara Brundage', 'Pogue Press', 2010, 20, 'hardcover', 'photography', 'self-help', 20),
-  ('9781594487712', 'Where Good Ideas Come From: The Natural History of Innovation', 'Steven Johnson', 'Pogue Press', 2010, 20, 'hardcover', 'photography', 'self-help', 9),
-  ('9780804139297', 'Taoism and Science Part 1: Tao your mom', 'Alastair Gornall', 'Pewpew Press', 2010, 99, 'hardcover', 'photography', 'self-help', 9),
-  ('9780804139298', 'Taoism and Science Part 2: WTF', 'Alastair Gornall', 'Pewpew Press', 2010, 199, 'hardcover', 'photography', 'self-help', 9),
-  ('9780804139299', 'Taoism and Science Part 3: Ok loh', 'Alastair Gornall', 'Pewpew Press', 2010, 9, 'hardcover', 'photography', 'self-help', 9),
+  ('9781449389673', 'Photoshop Elements 9: The Missing Manual', 'Barbara Brundage', 'Pogue Press', 2010, 20, 'hardcover', 'photography', 'self-help', 100),
+  ('9780804139297', 'Database Management Systems', 'Zhang MeiHui', 'Pewpew Press', 2010, 99, 'hardcover', 'photography', 'self-help', 9),
+  ('9780804139298', 'Transactions: Are they serializable?', 'Zhang MeiHui', 'Pewpew Press', 2010, 199, 'hardcover', 'photography', 'self-help', 9),
+  ('9780804139299', 'In-Memory Big Data Management And Processing', 'Zhang MeiHui', 'Pewpew Press', 2010, 9, 'hardcover', 'photography', 'self-help', 9),
   ('9781449389671', 'Another Photoshop', 'Barbara Brundage', 'Pogue Press', 2011, 20, 'hardcover', 'photography', 'self-help', 2),
   ('9781594487712','Where Good Ideas Come From: The Natural History of Innovation','Steven Johnson','Riverhead Hardcover',2010,64,'hardcover','history','innovation',3),
   ('9780321474049','The Digital Photography Book','Scott Kelby','Peachpit Press',2006,84,'softcover','photography','guidebook',9),

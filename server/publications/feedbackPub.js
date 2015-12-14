@@ -70,7 +70,7 @@ function feedbackQuery(isbn, sortParam, limit, login) {
                 date,
                 '-' # indicates that it has not been rated
             FROM
-`              feedbacks f
+              feedbacks f
             WHERE NOT EXISTS(
                 SELECT 1
                 FROM ratings r

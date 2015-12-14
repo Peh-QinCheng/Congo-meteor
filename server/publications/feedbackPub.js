@@ -57,9 +57,9 @@ function feedbackQuery(isbn, sortParam, limit, login) {
               feedbacks.login, ISBN, score, content, date, ratings.avg_rating
             FROM
               feedbacks,
-              (SELECT AVG(rating) AS avg_rating, login FROM ratings GROUP BY login, ISBN) as ratings
+              (SELECT AVG(rating) AS avg_rating, login, ISBN as book FROM ratings GROUP BY login, ISBN) as ratings
             WHERE
-              feedbacks.login=ratings.login
+              feedbacks.login=ratings.login AND feedbacks.ISBN = ratings.book
             UNION
               # Feedback that has not been rated
               SELECT

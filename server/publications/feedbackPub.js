@@ -70,9 +70,12 @@ function feedbackQuery(isbn, sortParam, limit, login) {
                 date,
                 '-' # indicates that it has not been rated
             FROM
-              feedbacks
-            WHERE
-              login NOT IN (SELECT login FROM ratings)
+`              feedbacks f
+            WHERE NOT EXISTS(
+                SELECT 1
+                FROM ratings r
+                WHERE r.login = f.login AND f.ISBN = r.ISBN
+            )
           ) AS subquery
         ${filterQuery}
         ORDER BY

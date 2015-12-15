@@ -1,4 +1,5 @@
 {
     "port": 3407,
-    "initialize": "database.sql"
+    "initialize": "database.sql",
+    "user": "root"
 }

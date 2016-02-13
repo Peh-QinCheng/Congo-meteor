@@ -12,9 +12,8 @@ function getRandomInt(min, max) {
 
 Template.bookCard.helpers({
 
-    bookCover: function () {
-        var number = getRandomInt(1, 3);
-        var imgUrl = `images/book-cover-${number.toString()}.jpg`;
+    bookCover: function (isbn) {
+        var imgUrl = `images/${isbn}.jpg`;
         return imgUrl;
     }
 });

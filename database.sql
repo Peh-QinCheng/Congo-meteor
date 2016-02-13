@@ -114,26 +114,31 @@ CREATE TABLE `ratings` (
 # SEED DATA
 # -----------------------------------------------------------
 INSERT INTO books (ISBN, title, author, publisher, year, price, bkformat, keywords, subject, copies) VALUES
-  ('9781449389673', 'Photoshop Elements 9: The Missing Manual', 'Barbara Brundage', 'Pogue Press', 2010, 20, 'hardcover', 'photography', 'self-help', 100),
-  ('9780804139297', 'Database Management Systems', 'Zhang MeiHui', 'Pewpew Press', 2010, 99, 'hardcover', 'photography', 'self-help', 9),
-  ('9780804139298', 'Transactions: Are they serializable?', 'Zhang MeiHui', 'Pewpew Press', 2010, 199, 'hardcover', 'photography', 'self-help', 9),
-  ('9780804139299', 'In-Memory Big Data Management And Processing', 'Zhang MeiHui', 'Pewpew Press', 2010, 9, 'hardcover', 'photography', 'self-help', 9),
-  ('9781449389671', 'Another Photoshop', 'Barbara Brundage', 'Pogue Press', 2011, 20, 'hardcover', 'photography', 'self-help', 2),
-  ('9781594487712','Where Good Ideas Come From: The Natural History of Innovation','Steven Johnson','Riverhead Hardcover',2010,64,'hardcover','history','innovation',3),
-  ('9780321474049','The Digital Photography Book','Scott Kelby','Peachpit Press',2006,84,'softcover','photography','guidebook',9),
-  ('9780684801520','The Great Gatsby','F. Scott Fitzgerald','Scribner',1995,71,'hardcover','fiction','fiction',2),
-  ('9780803612259','Davis s Drug Guide For Nurses (book With Cd-rom) And Mednotes: Nurse s Pocket Pharmacology Guide','Judith Hopfer Deglin, April Hazard Vallerand','F. A. Davis Company',2004,59,'hardcover','Nursing','guidebook',4),
-  ('9780393072228','The Shallows: What the Internet Is Doing to Our Brains','Nicholas Carr','W. W. Norton & Company ',2010,73,'hardcover','Internet','self-help',5),
-  ('9780321441461','Data Structures and Algorithm Analysis in C++ (3rd Edition)','Mark A. Weiss','Addison Wesley',2006,95,'hardcover','Computer Science','guidebook',4),
-  ('9781848000698','The Algorithm Design Manual','Steven S. Skiena','Springer',2008,46,'hardcover','Computer Science','guidebook',9),
-  ('9781449389550','Hackers & Painters: Big Ideas from the Computer Age','Paul Graham','O Reilly Media',2010,52,'softcover','Computer Science','guidebook',1),
-  ('9780596529321','Programming Collective Intelligence: Building Smart Web 2.0 Applications','Toby Segaran','O Reilly Media',2007,28,'softcover','Computer Science','guidebook',3),
-  ('9780321370136','Data Structures and Algorithm Analysis in Java (2nd Edition)','Mark A. Weiss','Addison Wesley',2006,57,'hardcover','Computer Science','guidebook',9),
-  ('9780321358288','Introduction to the Design and Analysis of Algorithms (2nd Edition)','Anany V. Levitin','Addison Wesley',2006,71,'softcover','Computer Science','guidebook',6),
-  ('9780596802356','Data Analysis with Open Source Tools','Philipp K. Janert','O Reilly Media',2010,63,'softcover','Computer Science','guidebook',4),
-  ('9780672325670','Sams Teach Yourself SQL in 10 Minutes (3rd Edition)','Ben Forta','Sams',2004,81,'softcover','Computer Science','guidebook',1),
-  ('9781449389734','Hadoop: The Definitive Guide','Tom White','Yahoo Press',2010,81,'softcover','Computer Science','guidebook',5),
-  ('9781423902454','Network+ Guide to Networks (Networking (Course Technology))','Tamara Dean','Course Technology',2009,65,'softcover','Computer Science','guidebook',4);
+  ('9781449389673', 'Photoshop Elements 9: The Missing Manual', 'Barbara Brundage', 'Pogue Press', 2010, 20, 'hardcover', 'non-fiction', 'photography', 100),
+  ('9781400068265','A Doubter''s Almanac: A Novel','Ethan Canin','Random House',2016,19,'hardcover','fiction','fiction', 5),
+  ('9781610395830','Narconomics: How to Run a Drug Cartel','Tom Wainwright','PublicAffairs',2016,29,'hardcover','non-fiction','economics',5),
+  ('9780765379948','All the Birds in the Sky','Charlie Jane Anders','Tor Books',2016,39,'hardcover','fiction','sci-fi',5),
+  ('9780802124548','The Black Calhouns: From Civil War to Civil Rights with One African American Family','Gail Lumet Buckley','Tor Books',2016,15 ,'hardcover','non-fiction','history',5),
+  ('9780802124494','Walking the Nile','Levison Wood','Atlantic Monthly Press',2016,20 ,'hardcover','non-fiction','guide',5),
+  ('9780316352420','Walking The Himalayas','Levison Wood','Little, Brown and Company',2016,28 ,'hardcover','non-fiction','guide',5),
+  ('9780812979893','America America: A Novel','Ethan Canin','Random House Trade Paperbacks',2009,34 ,'softcover','fiction','contemporary',5),
+  ('9780812979411','For Kings and Planets: A Novel','Ethan Canin','Random House Trade Paperbacks',2010,18 ,'softcover','fiction','contemporary',5),
+  ('9781612195001','The Girl in the Red Coat','Kate Hamer','Melville House',2016,28 ,'hardcover','fiction','thriller',5),
+  ('9781594487712','Where Good Ideas Come From: The Natural History of Innovation','Steven Johnson','Riverhead Hardcover',2010,50,'hardcover','non-fiction','history',3),
+  ('9780321474049','The Digital Photography Book','Scott Kelby','Peachpit Press',2006,60,'softcover','non-fiction','photography',9),
+  ('9780684801520','The Great Gatsby','F. Scott Fitzgerald','Scribner',1995,19,'hardcover','fiction','fiction',2),
+  ('9780803612259','Davis s Drug Guide For Nurses (book With Cd-rom) And Mednotes: Nurse s Pocket Pharmacology Guide','Judith Hopfer Deglin, April Hazard Vallerand','F. A. Davis Company',2004,31,'hardcover','non-fiction','nursing',4),
+  ('9780393072228','The Shallows: What the Internet Is Doing to Our Brains','Nicholas Carr','W. W. Norton & Company ',2010,27,'hardcover','non-fiction','self-help',5),
+  ('9780321441461','Data Structures and Algorithm Analysis in C++ (3rd Edition)','Mark A. Weiss','Addison Wesley',2006,43,'hardcover','non-fiction','Computer Science',4),
+  ('9781848000698','The Algorithm Design Manual','Steven S. Skiena','Springer',2008,46,'hardcover','non-fiction','Computer Science',9),
+  ('9781449389550','Hackers & Painters: Big Ideas from the Computer Age','Paul Graham','O Reilly Media',2010,35,'softcover','non-fiction','Computer Science',1),
+  ('9780596529321','Programming Collective Intelligence: Building Smart Web 2.0 Applications','Toby Segaran','O Reilly Media',2007,28,'softcover','non-fiction','Computer Science',3),
+  ('9780321370136','Data Structures and Algorithm Analysis in Java (2nd Edition)','Mark A. Weiss','Addison Wesley',2006,30,'hardcover','non-fiction','Computer Science',9),
+  ('9780321358288','Introduction to the Design and Analysis of Algorithms (2nd Edition)','Anany V. Levitin','Addison Wesley',2006,38,'softcover','non-fiction','Computer Science',6),
+  ('9780596802356','Data Analysis with Open Source Tools','Philipp K. Janert','O Reilly Media',2010,37,'softcover','non-fiction','Computer Science',4),
+  ('9780672325670','Sams Teach Yourself SQL in 10 Minutes (3rd Edition)','Ben Forta','Sams',2004,28,'softcover','non-fiction','Computer Science',1),
+  ('9781449389734','Hadoop: The Definitive Guide','Tom White','Yahoo Press',2010,27,'softcover','non-fiction','Computer Science',5),
+  ('9781423902454','Network+ Guide to Networks (Networking (Course Technology))','Tamara Dean','Course Technology',2009,27,'softcover','non-fiction','Computer Science',4);
 INSERT INTO
   customers (login, PASSWORD, NAME)
 VALUES
@@ -145,34 +150,34 @@ VALUES
 INSERT INTO
   feedbacks (login, ISBN, score, content)
 VALUES
-  ('testUser1', '9780804139297', 10, 'This book is a great read!'),
-  ('testUser2', '9780804139297', 9, 'Amazing purchase, try it out yourself!'),
-  ('testUser3', '9780804139297', 8, 'ITS A MUST BUY'),
-  ('testUser4', '9780804139297', 7, 'Decent, worth a read if you are free.'),
-  ('testUser5', '9780804139297', 6, 'Mehhhh. Only worth it if you really want it...'),
+  ('testUser1', '9780765379948', 10, 'This book is a great read!'),
+  ('testUser2', '9780765379948', 9, 'Amazing purchase, try it out yourself!'),
+  ('testUser3', '9780765379948', 8, 'ITS A MUST BUY'),
+  ('testUser4', '9780765379948', 7, 'Decent, worth a read if you are free.'),
+  ('testUser5', '9780765379948', 4, 'Mehhhh. Only worth it if you really want it...'),
   ('testUser1', '9781848000698', 10, 'A must for every algorithm student!'),
   ('testUser2', '9781848000698', 8, 'Helped me so much for work! Great book!'),
   ('testUser3', '9781848000698', 7, 'Works so much :) Didnt regret buying it'),
   ('testUser1', '9780321441461', 5, 'Too technical :( Hard to understand'),
   ('testUser4', '9780321441461', 1, 'Hated this book'),
-  ('testUser5', '9781449389671', 5, 'What kind of name is this???'),
-  ('testUser2', '9781449389671', 3, 'RIPOFF DONT BUY'),
-  ('testUser3', '9781449389671', 2, 'This book doesnt make sense'),
+  ('testUser5', '9781449389734', 5, 'What kind of name is this???'),
+  ('testUser2', '9781449389734', 3, 'RIPOFF DONT BUY'),
+  ('testUser3', '9781449389734', 2, 'This book doesnt make sense'),
   ('testUser2', '9780321358288', 6, 'Interesting read but priced too high'),
   ('testUser5', '9780321358288', 4, 'Nah, bad pricing for such a short book'),
   ('testUser1', '9780321358288', 8, 'Wow it is really useful and I love it!');
 INSERT INTO
   ratings (login, ISBN, rater_login, rating)
 VALUES # testUser2,3,4 rating testUser1's feedback on ISBN 9780804139297
-  ('testUser1', '9780804139297', 'testUser2', 2),
-  ('testUser1', '9780804139297', 'testUser3', 1),
-  ('testUser1', '9780804139297', 'testUser4', 0);
+  ('testUser1', '9780765379948', 'testUser2', 2),
+  ('testUser1', '9780765379948', 'testUser3', 1),
+  ('testUser1', '9780765379948', 'testUser4', 0);
 INSERT INTO
   ratings (login, ISBN, rater_login, rating)
 VALUES # testUser2,3,4 rating testUser1's feedback on ISBN 9780804139297
-  ('testUser2', '9780804139297', 'testUser1', 2),
-  ('testUser2', '9780804139297', 'testUser3', 1),
-  ('testUser2', '9780804139297', 'testUser4', 1);
+  ('testUser2', '9780765379948', 'testUser1', 2),
+  ('testUser2', '9780765379948', 'testUser3', 1),
+  ('testUser2', '9780765379948', 'testUser4', 1);
 INSERT INTO invoices (login) VALUES
   ('testUser1'),
   ('testUser2'),
@@ -185,4 +190,4 @@ INSERT INTO orders (invoiceid, ISBN, price, copies) VALUES
   #   (2, 9780804139299, 29.99, 1),
   (3, 9781848000698, 9.99, 55),
   (3, 9780321358288, 29.99, 100);
-#   (3, 9780804139298, 19.99, 999);
+#   (3, 9780765379948, 19.99, 999);
